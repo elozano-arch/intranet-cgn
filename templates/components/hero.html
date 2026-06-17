@@ -1,0 +1,70 @@
+{% comment %}
+  Componente: Hero / Banner intranet  → Wagtail: HeroBlock
+  Kit UI 9.2 (Carrusel/Banner) + Manual CGN: tipografía Nunito Sans, máx. 3 botones,
+  recuadro con fecha + proceso. Motivo gráfico: rombo (el símbolo CGN se circunscribe
+  en un rombo + triángulo). Colores C/G/N: verde, gris, naranja.
+  Parámetros: title (1–2 líneas), text (breve), eyebrow, buttons[{label,url,variant}], fecha, proceso
+{% endcomment %}
+<section aria-label="Destacado principal" class="relative overflow-hidden bg-cgn-negro">
+  {# Capa de color corporativo (verde profundo para contraste de texto blanco ≥4.5:1) #}
+  <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
+
+  {# Motivo de rombos decorativos (símbolo CGN) — decorativo, oculto a lectores #}
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -right-24 -top-24 h-96 w-96 rotate-45 rounded-3xl bg-cgn-naranja/20"></div>
+    <div class="absolute right-32 top-32 h-40 w-40 rotate-45 rounded-2xl border-2 border-white/20"></div>
+    <div class="absolute -bottom-28 right-1/4 h-72 w-72 rotate-45 rounded-3xl bg-white/5"></div>
+    <div class="absolute bottom-10 left-1/3 h-16 w-16 rotate-45 rounded-lg bg-cgn-naranja/30"></div>
+  </div>
+
+  <div class="relative mx-auto grid max-w-contenido items-center gap-10 px-4 py-16 md:py-20 lg:grid-cols-12 lg:py-28">
+    {# Texto #}
+    <div class="lg:col-span-7">
+      <span class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-white/20">
+        <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>{{ eyebrow|default:'Intranet institucional' }}
+      </span>
+      <h1 class="font-titulo text-4xl font-bold leading-[1.1] text-white md:text-5xl lg:text-6xl">
+        {{ title|default:'Bienvenido a la Intranet de la CGN' }}
+      </h1>
+      {% if text %}
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-white md:text-lg">{{ text }}</p>
+      {% endif %}
+      {# Wagtail usa `buttons` (lista, máx. 3). primary_*/secondary_* son atajos para demo. #}
+      {% if buttons %}
+        <div class="mt-8 flex flex-wrap gap-3">
+          {% for b in buttons|slice:":3" %}
+            {% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:'contorno_inverso' %}
+          {% endfor %}
+        </div>
+      {% elif primary_label or secondary_label %}
+        <div class="mt-8 flex flex-wrap gap-3">
+          {% if primary_label %}{% include "components/button.html" with label=primary_label url=primary_url variant="primario" %}{% endif %}
+          {% if secondary_label %}{% include "components/button.html" with label=secondary_label url=secondary_url variant="contorno_inverso" %}{% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {# Composición gráfica del rombo CGN (verde/gris/naranja) — decorativa #}
+    <div class="hidden lg:col-span-5 lg:flex lg:justify-center" aria-hidden="true">
+      <div class="relative h-72 w-72">
+        <div class="absolute inset-0 rotate-45 rounded-[2.5rem] bg-white/10 backdrop-blur-sm ring-1 ring-white/20"></div>
+        <div class="absolute left-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 -rotate-0 grid-cols-2 gap-3">
+          <span class="h-20 w-20 rotate-45 rounded-xl bg-cgn-verde shadow-lg"></span>
+          <span class="h-20 w-20 rotate-45 rounded-xl bg-cgn-gris shadow-lg"></span>
+          <span class="col-span-2 mx-auto h-20 w-20 rotate-45 rounded-xl bg-cgn-naranja shadow-lg"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Recuadro fecha + proceso (Manual CGN, banner intranet) #}
+  {% if fecha or proceso %}
+    <div class="absolute bottom-5 right-5 z-10 hidden rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg md:block">
+      {% if fecha %}<p class="text-sm font-bold">{{ fecha }}</p>{% endif %}
+      {% if proceso %}<p class="text-xs text-cgn-grisos">{{ proceso }}</p>{% endif %}
+    </div>
+  {% endif %}
+
+  {# Borde inferior con acento Hacienda #}
+  <div class="relative h-1.5 w-full bg-hacienda"></div>
+</section>

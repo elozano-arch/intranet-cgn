@@ -1,0 +1,14 @@
+{% comment %}
+  Componente: Encabezado de sección (título + descripción opcional)
+  Tipografía Kit UI 9.2: título en Nunito Sans Bold; descripción en Verdana.
+  Parámetros: title (obligatorio), subtitle (opcional), link_url, link_label
+{% endcomment %}
+<div class="mb-6 flex flex-col gap-2 border-b-2 border-cgn-verde pb-3 md:flex-row md:items-end md:justify-between">
+  <div>
+    <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">{{ title }}</h2>
+    {% if subtitle %}<p class="mt-1 max-w-2xl text-sm text-cgn-grisos">{{ subtitle }}</p>{% endif %}
+  </div>
+  {% if link_url %}
+    <a href="{{ link_url }}" class="text-sm font-bold text-govco-cobalt hover:underline">{{ link_label|default:'Ver todo' }} →</a>
+  {% endif %}
+</div>

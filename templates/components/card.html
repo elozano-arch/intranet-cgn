@@ -1,0 +1,30 @@
+{% comment %}
+  Componente: Tarjeta de acceso (ícono + texto)  → Wagtail: StructBlock (en ListBlock)
+  Kit UI 9.2 — Tarjeta de información / Galería de aplicaciones.
+  Restricciones (doc): título máx. 2 líneas, texto 2–3 líneas, UNA acción por card.
+  Toda la tarjeta es el enlace (CTA). Ícono dentro de un rombo (motivo CGN).
+  Parámetros: title, text, url, icon (svg path d), color ('verde'|'naranja'|'cobalt')
+{% endcomment %}
+<a href="{{ url|default:'#' }}"
+   class="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl focus:outline-none">
+  {# Barra de acento superior (color corporativo) #}
+  <span class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-200 group-hover:scale-x-100
+    {% if color == 'naranja' %}bg-cgn-naranja{% elif color == 'cobalt' %}bg-govco-cobalt{% else %}bg-cgn-verde{% endif %}"></span>
+
+  {# Ícono en rombo #}
+  <span class="mb-5 inline-flex h-14 w-14 rotate-45 items-center justify-center rounded-xl transition-colors
+    {% if color == 'naranja' %}bg-cgn-naranja/12 text-cgn-naranja group-hover:bg-cgn-naranja group-hover:text-white
+    {% elif color == 'cobalt' %}bg-govco-solitude text-govco-cobalt group-hover:bg-govco-cobalt group-hover:text-white
+    {% else %}bg-cgn-verde/12 text-cgn-verde group-hover:bg-cgn-verde group-hover:text-white{% endif %}">
+    <svg class="h-6 w-6 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ icon|default:'M13 10V3L4 14h7v7l9-11h-7z' }}"/>
+    </svg>
+  </span>
+
+  <h3 class="font-titulo text-lg font-bold leading-snug text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</h3>
+  {% if text %}<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-cgn-grisos">{{ text }}</p>{% endif %}
+  <span class="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-govco-cobalt">
+    Ingresar
+    <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+  </span>
+</a>

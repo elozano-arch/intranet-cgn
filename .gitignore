@@ -1,0 +1,38 @@
+# Python / Django / Wagtail
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+*.sqlite3
+db.sqlite3
+/media/
+/static_collected/
+staticfiles/
+
+# Entorno y secretos
+.env
+.env.*
+*.pem
+secrets/
+
+# Node / Tailwind
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Editor / SO
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Claude Code (local)
+.claude/settings.local.json
+
+# Vista previa generada (solo para revisión visual)
+preview-*.html
+
+# Archivos temporales de Office
+~$*

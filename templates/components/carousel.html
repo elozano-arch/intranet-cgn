@@ -1,0 +1,103 @@
+{% comment %}
+  Componente: Carrusel  → Wagtail: CarouselBlock (ListBlock de StructBlock)
+  Kit UI 9.2 — Carrusel. Obligatorios: indicadores de posición, controles de
+  reproducción (play/pausa) y flechas de navegación; navegable por teclado;
+  contraste ≥ 4.5:1; responsive. Restricción (doc): máx. 5 slides (recom. 3).
+  Accesibilidad: aria-roledescription, región en vivo, respeta prefers-reduced-motion.
+  Parámetros: slides = lista de {eyebrow,title,text,cta_label,cta_url,accent('verde'|'naranja'|'cobalt')}
+{% endcomment %}
+<section class="relative overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
+  <div class="overflow-hidden">
+    <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none" data-track>
+      {% comment %} Demo: si el CMS no envía slides, se muestran 3 de ejemplo {% endcomment %}
+      {% if not slides %}
+        {% with demo="1" %}
+        {% include "components/_carousel_slide.html" with idx=1 total=3 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Tu punto de encuentro con los aplicativos, noticias y recursos de la Contaduría General de la Nación." cta_label="Explorar aplicativos" cta_url="#accesos" accent="naranja" %}
+        {% include "components/_carousel_slide.html" with idx=2 total=3 eyebrow="Capacitación" title="Cátedra Nacional de Contabilidad Pública 2026" text="Conoce el calendario y los cupos disponibles para esta vigencia." cta_label="Ver programación" cta_url="#" accent="verde" %}
+        {% include "components/_carousel_slide.html" with idx=3 total=3 eyebrow="Normativa" title="Nuevo marco normativo contable público" text="Consulta la doctrina contable pública compilada para cada marco normativo." cta_label="Consultar doctrina" cta_url="#" accent="cobalt" %}
+        {% endwith %}
+      {% else %}
+        {% for s in slides|slice:":5" %}
+          {% include "components/_carousel_slide.html" with idx=forloop.counter total=slides|length eyebrow=s.eyebrow title=s.title text=s.text cta_label=s.cta_label cta_url=s.cta_url accent=s.accent %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  {# Flechas de navegación (ocultas en móvil para no tapar el texto; indicadores siempre visibles) #}
+  <button type="button" data-prev aria-label="Anterior"
+          class="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-cgn-negro shadow hover:bg-white focus:outline-none md:block">
+    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button type="button" data-next aria-label="Siguiente"
+          class="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-cgn-negro shadow hover:bg-white focus:outline-none md:block">
+    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </button>
+
+  {# Indicadores + play/pausa #}
+  <div class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
+    <div class="flex gap-2" role="tablist" aria-label="Seleccionar banner" data-dots></div>
+    <button type="button" data-playpause aria-label="Pausar carrusel"
+            class="rounded-full bg-white/90 p-1.5 text-cgn-negro shadow hover:bg-white focus:outline-none">
+      <svg data-icon-pause class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      <svg data-icon-play class="hidden h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+
+  <span class="sr-only" aria-live="polite" data-live></span>
+  <div class="relative h-1.5 w-full bg-hacienda"></div>
+</section>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-carousel]').forEach(function(c){
+    if(c.dataset.init) return; c.dataset.init='1';
+    var track=c.querySelector('[data-track]'),
+        slides=Array.prototype.slice.call(track.children),
+        dots=c.querySelector('[data-dots]'),
+        live=c.querySelector('[data-live]'),
+        n=slides.length, i=0, timer=null,
+        reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        playing=!reduce;
+    if(n<=1){c.querySelector('[data-prev]').style.display='none';c.querySelector('[data-next]').style.display='none';}
+    // indicadores
+    slides.forEach(function(_,k){
+      var b=document.createElement('button');
+      b.type='button'; b.setAttribute('role','tab');
+      b.setAttribute('aria-label','Ir al banner '+(k+1)+' de '+n);
+      b.className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white focus:outline-none';
+      b.addEventListener('click',function(){go(k);reset();});
+      dots.appendChild(b);
+    });
+    function render(){
+      track.style.transform='translateX(-'+(i*100)+'%)';
+      Array.prototype.forEach.call(dots.children,function(d,k){
+        d.classList.toggle('bg-white',k===i); d.classList.toggle('bg-white/50',k!==i);
+        d.setAttribute('aria-selected',k===i);
+      });
+      slides.forEach(function(s,k){s.setAttribute('aria-hidden',k!==i);});
+      if(live) live.textContent='Banner '+(i+1)+' de '+n;
+    }
+    function go(k){i=(k+n)%n;render();}
+    function next(){go(i+1);} function prev(){go(i-1);}
+    function play(){if(timer)return;timer=setInterval(next,6000);}
+    function stop(){clearInterval(timer);timer=null;}
+    function reset(){if(playing){stop();play();}}
+    function setPlay(p){
+      playing=p; var btn=c.querySelector('[data-playpause]');
+      c.querySelector('[data-icon-pause]').classList.toggle('hidden',!p);
+      c.querySelector('[data-icon-play]').classList.toggle('hidden',p);
+      btn.setAttribute('aria-label',p?'Pausar carrusel':'Reproducir carrusel');
+      if(p)play(); else stop();
+    }
+    c.querySelector('[data-next]').addEventListener('click',function(){next();reset();});
+    c.querySelector('[data-prev]').addEventListener('click',function(){prev();reset();});
+    c.querySelector('[data-playpause]').addEventListener('click',function(){setPlay(!playing);});
+    c.addEventListener('mouseenter',stop);
+    c.addEventListener('mouseleave',function(){if(playing)play();});
+    c.addEventListener('focusin',stop);
+    c.addEventListener('focusout',function(){if(playing)play();});
+    render(); setPlay(playing);
+  });
+})();
+</script>

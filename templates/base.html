@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Intranet · Contaduría General de la Nación{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Intranet de la Contaduría General de la Nación — Cuentas Claras, Estado Transparente.{% endblock %}">
+
+  {# ===== Tipografía Kit UI GOV.CO: Nunito Sans (títulos) + Verdana (cuerpo) ===== #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700&display=swap" rel="stylesheet">
+
+  {# ===== Tailwind (Play CDN para revisión visual sin build). En producción: build con CLI. ===== #}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tema CGN + GOV.CO Kit UI 9.2 — usar estos tokens, no valores arbitrarios.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Identidad corporativa CGN (Manual de Identidad Visual v10)
+            cgn: {
+              verde:  '#29977C',
+              verdeos:'#176551',   // verde oscuro: texto sobre claro (≥4.5:1) y fondos
+              gris:   '#9B9A98',
+              naranja:'#DA9440',
+              naranjaos:'#9A5E15', // naranja oscuro: texto/insignias sobre claro (≥4.5:1)
+              negro:  '#1F140F',
+              grisos: '#616160',
+            },
+            hacienda: '#B38B40',     // color identificador sector Hacienda
+            // Paleta GOV.CO (Kit UI 9.2)
+            govco: {
+              cobalt:  '#0943B5',
+              havelock:'#3366CC',
+              solitude:'#E6EFFA',    // fondo claro
+              corn:    '#FFF8E1',
+              smoke:   '#F4F4F4',
+              silver:  '#C2C2C2',    // deshabilitado
+            },
+            estado: {
+              error:  '#A80521',     // rojo
+              alerta: '#F3B228',     // amarillo
+              exito:  '#069169',     // verde
+            },
+          },
+          fontFamily: {
+            // Nunito Sans para títulos; Verdana para párrafos (Kit UI 9.2)
+            titulo: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
+            cuerpo: ['Verdana', 'Geneva', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { contenido: '1320px' },  // contenedor 12 col Bootstrap-like
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Accesibilidad: enlace "saltar al contenido" (sr-only sr-only-focusable, Kit UI) */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal}
+    /* Foco visible global (WCAG 2.1) */
+    :focus-visible{outline:3px solid #0943B5;outline-offset:2px}
+    body{font-family:Verdana,Geneva,system-ui,sans-serif}
+    h1,h2,h3,h4,h5,h6{font-family:"Nunito Sans",system-ui,sans-serif}
+
+    /* ===== Modo ALTO CONTRASTE (barra de accesibilidad, Kit UI) ===== */
+    body.alto-contraste,
+    body.alto-contraste main,body.alto-contraste header,body.alto-contraste footer,
+    body.alto-contraste nav,body.alto-contraste section,body.alto-contraste article,
+    body.alto-contraste figure,body.alto-contraste form{background:#000 !important;color:#fff !important}
+    body.alto-contraste h1,body.alto-contraste h2,body.alto-contraste h3,body.alto-contraste h4,
+    body.alto-contraste h5,body.alto-contraste h6,body.alto-contraste p,body.alto-contraste span,
+    body.alto-contraste li,body.alto-contraste time,body.alto-contraste label,
+    body.alto-contraste figcaption,body.alto-contraste input{color:#fff !important}
+    body.alto-contraste [class*="bg-gradient"],body.alto-contraste [class*="bg-cgn"],
+    body.alto-contraste [class*="bg-govco"]{background:#000 !important;background-image:none !important}
+    body.alto-contraste a{color:#ff0 !important;text-decoration:underline !important}
+    body.alto-contraste a[class*="bg-"],body.alto-contraste button[class*="bg-"]{background:#ff0 !important;color:#000 !important;border:2px solid #fff !important}
+    body.alto-contraste *{border-color:#fff !important}
+    body.alto-contraste [aria-hidden="true"]{opacity:.12 !important}
+    body.alto-contraste img{filter:grayscale(1) contrast(1.15)}
+    body.alto-contraste :focus-visible{outline:3px solid #ff0 !important}
+    body.alto-contraste input{background:#000 !important;border:2px solid #fff !important}
+    body.alto-contraste input::placeholder{color:#ccc !important}
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-white text-cgn-negro antialiased">
+
+  {# ===== Saltar al contenido (primer elemento tabulable) ===== #}
+  <a href="#contenido-principal" class="sr-only sr-only-focusable absolute left-4 top-4 z-50 rounded bg-govco-cobalt px-4 py-2 text-white">
+    Saltar al contenido principal
+  </a>
+
+  {# ===== Barra superior GOV.CO (Top bar — Kit UI transversal) ===== #}
+  <div class="bg-govco-cobalt">
+    <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-2">
+      <a href="https://www.gov.co/home/" aria-label="Ir a GOV.CO" class="inline-flex items-center">
+        <img src="{% static 'img/govco.png' %}" alt="GOV.CO" class="h-6 w-auto">
+      </a>
+    </div>
+  </div>
+
+  {# ===== Barra de accesibilidad (Kit UI: ocultar en móvil y tablet 768–992; solo desktop) ===== #}
+  <div class="border-b border-gray-200 bg-govco-smoke hidden lg:block">
+    <div class="mx-auto flex max-w-contenido items-center justify-end gap-1 px-4 py-1">
+      <span class="mr-2 text-xs text-cgn-grisos">Accesibilidad:</span>
+      <button type="button" data-a11y="aumentar" class="rounded px-2 py-1 text-sm font-semibold text-govco-cobalt hover:bg-govco-solitude" aria-label="Aumentar tamaño de letra">A+</button>
+      <button type="button" data-a11y="reducir"  class="rounded px-2 py-1 text-sm font-semibold text-govco-cobalt hover:bg-govco-solitude" aria-label="Reducir tamaño de letra">A−</button>
+      <button type="button" data-a11y="contraste" aria-pressed="false" class="rounded px-2 py-1 text-sm font-semibold text-govco-cobalt hover:bg-govco-solitude" aria-label="Activar alto contraste">Contraste</button>
+    </div>
+  </div>
+
+  {# ===== Cabecera CGN (cabezote: logo horizontal con eslogan a la izquierda + buscador + menú) ===== #}
+  <header class="border-b-4 border-hacienda bg-white">
+    <div class="mx-auto flex max-w-contenido flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+      <a href="{% block home_url %}/{% endblock %}" class="inline-flex items-center" aria-label="Inicio — Intranet Contaduría General de la Nación">
+        <img src="{% static 'img/cgn-horizontal-color.png' %}" alt="Contaduría General de la Nación — Cuentas Claras, Estado Transparente" class="h-16 w-auto">
+      </a>
+
+      {# Buscador (Kit UI general) #}
+      <form role="search" action="#" method="get" class="flex w-full max-w-md items-center">
+        <label for="q" class="sr-only">Buscar en la intranet</label>
+        <input id="q" name="q" type="search" placeholder="Buscar en la intranet…"
+               class="w-full rounded-l-md border border-gray-300 px-4 py-2 text-sm focus:border-govco-cobalt focus:outline-none">
+        <button type="submit" aria-label="Buscar"
+                class="rounded-r-md bg-govco-cobalt px-4 py-2 text-white hover:bg-blue-800">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+        </button>
+      </form>
+    </div>
+
+    {# Menú de navegación (Kit UI general — máx. 7 ítems) — responsive con hamburguesa #}
+    <nav aria-label="Menú principal" class="border-t border-gray-200 bg-white">
+      <div class="mx-auto max-w-contenido px-2">
+        <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+                class="flex w-full items-center gap-2 px-2 py-3 text-sm font-bold text-cgn-negro lg:hidden">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          Menú
+        </button>
+      </div>
+      <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-1 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:pb-0">
+        {% for item in nav_items %}
+          <li>
+            <a href="{{ item.url }}"
+               class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt {% if item.activo %}border-b-4 border-govco-cobalt text-govco-cobalt{% endif %}">
+              {{ item.label }}
+            </a>
+          </li>
+        {% empty %}
+          {# Placeholder de navegación si no hay contexto del CMS #}
+          <li><a href="#" class="block border-b-4 border-govco-cobalt px-4 py-3 text-sm font-semibold text-govco-cobalt">Inicio</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Nuestra entidad</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Talento humano</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Aplicativos</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Procesos</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Comunicaciones</a></li>
+          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Atención al servidor</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+
+  {# ===== Contenido principal ===== #}
+  <main id="contenido-principal" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  {# ===== Pie de página GOV.CO (Kit UI transversal) ===== #}
+  <footer class="mt-16 bg-govco-cobalt text-white">
+    <div class="mx-auto grid max-w-contenido gap-8 px-4 py-10 md:grid-cols-3">
+      <div>
+        <img src="{% static 'img/cgn-horizontal-blanco.png' %}" alt="Contaduría General de la Nación" class="mb-4 h-14 w-auto">
+        <p class="text-sm leading-relaxed text-blue-100">Cuentas Claras, Estado Transparente</p>
+      </div>
+      <div class="text-sm leading-relaxed">
+        <h2 class="mb-3 text-base font-bold">Sede principal</h2>
+        <p class="text-blue-100">Dirección: Carrera 6 No. 14-98, Bogotá D.C.<br>
+        Código postal: 111711<br>
+        Horario: Lunes a viernes 8:00 a.m. – 5:00 p.m.<br>
+        Conmutador: +57 (601) 492 64 00<br>
+        Correo: <a href="mailto:contactenos@contaduria.gov.co" class="underline">contactenos@contaduria.gov.co</a></p>
+      </div>
+      <div class="text-sm leading-relaxed">
+        <h2 class="mb-3 text-base font-bold">Enlaces</h2>
+        <ul class="space-y-2 text-blue-100">
+          <li><a href="#" class="underline">Políticas</a></li>
+          <li><a href="#" class="underline">Mapa del sitio</a></li>
+          <li><a href="#" class="underline">Términos y condiciones</a></li>
+          <li><a href="#" class="underline">Accesibilidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-blue-400/40">
+      <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-4">
+        <a href="https://www.gov.co/home/" aria-label="GOV.CO"><img src="{% static 'img/govco.png' %}" alt="GOV.CO" class="h-6 w-auto"></a>
+        <span class="text-xs text-blue-100">© Contaduría General de la Nación</span>
+      </div>
+    </div>
+  </footer>
+
+  {# Barra de accesibilidad + menú responsive (con persistencia y estados ARIA) #}
+  <script>
+    (function(){
+      var root=document.documentElement;
+      // --- Tamaño de letra (persistente) ---
+      var size=parseInt(localStorage.getItem('cgn-fs')||'100',10);
+      function applySize(){root.style.fontSize=size+'%';localStorage.setItem('cgn-fs',size);}
+      applySize();
+      // --- Alto contraste (persistente) ---
+      var cBtn=document.querySelector('[data-a11y="contraste"]');
+      function applyContrast(on){
+        document.body.classList.toggle('alto-contraste',on);
+        if(cBtn){cBtn.setAttribute('aria-pressed',on);cBtn.textContent=on?'Contraste normal':'Contraste';}
+        localStorage.setItem('cgn-hc',on?'1':'0');
+      }
+      applyContrast(localStorage.getItem('cgn-hc')==='1');
+      document.querySelectorAll('[data-a11y]').forEach(function(b){
+        b.addEventListener('click',function(){
+          var a=b.getAttribute('data-a11y');
+          if(a==='aumentar'){size=Math.min(size+10,140);applySize();}
+          else if(a==='reducir'){size=Math.max(size-10,90);applySize();}
+          else if(a==='contraste'){applyContrast(!document.body.classList.contains('alto-contraste'));}
+        });
+      });
+      // --- Menú responsive ---
+      var t=document.getElementById('navToggle'), m=document.getElementById('navMenu');
+      if(t&&m){t.addEventListener('click',function(){
+        var open=m.classList.toggle('hidden')===false;
+        t.setAttribute('aria-expanded',open);
+      });}
+    })();
+  </script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

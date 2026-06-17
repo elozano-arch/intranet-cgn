@@ -1,0 +1,16 @@
+{% comment %}
+  Componente: Botón / CTA  → Wagtail: ButtonBlock
+  Kit UI 9.2 — Botones. Restricciones (doc): texto corto con verbo de acción;
+  priorizar 1 CTA principal; máx. 3 botones por pieza (banner).
+  Parámetros:
+    label (str, obligatorio)  — texto corto, verbo de acción
+    url   (str)               — destino
+    variant ('primario'|'contorno'|'contorno_inverso') — énfasis (default: primario)
+{% endcomment %}
+<a href="{{ url|default:'#' }}"
+   class="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-bold transition focus:outline-none
+   {% if variant == 'contorno' %}border-2 border-govco-cobalt text-govco-cobalt hover:bg-govco-solitude
+   {% elif variant == 'contorno_inverso' %}border-2 border-white text-white hover:bg-white/10
+   {% else %}bg-govco-cobalt text-white hover:bg-blue-800{% endif %}">
+  {{ label|default:'Acción' }}
+</a>

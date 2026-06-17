@@ -1,0 +1,36 @@
+{% comment %}
+  Componente: Sección de texto enriquecido  → Wagtail: RichTextBlock
+  Kit UI 9.2 — Tipografía. Cuerpo en Verdana, títulos en Nunito Sans.
+  UX (doc): párrafos máx. 4–5 líneas, usar subtítulos y listas, no justificar,
+  líneas de 45–75 caracteres (max-w-prose). Tolerante a contenido largo/corto.
+  Parámetros:
+    body (HTML seguro proveniente del RichTextField de Wagtail)
+    title (opcional, encabezado de la sección)
+{% endcomment %}
+<section class="mx-auto max-w-contenido px-4 py-10">
+  {% if title %}
+    <h2 class="mb-4 font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">{{ title }}</h2>
+  {% endif %}
+  {# Estilos de lectura: ancho ~65ch, jerarquía y listas legibles #}
+  <div class="prose-cgn max-w-[70ch] text-base leading-relaxed text-cgn-negro">
+    {% if body %}
+      {{ body|safe }}
+    {% else %}
+      {# Placeholder editorial (demo) #}
+      <p>Texto enriquecido editable desde el CMS. Mantén párrafos breves (4–5 líneas),
+      usa <strong>subtítulos</strong> y listas para facilitar la lectura.</p>
+    {% endif %}
+  </div>
+</section>
+
+{# Estilos del contenido enriquecido (no hay CSS libre por pantalla: clase reutilizable) #}
+<style>
+  .prose-cgn h2{font-family:"Nunito Sans",sans-serif;font-weight:700;font-size:1.5rem;margin:1.5rem 0 .5rem;color:#1F140F}
+  .prose-cgn h3{font-family:"Nunito Sans",sans-serif;font-weight:700;font-size:1.25rem;margin:1.25rem 0 .5rem;color:#1F140F}
+  .prose-cgn p{margin:0 0 1rem}
+  .prose-cgn a{color:#0943B5;text-decoration:underline}
+  .prose-cgn ul{list-style:disc;padding-left:1.5rem;margin:0 0 1rem}
+  .prose-cgn ol{list-style:decimal;padding-left:1.5rem;margin:0 0 1rem}
+  .prose-cgn li{margin:.25rem 0}
+  .prose-cgn blockquote{border-left:4px solid #176551;padding-left:1rem;color:#616160;font-style:italic;margin:1rem 0}
+</style>

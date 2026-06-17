@@ -1,0 +1,56 @@
+{% comment %}
+  Componente: Tarjeta de noticia (imagen + texto)  → Wagtail: StructBlock (ListBlock)
+  Kit UI 9.2 — Tarjeta de información. Restricciones (doc): título máx. 2 líneas,
+  texto 2–3 líneas, 1 acción. Listados: máx. 6–8 visibles.
+  Parámetros: title, excerpt, url, fecha, categoria, image, featured (bool)
+{% endcomment %}
+{% if featured %}
+  {# ---- Variante destacada: imagen grande con texto superpuesto ---- #}
+  <article class="group relative h-full min-h-[22rem] overflow-hidden rounded-2xl bg-cgn-negro shadow-md">
+    <div class="absolute inset-0">
+      {% if image %}
+        <img src="{{ image }}" alt="{{ title }}" class="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105">
+      {% else %}
+        <div class="h-full w-full bg-gradient-to-br from-cgn-verde to-cgn-negro"></div>
+      {% endif %}
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+    <div class="relative flex h-full flex-col justify-end p-6 md:p-8">
+      <div class="mb-3 flex items-center gap-2 text-xs">
+        {% if categoria %}<span class="rounded bg-cgn-naranja px-2 py-0.5 font-bold text-cgn-negro">{{ categoria }}</span>{% endif %}
+        {% if fecha %}<time class="text-white/80">{{ fecha }}</time>{% endif %}
+      </div>
+      <h3 class="font-titulo text-2xl font-bold leading-tight text-white md:text-3xl">
+        <a href="{{ url|default:'#' }}" class="hover:underline focus:outline-none">{{ title }}</a>
+      </h3>
+      {% if excerpt %}<p class="mt-3 line-clamp-2 max-w-2xl text-sm leading-relaxed text-white/85">{{ excerpt }}</p>{% endif %}
+      <a href="{{ url|default:'#' }}" class="mt-5 inline-flex w-fit items-center gap-1 text-sm font-bold text-cgn-naranja hover:gap-2">Leer más →</a>
+    </div>
+  </article>
+{% else %}
+  {# ---- Variante estándar ---- #}
+  <article class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <a href="{{ url|default:'#' }}" class="block overflow-hidden focus:outline-none">
+      <div class="aspect-[16/9] w-full overflow-hidden bg-govco-smoke">
+        {% if image %}
+          <img src="{{ image }}" alt="{{ title }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+        {% else %}
+          <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-govco-solitude to-govco-smoke text-cgn-gris">
+            <svg class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 6h16v12H4z"/></svg>
+          </div>
+        {% endif %}
+      </div>
+    </a>
+    <div class="flex flex-1 flex-col p-5">
+      <div class="mb-2 flex items-center gap-2 text-xs">
+        {% if categoria %}<span class="rounded bg-cgn-verde/12 px-2 py-0.5 font-bold text-cgn-verdeos">{{ categoria }}</span>{% endif %}
+        {% if fecha %}<time class="text-cgn-grisos">{{ fecha }}</time>{% endif %}
+      </div>
+      <h3 class="font-titulo text-lg font-bold leading-snug text-cgn-negro">
+        <a href="{{ url|default:'#' }}" class="hover:text-govco-cobalt focus:outline-none">{{ title }}</a>
+      </h3>
+      {% if excerpt %}<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-cgn-grisos">{{ excerpt }}</p>{% endif %}
+      <a href="{{ url|default:'#' }}" class="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-bold text-govco-cobalt hover:gap-2">Leer más →</a>
+    </div>
+  </article>
+{% endif %}

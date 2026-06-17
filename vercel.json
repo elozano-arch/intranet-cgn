@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "echo 'Sirviendo dist/ precompilado (regenerar con: python build_static.py)'",
+  "outputDirectory": "dist",
+  "cleanUrls": true
+}
