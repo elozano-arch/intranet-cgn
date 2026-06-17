@@ -4,7 +4,8 @@
   Banner de intranet (Manual de Identidad CGN, Figs. 33 y 36): lienzo 1300 × 600 px
   (en desktop respetamos altura 600 px), tipografía Nunito Sans, botón 230 × 56 px,
   y recuadro inferior derecho con fecha (DD de MM de AAAA) + nombre del proceso.
-  Parámetros: idx, total, eyebrow, title, text, cta_label, cta_url, accent, fecha, proceso
+  Parámetros: idx, total, eyebrow, title, text, accent, fecha, proceso,
+              cta_label/cta_url (+ cta_variant), cta2_label/cta2_url, cta3_label/cta3_url (máx. 3)
 {% endcomment %}
 <div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="{{ idx }} de {{ total }}">
   <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
@@ -21,13 +22,16 @@
       </span>
       <h2 class="font-titulo text-3xl font-bold leading-tight text-white md:text-5xl">{{ title }}</h2>
       {% if text %}<p class="mt-5 max-w-xl text-base leading-relaxed text-white md:text-lg">{{ text }}</p>{% endif %}
-      {% if cta_label %}
-        {# Botón del banner: 230 × 56 px en desktop (Manual CGN) #}
-        <div class="mt-8 lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">
-          {% include "components/button.html" with label=cta_label url=cta_url variant="contorno_inverso" %}
-        </div>
-      {% endif %}
     </div>
+
+    {% if cta_label %}
+      {# Botones del banner: máx. 3, cada uno 230 × 56 px, separación 47,5 px (Manual CGN) #}
+      <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px] lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">
+        {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"contorno_inverso" %}
+        {% if cta2_label %}{% include "components/button.html" with label=cta2_label url=cta2_url variant="contorno_inverso" %}{% endif %}
+        {% if cta3_label %}{% include "components/button.html" with label=cta3_label url=cta3_url variant="contorno_inverso" %}{% endif %}
+      </div>
+    {% endif %}
   </div>
 
   {# Recuadro inferior derecho: fecha + proceso (obligatorio en banner intranet, Manual CGN) #}
