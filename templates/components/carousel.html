@@ -12,9 +12,9 @@
       {% comment %} Demo: si el CMS no envía slides, se muestran 3 de ejemplo {% endcomment %}
       {% if not slides %}
         {% with demo="1" %}
-        {% include "components/_carousel_slide.html" with idx=1 total=3 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Tu punto de encuentro con los aplicativos, noticias y recursos de la Contaduría General de la Nación." cta_label="Explorar aplicativos" cta_url="#accesos" accent="naranja" %}
-        {% include "components/_carousel_slide.html" with idx=2 total=3 eyebrow="Capacitación" title="Cátedra Nacional de Contabilidad Pública 2026" text="Conoce el calendario y los cupos disponibles para esta vigencia." cta_label="Ver programación" cta_url="#" accent="verde" %}
-        {% include "components/_carousel_slide.html" with idx=3 total=3 eyebrow="Normativa" title="Nuevo marco normativo contable público" text="Consulta la doctrina contable pública compilada para cada marco normativo." cta_label="Consultar doctrina" cta_url="#" accent="cobalt" %}
+        {% include "components/_carousel_slide.html" with idx=1 total=3 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Tu punto de encuentro con los aplicativos, noticias y recursos de la Contaduría General de la Nación." cta_label="Explorar aplicativos" cta_url="#accesos" accent="naranja" fecha="22 de enero de 2026" proceso="Comunicaciones" %}
+        {% include "components/_carousel_slide.html" with idx=2 total=3 eyebrow="Capacitación" title="Cátedra Nacional de Contabilidad Pública 2026" text="Conoce el calendario y los cupos disponibles para esta vigencia." cta_label="Ver programación" cta_url="#" accent="verde" fecha="15 de enero de 2026" proceso="Subcontaduría de Capacitación" %}
+        {% include "components/_carousel_slide.html" with idx=3 total=3 eyebrow="Normativa" title="Nuevo marco normativo contable público" text="Consulta la doctrina contable pública compilada para cada marco normativo." cta_label="Consultar doctrina" cta_url="#" accent="cobalt" fecha="10 de enero de 2026" proceso="Subcontaduría de Centralización" %}
         {% endwith %}
       {% else %}
         {% for s in slides|slice:":5" %}

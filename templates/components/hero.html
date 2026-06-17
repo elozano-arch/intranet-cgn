@@ -4,8 +4,15 @@
   recuadro con fecha + proceso. Motivo gráfico: rombo (el símbolo CGN se circunscribe
   en un rombo + triángulo). Colores C/G/N: verde, gris, naranja.
   Parámetros: title (1–2 líneas), text (breve), eyebrow, buttons[{label,url,variant}], fecha, proceso
+
+  Especificaciones del banner de intranet (Manual de Identidad CGN, Figs. 33 y 36):
+   - Lienzo de referencia: 1300 × 600 px (en desktop respetamos la altura 600 px y
+     el ancho del contenido ≈ 1300 px vía max-w-contenido).
+   - Botones: máx. 3; con 2–3 botones cada uno mide 230 × 56 px, separados 47,5 px
+     (y, en la pieza gráfica fija, alineados de derecha a izquierda).
+   - Recuadro inferior derecho: fecha (DD de MM de AAAA) + nombre del proceso.
 {% endcomment %}
-<section aria-label="Destacado principal" class="relative overflow-hidden bg-cgn-negro">
+<section aria-label="Destacado principal" class="relative overflow-hidden bg-cgn-negro lg:min-h-[600px]">
   {# Capa de color corporativo (verde profundo para contraste de texto blanco ≥4.5:1) #}
   <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
 
@@ -29,17 +36,17 @@
       {% if text %}
         <p class="mt-6 max-w-xl text-base leading-relaxed text-white md:text-lg">{{ text }}</p>
       {% endif %}
-      {# Wagtail usa `buttons` (lista, máx. 3). primary_*/secondary_* son atajos para demo. #}
+      {# Wagtail usa `buttons` (lista, máx. 3). Botones del banner: 230×56 px, sep. 47,5 px (Manual CGN). #}
       {% if buttons %}
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px]">
           {% for b in buttons|slice:":3" %}
-            {% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:'contorno_inverso' %}
+            <span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:'contorno_inverso' %}</span>
           {% endfor %}
         </div>
       {% elif primary_label or secondary_label %}
-        <div class="mt-8 flex flex-wrap gap-3">
-          {% if primary_label %}{% include "components/button.html" with label=primary_label url=primary_url variant="primario" %}{% endif %}
-          {% if secondary_label %}{% include "components/button.html" with label=secondary_label url=secondary_url variant="contorno_inverso" %}{% endif %}
+        <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px]">
+          {% if primary_label %}<span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=primary_label url=primary_url variant="primario" %}</span>{% endif %}
+          {% if secondary_label %}<span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=secondary_label url=secondary_url variant="contorno_inverso" %}</span>{% endif %}
         </div>
       {% endif %}
     </div>

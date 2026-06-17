@@ -97,6 +97,26 @@ acordeón, carrusel, tarjetas, entradas de texto, desplegables, opciones de
 selección, carga de archivos, etc. **Reusar siempre el componente del Kit antes
 de crear uno nuevo.**
 
+## Banner / Hero — especificación CGN (obligatoria, siempre)
+
+Del **Manual de Identidad Visual Corporativa CGN** (v10, §4.8 "Banner web e
+intranet", Figuras 33 y 36). **Respetar siempre** en hero/carrusel:
+
+- **Banner de intranet:** lienzo **1300 × 600 px**. En la UI responsive: altura
+  **600 px en desktop** (`lg:min-h-[600px]`) y ancho del contenido ≈ 1300 px
+  (`max-w-contenido` = 1320). Tipografía **Nunito Sans**.
+- **Botones:** **máximo 3** por pieza. Con **2–3 botones**, cada uno mide
+  **230 × 56 px** (`lg:min-w-[230px]` + `h-14`) y van **separados 47,5 px**
+  (`lg:gap-[47.5px]`), alineados **de derecha a izquierda** en la pieza gráfica.
+  Un solo botón: tamaño según necesidad gráfica. Un 4.º botón va dentro del contenido.
+- **Recuadro inferior derecho:** fondo blanco bordeado con **fecha (DD de MM de
+  AAAA)** de publicación y el **nombre del proceso** de la CGN que la solicita.
+- (Referencia banner web CGN: 1350 × 648 px, separación de botones 50 px.
+  Banner CHIP: 1520 × 320 px, un solo botón.)
+
+Implementado en [hero.html](templates/components/hero.html) y
+[_carousel_slide.html](templates/components/_carousel_slide.html).
+
 ## Accesibilidad (requisito legal, no negociable)
 
 Cumplir **Resolución 1519 de 2020** y **WCAG 2.1**:
