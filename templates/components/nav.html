@@ -27,7 +27,8 @@
           </button>
           <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl {% if item.wide %}lg:w-[640px] lg:max-w-[92vw]{% else %}lg:w-72{% endif %}">
             <div class="{% if item.wide %}lg:columns-2 lg:gap-8{% endif %}">
-              {% include "components/_nav_list.html" with items=item.children %}
+              {# 2 niveles máximo: categorías + procesos (sin GIT, que van en cada página) #}
+              {% include "components/_nav_list.html" with items=item.children maxdepth=2 %}
             </div>
           </div>
         </li>
