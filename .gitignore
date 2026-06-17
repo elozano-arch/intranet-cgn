@@ -36,3 +36,6 @@ preview-*.html
 
 # Archivos temporales de Office
 ~$*
+
+# Cronograma: uso interno del equipo, no parte del proyecto
+docs/cronograma-*

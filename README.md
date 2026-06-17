@@ -24,7 +24,6 @@ templates/
 static/img/                  # logos institucionales
 dist/                        # build estático (lo que sirve Vercel)
 build_static.py              # genera dist/ a partir de las plantillas
-docs/cronograma-diseno.*     # cronograma de diseño (Excel/CSV)
 styles-rules/                # documentación normativa (Kit UI, identidad CGN, doc técnico)
 ```
 
