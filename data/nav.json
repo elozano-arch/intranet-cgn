@@ -23,17 +23,6 @@
     { "label": "Normograma 2015", "url": "#" },
     { "label": "Años anteriores", "url": "#" }
   ]},
-  { "label": "Plantillas", "url": "#" },
-  { "label": "SIGI", "children": [
-    { "label": "Sistema de Gestión de Calidad (SGC)", "url": "#" },
-    { "label": "Sistema de Gestión Ambiental (SGA)", "url": "#" },
-    { "label": "Seguridad y Salud en el Trabajo (SG-SST)", "url": "#" },
-    { "label": "Seguridad de la Información (SGSI)", "url": "#" }
-  ]},
-  { "label": "Comités", "children": [
-    { "label": "Comité de Convivencia Laboral", "url": "#" },
-    { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "url": "#" }
-  ]},
   { "label": "Procesos", "wide": true, "children": [
     { "label": "Procesos estratégicos", "children": [
       { "label": "Planeación", "url": "#" },
@@ -66,22 +55,34 @@
       { "label": "Control y Evaluación", "url": "#" }
     ]}
   ]},
-  { "label": "Revistas", "wide": true, "children": [
-    { "label": "Le Cuento Que", "url": "#" },
-    { "label": "SIINERGIA Contable", "url": "#" },
-    { "label": "Codex", "url": "#" },
-    { "label": "Coworking", "url": "#" },
-    { "label": "Videos CGN", "url": "#" },
-    { "label": "Presentaciones del Contador General", "url": "#" },
-    { "label": "Condecoraciones CGN", "url": "#" }
+  { "label": "SIGI", "children": [
+    { "label": "Sistema de Gestión de Calidad (SGC)", "url": "#" },
+    { "label": "Sistema de Gestión Ambiental (SGA)", "url": "#" },
+    { "label": "Seguridad y Salud en el Trabajo (SG-SST)", "url": "#" },
+    { "label": "Seguridad de la Información (SGSI)", "url": "#" }
   ]},
-  { "label": "Búsqueda", "url": "#" },
-  { "label": "Clasificados", "url": "#" },
-  { "label": "Calendario de Eventos", "url": "#" },
-  { "label": "Matriz de Publicaciones", "url": "#" },
-  { "label": "Pruebas", "children": [
+  { "label": "Comités", "children": [
+    { "label": "Comité de Convivencia Laboral", "url": "#" },
+    { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "url": "#" }
+  ]},
+  { "label": "Publicaciones", "wide": true, "children": [
+    { "label": "Revistas", "children": [
+      { "label": "Le Cuento Que", "url": "#" },
+      { "label": "SIINERGIA Contable", "url": "#" },
+      { "label": "Codex", "url": "#" },
+      { "label": "Coworking", "url": "#" },
+      { "label": "Videos CGN", "url": "#" },
+      { "label": "Presentaciones del Contador General", "url": "#" },
+      { "label": "Condecoraciones CGN", "url": "#" }
+    ]},
+    { "label": "Doctrina al Día", "url": "#" },
+    { "label": "Matriz de Publicaciones", "url": "#" }
+  ]},
+  { "label": "Recursos", "children": [
+    { "label": "Plantillas", "url": "#" },
+    { "label": "Calendario de Eventos", "url": "#" },
+    { "label": "Clasificados", "url": "#" },
+    { "label": "SINTRA-CGN", "url": "#" },
     { "label": "Mapa de sitio", "url": "#" }
-  ]},
-  { "label": "SINTRA-CGN", "url": "#" },
-  { "label": "Doctrina al Día", "url": "#" }
+  ]}
 ]
