@@ -12,79 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700&display=swap" rel="stylesheet">
 
-  {# ===== Tailwind (Play CDN para revisión visual sin build). En producción: build con CLI. ===== #}
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Tema CGN + GOV.CO Kit UI 9.2 — usar estos tokens, no valores arbitrarios.
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            // Identidad corporativa CGN (Manual de Identidad Visual v10)
-            cgn: {
-              verde:  '#29977C',
-              verdeos:'#176551',   // verde oscuro: texto sobre claro (≥4.5:1) y fondos
-              gris:   '#9B9A98',
-              naranja:'#DA9440',
-              naranjaos:'#9A5E15', // naranja oscuro: texto/insignias sobre claro (≥4.5:1)
-              negro:  '#1F140F',
-              grisos: '#616160',
-            },
-            hacienda: '#B38B40',     // color identificador sector Hacienda
-            // Paleta GOV.CO (Kit UI 9.2)
-            govco: {
-              cobalt:  '#0943B5',
-              havelock:'#3366CC',
-              solitude:'#E6EFFA',    // fondo claro
-              corn:    '#FFF8E1',
-              smoke:   '#F4F4F4',
-              silver:  '#C2C2C2',    // deshabilitado
-            },
-            estado: {
-              error:  '#A80521',     // rojo
-              alerta: '#F3B228',     // amarillo
-              exito:  '#069169',     // verde
-            },
-          },
-          fontFamily: {
-            // Nunito Sans para títulos; Verdana para párrafos (Kit UI 9.2)
-            titulo: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
-            cuerpo: ['Verdana', 'Geneva', 'system-ui', 'sans-serif'],
-          },
-          maxWidth: { contenido: '1320px' },  // contenedor 12 col Bootstrap-like
-        },
-      },
-    };
-  </script>
-  <style>
-    /* Accesibilidad: enlace "saltar al contenido" (sr-only sr-only-focusable, Kit UI) */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal}
-    /* Foco visible global (WCAG 2.1) */
-    :focus-visible{outline:3px solid #0943B5;outline-offset:2px}
-    body{font-family:Verdana,Geneva,system-ui,sans-serif}
-    h1,h2,h3,h4,h5,h6{font-family:"Nunito Sans",system-ui,sans-serif}
-
-    /* ===== Modo ALTO CONTRASTE (barra de accesibilidad, Kit UI) ===== */
-    body.alto-contraste,
-    body.alto-contraste main,body.alto-contraste header,body.alto-contraste footer,
-    body.alto-contraste nav,body.alto-contraste section,body.alto-contraste article,
-    body.alto-contraste figure,body.alto-contraste form{background:#000 !important;color:#fff !important}
-    body.alto-contraste h1,body.alto-contraste h2,body.alto-contraste h3,body.alto-contraste h4,
-    body.alto-contraste h5,body.alto-contraste h6,body.alto-contraste p,body.alto-contraste span,
-    body.alto-contraste li,body.alto-contraste time,body.alto-contraste label,
-    body.alto-contraste figcaption,body.alto-contraste input{color:#fff !important}
-    body.alto-contraste [class*="bg-gradient"],body.alto-contraste [class*="bg-cgn"],
-    body.alto-contraste [class*="bg-govco"]{background:#000 !important;background-image:none !important}
-    body.alto-contraste a{color:#ff0 !important;text-decoration:underline !important}
-    body.alto-contraste a[class*="bg-"],body.alto-contraste button[class*="bg-"]{background:#ff0 !important;color:#000 !important;border:2px solid #fff !important}
-    body.alto-contraste *{border-color:#fff !important}
-    body.alto-contraste [aria-hidden="true"]{opacity:.12 !important}
-    body.alto-contraste img{filter:grayscale(1) contrast(1.15)}
-    body.alto-contraste :focus-visible{outline:3px solid #ff0 !important}
-    body.alto-contraste input{background:#000 !important;border:2px solid #fff !important}
-    body.alto-contraste input::placeholder{color:#ccc !important}
-  </style>
+  {# ===== Tailwind compilado (CSS purgado). Regenerar: npm run build:css ===== #}
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
   {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-white text-cgn-negro antialiased">

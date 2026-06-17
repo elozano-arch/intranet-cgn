@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base tipográfica (Kit UI: Nunito Sans títulos / Verdana cuerpo) ===== */
+@layer base {
+  body { font-family: Verdana, Geneva, system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6 { font-family: "Nunito Sans", system-ui, sans-serif; }
+  /* Foco visible global (WCAG 2.1) */
+  :focus-visible { outline: 3px solid #0943B5; outline-offset: 2px; }
+}
+
+/* ===== Accesibilidad: "saltar al contenido" (sr-only sr-only-focusable, Kit UI) ===== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal}
+
+/* ===== Modo ALTO CONTRASTE (barra de accesibilidad, Kit UI) ===== */
+body.alto-contraste,
+body.alto-contraste main,body.alto-contraste header,body.alto-contraste footer,
+body.alto-contraste nav,body.alto-contraste section,body.alto-contraste article,
+body.alto-contraste figure,body.alto-contraste form{background:#000 !important;color:#fff !important}
+body.alto-contraste h1,body.alto-contraste h2,body.alto-contraste h3,body.alto-contraste h4,
+body.alto-contraste h5,body.alto-contraste h6,body.alto-contraste p,body.alto-contraste span,
+body.alto-contraste li,body.alto-contraste time,body.alto-contraste label,
+body.alto-contraste figcaption,body.alto-contraste input{color:#fff !important}
+body.alto-contraste [class*="bg-gradient"],body.alto-contraste [class*="bg-cgn"],
+body.alto-contraste [class*="bg-govco"]{background:#000 !important;background-image:none !important}
+body.alto-contraste a{color:#ff0 !important;text-decoration:underline !important}
+body.alto-contraste a[class*="bg-"],body.alto-contraste button[class*="bg-"]{background:#ff0 !important;color:#000 !important;border:2px solid #fff !important}
+body.alto-contraste *{border-color:#fff !important}
+body.alto-contraste [aria-hidden="true"]{opacity:.12 !important}
+body.alto-contraste img{filter:grayscale(1) contrast(1.15)}
+body.alto-contraste :focus-visible{outline:3px solid #ff0 !important}
+body.alto-contraste input{background:#000 !important;border:2px solid #fff !important}
+body.alto-contraste input::placeholder{color:#ccc !important}
