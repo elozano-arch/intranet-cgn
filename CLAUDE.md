@@ -105,13 +105,17 @@ intranet", Figuras 33 y 36). **Respetar siempre** en hero/carrusel:
 - **Banner de intranet:** lienzo **1300 × 600 px**. En la UI responsive: altura
   **600 px en desktop** (`lg:min-h-[600px]`) y ancho del contenido ≈ 1300 px
   (`max-w-contenido` = 1320). Tipografía **Nunito Sans**.
-- **Botones:** **máximo 3** por pieza. Con **2–3 botones**, cada uno mide
-  **230 × 56 px** (`sm:min-w-[230px]` + `h-14`) y van **separados 47,5 px**
-  (`sm:gap-[47.5px]`, desde 640 px de ancho; en móvil < 640 px se apilan a ancho
-  completo), alineados **de derecha a izquierda** en la pieza gráfica.
-  Un solo botón: tamaño según necesidad gráfica. Un 4.º botón va dentro del contenido.
-- **Recuadro inferior derecho:** fondo blanco bordeado con **fecha (DD de MM de
-  AAAA)** de publicación y el **nombre del proceso** de la CGN que la solicita.
+- **Botones:** **máximo 3** por pieza, anclados en la **parte inferior** y
+  alineados **de derecha a izquierda** (el principal a la derecha). Cada uno mide
+  **230 × 56 px** y, en el lienzo de 1300 px, van **separados 225 px** con
+  **márgenes laterales de 80 px**:
+  `80 + 230 + 225 + 230 + 225 + 230 + 80 = 1300` (Fig. 36). En la UI responsive se
+  mantienen 230×56 y la separación de **225 px desde 1300 px de ancho**
+  (`min-[1300px]:gap-[225px]`); por debajo se agrupan a la derecha con separación
+  menor y en móvil (< 640 px) se apilan. Un 4.º botón va dentro del contenido.
+- **Recuadro fecha/proceso (240 px de ancho):** fondo blanco bordeado con
+  **fecha (DD de MM de AAAA)** y **nombre del proceso**; se ubica **47,5 px por
+  encima del botón derecho** (esquina inferior derecha).
 - (Referencia banner web CGN: 1350 × 648 px, separación de botones 50 px.
   Banner CHIP: 1520 × 320 px, un solo botón.)
 

@@ -15,7 +15,8 @@
       {% if accent == 'naranja' %}bg-cgn-naranja/20{% elif accent == 'cobalt' %}bg-govco-cobalt/25{% else %}bg-white/10{% endif %}"></div>
     <div class="absolute bottom-10 left-1/3 h-16 w-16 rotate-45 rounded-lg bg-cgn-naranja/30"></div>
   </div>
-  <div class="relative mx-auto max-w-contenido px-4 py-16 md:py-24 lg:flex lg:min-h-[600px] lg:flex-col lg:justify-center lg:py-28">
+  {# Lienzo del banner: 1300 × 600 px en desktop, márgenes 80 px (px/py-20) — Manual CGN Fig. 36 #}
+  <div class="relative mx-auto flex max-w-contenido flex-col px-4 py-16 md:py-20 lg:min-h-[600px] lg:max-w-[1300px] lg:px-20 lg:py-20">
     <div class="max-w-2xl">
       <span class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-white/20">
         <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>{{ eyebrow|default:'Destacado' }}
@@ -25,20 +26,22 @@
     </div>
 
     {% if cta_label %}
-      {# Botones del banner: máx. 3, cada uno 230 × 56 px, separación 47,5 px (Manual CGN) #}
-      <div class="mt-8 flex flex-wrap gap-3 sm:gap-[47.5px] sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">
-        {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"contorno_inverso" %}
-        {% if cta2_label %}{% include "components/button.html" with label=cta2_label url=cta2_url variant="contorno_inverso" %}{% endif %}
-        {% if cta3_label %}{% include "components/button.html" with label=cta3_label url=cta3_url variant="contorno_inverso" %}{% endif %}
+      {# Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a izquierda
+         (primario a la derecha), separación 225 px en el lienzo de 1300 px;
+         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. #}
+      <div class="mt-10 lg:mt-auto">
+        {% if fecha or proceso %}
+          <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
+            {% if fecha %}<p class="text-sm font-bold">{{ fecha }}</p>{% endif %}
+            {% if proceso %}<p class="text-xs text-cgn-grisos">{{ proceso }}</p>{% endif %}
+          </div>
+        {% endif %}
+        <div class="flex flex-wrap gap-3 sm:flex-row-reverse sm:justify-start sm:gap-6 min-[1300px]:flex-nowrap min-[1300px]:gap-[225px] sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">
+          {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"contorno_inverso" %}
+          {% if cta2_label %}{% include "components/button.html" with label=cta2_label url=cta2_url variant="contorno_inverso" %}{% endif %}
+          {% if cta3_label %}{% include "components/button.html" with label=cta3_label url=cta3_url variant="contorno_inverso" %}{% endif %}
+        </div>
       </div>
     {% endif %}
   </div>
-
-  {# Recuadro inferior derecho: fecha + proceso (obligatorio en banner intranet, Manual CGN) #}
-  {% if fecha or proceso %}
-    <div class="absolute bottom-5 right-5 z-10 hidden rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg md:block">
-      {% if fecha %}<p class="text-sm font-bold">{{ fecha }}</p>{% endif %}
-      {% if proceso %}<p class="text-xs text-cgn-grisos">{{ proceso }}</p>{% endif %}
-    </div>
-  {% endif %}
 </div>
