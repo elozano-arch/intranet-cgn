@@ -38,15 +38,15 @@
       {% endif %}
       {# Wagtail usa `buttons` (lista, máx. 3). Botones del banner: 230×56 px, sep. 47,5 px (Manual CGN). #}
       {% if buttons %}
-        <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px]">
+        <div class="mt-8 flex flex-wrap gap-3 sm:gap-[47.5px]">
           {% for b in buttons|slice:":3" %}
-            <span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:'contorno_inverso' %}</span>
+            <span class="sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">{% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:'contorno_inverso' %}</span>
           {% endfor %}
         </div>
       {% elif primary_label or secondary_label %}
-        <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px]">
-          {% if primary_label %}<span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=primary_label url=primary_url variant="primario" %}</span>{% endif %}
-          {% if secondary_label %}<span class="lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">{% include "components/button.html" with label=secondary_label url=secondary_url variant="contorno_inverso" %}</span>{% endif %}
+        <div class="mt-8 flex flex-wrap gap-3 sm:gap-[47.5px]">
+          {% if primary_label %}<span class="sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">{% include "components/button.html" with label=primary_label url=primary_url variant="primario" %}</span>{% endif %}
+          {% if secondary_label %}<span class="sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">{% include "components/button.html" with label=secondary_label url=secondary_url variant="contorno_inverso" %}</span>{% endif %}
         </div>
       {% endif %}
     </div>

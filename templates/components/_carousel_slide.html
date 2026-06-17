@@ -26,7 +26,7 @@
 
     {% if cta_label %}
       {# Botones del banner: máx. 3, cada uno 230 × 56 px, separación 47,5 px (Manual CGN) #}
-      <div class="mt-8 flex flex-wrap gap-3 lg:gap-[47.5px] lg:[&>a]:flex lg:[&>a]:h-14 lg:[&>a]:min-w-[230px] lg:[&>a]:items-center lg:[&>a]:justify-center">
+      <div class="mt-8 flex flex-wrap gap-3 sm:gap-[47.5px] sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">
         {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"contorno_inverso" %}
         {% if cta2_label %}{% include "components/button.html" with label=cta2_label url=cta2_url variant="contorno_inverso" %}{% endif %}
         {% if cta3_label %}{% include "components/button.html" with label=cta3_label url=cta3_url variant="contorno_inverso" %}{% endif %}

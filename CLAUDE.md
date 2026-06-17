@@ -106,8 +106,9 @@ intranet", Figuras 33 y 36). **Respetar siempre** en hero/carrusel:
   **600 px en desktop** (`lg:min-h-[600px]`) y ancho del contenido ≈ 1300 px
   (`max-w-contenido` = 1320). Tipografía **Nunito Sans**.
 - **Botones:** **máximo 3** por pieza. Con **2–3 botones**, cada uno mide
-  **230 × 56 px** (`lg:min-w-[230px]` + `h-14`) y van **separados 47,5 px**
-  (`lg:gap-[47.5px]`), alineados **de derecha a izquierda** en la pieza gráfica.
+  **230 × 56 px** (`sm:min-w-[230px]` + `h-14`) y van **separados 47,5 px**
+  (`sm:gap-[47.5px]`, desde 640 px de ancho; en móvil < 640 px se apilan a ancho
+  completo), alineados **de derecha a izquierda** en la pieza gráfica.
   Un solo botón: tamaño según necesidad gráfica. Un 4.º botón va dentro del contenido.
 - **Recuadro inferior derecho:** fondo blanco bordeado con **fecha (DD de MM de
   AAAA)** de publicación y el **nombre del proceso** de la CGN que la solicita.
