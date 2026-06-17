@@ -26,9 +26,9 @@
     </div>
 
     {% if cta_label %}
-      {# Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a izquierda
-         (primario a la derecha), separación 225 px en el lienzo de 1300 px;
-         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. #}
+      {% comment %} Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a
+         izquierda (primario a la derecha), separación 225 px en el lienzo de 1300 px;
+         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. {% endcomment %}
       <div class="mt-10 lg:mt-auto">
         {% if fecha or proceso %}
           <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">

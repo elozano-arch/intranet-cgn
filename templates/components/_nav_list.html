@@ -1,0 +1,16 @@
+{% comment %}
+  Lista de navegación recursiva (subniveles del menú). Uso interno de nav.html.
+  Parámetros: items (lista de nodos {label, url, children}), nested (bool)
+{% endcomment %}
+<ul class="space-y-0.5 {% if nested %}mt-1 ml-3 border-l border-gray-200 pl-3{% endif %}">
+  {% for n in items %}
+    <li class="break-inside-avoid">
+      {% if n.children %}
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">{{ n.label }}</span>
+        {% include "components/_nav_list.html" with items=n.children nested=True %}
+      {% else %}
+        <a href="{{ n.url|default:'#' }}" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">{{ n.label }}</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

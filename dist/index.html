@@ -72,79 +72,566 @@
     </button>
   </div>
 
-  <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-1 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:pb-0">
-    <li><a href="#" class="block border-b-4 border-govco-cobalt px-4 py-3 text-sm font-semibold text-govco-cobalt">Inicio</a></li>
-
+  <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-0.5 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-0.5 lg:pb-0">
     
-    <li class="lg:relative" data-has-panel>
-      <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
-              class="flex w-full items-center justify-between gap-1 px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto">
-        Nuestra entidad
-        <svg class="h-4 w-4 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-4 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:mt-0 lg:w-[640px] lg:max-w-[90vw] lg:border lg:border-gray-200 lg:bg-white lg:shadow-xl">
-        <div class="grid gap-6 sm:grid-cols-3">
-          <div>
-            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Quiénes somos</h3>
-            <ul class="space-y-1.5 text-sm">
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Misión y visión</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Funciones</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Organigrama</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Planeación</h3>
-            <ul class="space-y-1.5 text-sm">
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Plan estratégico</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Plan de acción</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Indicadores</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Normatividad</h3>
-            <ul class="space-y-1.5 text-sm">
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Resoluciones</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Doctrina contable</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Talento humano</a></li>
-
+      
+        <li>
+          <a href="/"
+             class="block rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:py-4 border-b-2 border-govco-cobalt text-govco-cobalt">
+            Inicio
+          </a>
+        </li>
+      
     
-    <li class="lg:relative" data-has-panel>
-      <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
-              class="flex w-full items-center justify-between gap-1 px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto">
-        Aplicativos
-        <svg class="h-4 w-4 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-      <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-4 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:w-[520px] lg:max-w-[90vw] lg:border lg:border-gray-200 lg:bg-white lg:shadow-xl">
-        <div class="grid gap-6 sm:grid-cols-2">
-          <div>
-            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Sistemas</h3>
-            <ul class="space-y-1.5 text-sm">
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">CHIP</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">BDME</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">SIGEP II</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Servicios</h3>
-            <ul class="space-y-1.5 text-sm">
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Correo institucional</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Mesa de ayuda TIC</a></li>
-              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Gestión documental</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            En Casa
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-72">
+            <div class="">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">PIC · Plan Institucional de Capacitación</a>
+      
     </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Manual de Identidad Visual Corporativa</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Manual de Políticas Contables</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Comisión de personal</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Evaluación de desempeño</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Nombramientos</a>
+      
+    </li>
+  
+</ul>
 
-    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Procesos</a></li>
-    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Comunicaciones</a></li>
-    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Atención al servidor</a></li>
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            Normativa
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-[640px] lg:max-w-[92vw]">
+            <div class="lg:columns-2 lg:gap-8">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2026</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2025</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2024</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2023</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2022</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2021</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2020</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2019</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2018</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2017</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2016</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Normograma 2015</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Años anteriores</a>
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#"
+             class="block rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:py-4 ">
+            Plantillas
+          </a>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            SIGI
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-72">
+            <div class="">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Sistema de Gestión de Calidad (SGC)</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Sistema de Gestión Ambiental (SGA)</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Seguridad y Salud en el Trabajo (SG-SST)</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Seguridad de la Información (SGSI)</a>
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            Comités
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-72">
+            <div class="">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Comité de Convivencia Laboral</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Comité Paritario de Seguridad y Salud en el Trabajo</a>
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            Procesos
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-[640px] lg:max-w-[92vw]">
+            <div class="lg:columns-2 lg:gap-8">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Procesos estratégicos</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Planeación</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Comunicación Pública</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Procesos misionales</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Normalización y culturización contable</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT de Investigación y Normas</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT de Doctrina y Capacitación en Contabilidad Pública</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Centralización de la Información</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT Información Entidades de Gobierno</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT Información Empresas</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT Sistemas de Información Integrados Nacionales (SIIN)</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT CHIP</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Consolidación de la Información</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT Procesamiento y Análisis de Producto</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">GIT Estadísticas y Análisis Económico</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Procesos de apoyo</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Gestión Humana</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Gestión Administrativa</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Gestión de Recursos Financieros</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Gestión TICs</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Gestión Jurídica</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <span class="mt-2 block font-titulo text-sm font-bold text-cgn-negro">Procesos de evaluación</span>
+        
+<ul class="space-y-0.5 mt-1 ml-3 border-l border-gray-200 pl-3">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Control y Evaluación</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            Revistas
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-[640px] lg:max-w-[92vw]">
+            <div class="lg:columns-2 lg:gap-8">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Le Cuento Que</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">SIINERGIA Contable</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Codex</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Coworking</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Videos CGN</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Presentaciones del Contador General</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Condecoraciones CGN</a>
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li class="lg:relative" data-has-panel>
+          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                  class="flex w-full items-center justify-between gap-1 rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+            Plantillas y búsqueda
+            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl lg:w-72">
+            <div class="">
+              
+<ul class="space-y-0.5 ">
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Búsqueda</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Clasificados</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Calendario de Eventos</a>
+      
+    </li>
+  
+    <li class="break-inside-avoid">
+      
+        <a href="#" class="block rounded px-2 py-1.5 text-sm text-cgn-grisos hover:bg-govco-solitude hover:text-govco-cobalt">Matriz de Publicaciones</a>
+      
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#"
+             class="block rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:py-4 ">
+            SINTRA-CGN
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#"
+             class="block rounded px-3 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:py-4 ">
+            Doctrina al Día
+          </a>
+        </li>
+      
+    
   </ul>
 </nav>
 
@@ -215,9 +702,7 @@
     </div>
 
     
-      {# Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a izquierda
-         (primario a la derecha), separación 225 px en el lienzo de 1300 px;
-         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. #}
+      
       <div class="mt-10 lg:mt-auto">
         
           <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
@@ -269,9 +754,7 @@
     </div>
 
     
-      {# Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a izquierda
-         (primario a la derecha), separación 225 px en el lienzo de 1300 px;
-         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. #}
+      
       <div class="mt-10 lg:mt-auto">
         
           <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
@@ -330,9 +813,7 @@
     </div>
 
     
-      {# Zona inferior (Manual CGN, Fig. 36): botones 230×56, de derecha a izquierda
-         (primario a la derecha), separación 225 px en el lienzo de 1300 px;
-         recuadro fecha/proceso (240 px) 47,5 px por encima del botón derecho. #}
+      
       <div class="mt-10 lg:mt-auto">
         
           <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
