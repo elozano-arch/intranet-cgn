@@ -1,30 +1,97 @@
 {% extends "base.html" %}
 {% comment %}
   Página: Home de la Intranet CGN.
-  Contenido REAL tomado del mapa del sitio (data/nav.json). Sin contenido inventado:
-  las tarjetas son las secciones reales de la intranet; el banner usa la identidad
-  institucional (lema oficial). Integración Wagtail: el banner sería un HeroBlock y
-  la grilla de secciones un menú/colección desde el CMS.
+  Ensambla componentes (= bloques Wagtail) con datos DEMO marcados.
+  Integración backend: en Wagtail sería un StreamField; cada sección se reemplaza
+  por {% for block in page.body %}{% include_block block %}{% endfor %}.
+  Los textos entre comillas son placeholders editoriales.
 {% endcomment %}
 
 {% block title %}Inicio · Intranet Contaduría General de la Nación{% endblock %}
 
 {% block content %}
 
-  {# ===== 1. BANNER PRINCIPAL → HeroBlock (identidad institucional real) ===== #}
-  {% include "components/hero.html" with eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Bienvenido a la intranet de la Contaduría General de la Nación." primary_label="Explorar secciones" primary_url="#secciones" %}
+  {% comment %} 1. BANNER PRINCIPAL → CarouselBlock (lista de banners).
+     Demo: el carrusel muestra 3 slides de ejemplo. El hero estático sigue
+     disponible como componente (components/hero.html) para páginas internas. {% endcomment %}
+  {% include "components/carousel.html" %}
 
-  {# ===== 2. SECCIONES DE LA INTRANET (reales, desde el mapa del sitio) ===== #}
-  <section id="secciones" class="mx-auto max-w-contenido px-4 py-12" aria-label="Secciones de la intranet">
-    <div class="mb-8 border-b-2 border-cgn-verde pb-3">
-      <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Secciones de la intranet</h2>
-      <p class="mt-1 text-sm text-cgn-grisos">Accede a las áreas de la intranet de la Contaduría General de la Nación.</p>
+  {# ===== 2. ACCESOS RÁPIDOS → ListBlock(StructBlock) — tarjetas flotando sobre el hero ===== #}
+  <section id="accesos" class="relative z-20 mx-auto -mt-12 max-w-contenido px-4 md:-mt-16" aria-label="Accesos rápidos">
+    <div class="mb-8 flex items-end justify-between">
+      <div>
+        <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Accesos rápidos</h2>
+        <p class="mt-1 text-sm text-cgn-grisos">Aplicativos y servicios institucionales de uso frecuente.</p>
+      </div>
+      <a href="#" class="hidden text-sm font-bold text-govco-cobalt hover:underline sm:block">Ver todos →</a>
     </div>
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {% for item in nav %}{% if item.url != '/' %}
-        {% cycle 'verde' 'cobalt' 'naranja' as c silent %}
-        {% include "components/card.html" with title=item.label url=item.url|default:'#' color=c icon="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" %}
-      {% endif %}{% endfor %}
+      {# TODO backend: {% for item in block.value %} ... {% endfor %} #}
+      {% include "components/card.html" with title="CHIP" text="Consolidador de Hacienda e Información Pública." url="#" color="cobalt" icon="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" %}
+      {% include "components/card.html" with title="BDME" text="Boletín de Deudores Morosos del Estado." url="#" color="verde" icon="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" %}
+      {% include "components/card.html" with title="SIGEP II" text="Sistema de Información y Gestión del Empleo Público." url="#" color="naranja" icon="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" %}
+      {% include "components/card.html" with title="Correo institucional" text="Accede a tu cuenta de correo de la CGN." url="#" color="cobalt" icon="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" %}
+      {% include "components/card.html" with title="Mesa de ayuda TIC" text="Reporta incidencias y solicita soporte técnico." url="#" color="verde" icon="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z" %}
+      {% include "components/card.html" with title="Gestión documental" text="Radicación y consulta de documentos institucionales." url="#" color="naranja" icon="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" %}
+    </div>
+  </section>
+
+  {# ===== 3. BANDA DE DIRECTORIO RÁPIDO (cinta con motivo rombo) ===== #}
+  <section class="mt-16 bg-govco-smoke" aria-label="Enlaces de interés">
+    <div class="mx-auto grid max-w-contenido grid-cols-2 divide-x divide-gray-200 px-4 py-8 sm:grid-cols-4">
+      <a href="#" class="group flex flex-col items-center gap-2 px-2 text-center hover:text-govco-cobalt">
+        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-cgn-verde/12 text-cgn-verde"><svg class="h-5 w-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+        <span class="text-sm font-bold">Directorio institucional</span>
+      </a>
+      <a href="#" class="group flex flex-col items-center gap-2 px-2 text-center hover:text-govco-cobalt">
+        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-cgn-naranja/12 text-cgn-naranja"><svg class="h-5 w-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
+        <span class="text-sm font-bold">Calendario CGN</span>
+      </a>
+      <a href="#" class="group flex flex-col items-center gap-2 px-2 text-center hover:text-govco-cobalt">
+        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt"><svg class="h-5 w-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span>
+        <span class="text-sm font-bold">Formatos SIG</span>
+      </a>
+      <a href="#" class="group flex flex-col items-center gap-2 px-2 text-center hover:text-govco-cobalt">
+        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-cgn-verde/12 text-cgn-verde"><svg class="h-5 w-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z"/></svg></span>
+        <span class="text-sm font-bold">Talento humano</span>
+      </a>
+    </div>
+  </section>
+
+  {# ===== 4. NOTICIAS INSTITUCIONALES → ListBlock(StructBlock) — layout editorial ===== #}
+  <section id="noticias" class="mx-auto max-w-contenido px-4 py-16" aria-label="Noticias institucionales">
+    <div class="mb-8 flex flex-col gap-2 border-b-2 border-cgn-verde pb-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Noticias y comunicados</h2>
+        <p class="mt-1 text-sm text-cgn-grisos">Lo más reciente de la entidad.</p>
+      </div>
+      <a href="#" class="text-sm font-bold text-govco-cobalt hover:underline">Ver todas las noticias →</a>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      {# Noticia destacada #}
+      {% include "components/news_card.html" with featured=True title="Nueva versión del marco normativo contable público" excerpt="La CGN publica la actualización de la doctrina contable pública compilada para cada marco normativo vigente." url="#" fecha="20 ene 2026" categoria="Normativa" %}
+
+      {# Lista de noticias estándar #}
+      <div class="grid gap-6 sm:grid-cols-2">
+        {% include "components/news_card.html" with title="Jornada de bienestar para servidores de la CGN" excerpt="Inscríbete en las actividades de bienestar y SST de este trimestre." url="#" fecha="15 ene 2026" categoria="Talento humano" %}
+        {% include "components/news_card.html" with title="Cátedra Nacional de Contabilidad Pública 2026" excerpt="Conoce el calendario y los cupos disponibles para esta vigencia." url="#" fecha="10 ene 2026" categoria="Capacitación" %}
+      </div>
+    </div>
+  </section>
+
+  {# ===== 5. SECCIÓN DESTACADA / CTA → HeroBlock (variante) ===== #}
+  <section class="mx-auto max-w-contenido px-4 pb-16">
+    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cgn-verdeos to-[#125847] px-6 py-12 md:px-12">
+      <div class="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rotate-45 rounded-3xl bg-white/10" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-12 right-1/3 h-32 w-32 rotate-45 rounded-2xl bg-cgn-naranja/30" aria-hidden="true"></div>
+      <div class="relative flex flex-col items-start gap-6 text-white md:flex-row md:items-center md:justify-between">
+        <div class="max-w-2xl">
+          <h2 class="font-titulo text-2xl font-bold md:text-3xl">¿Necesitas un trámite interno?</h2>
+          <p class="mt-2 text-white/90">Consulta el directorio de procesos, los formatos del SIG y las solicitudes a las dependencias de la CGN.</p>
+        </div>
+        {% include "components/button.html" with label="Ir al directorio de procesos" url="#" variant="contorno_inverso" %}
+      </div>
     </div>
   </section>
 
