@@ -132,74 +132,20 @@
       </form>
     </div>
 
-    {# Menú de navegación (Kit UI general — máx. 7 ítems) — responsive con hamburguesa #}
-    <nav aria-label="Menú principal" class="border-t border-gray-200 bg-white">
-      <div class="mx-auto max-w-contenido px-2">
-        <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
-                class="flex w-full items-center gap-2 px-2 py-3 text-sm font-bold text-cgn-negro lg:hidden">
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          Menú
-        </button>
-      </div>
-      <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-1 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:pb-0">
-        {% for item in nav_items %}
-          <li>
-            <a href="{{ item.url }}"
-               class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt {% if item.activo %}border-b-4 border-govco-cobalt text-govco-cobalt{% endif %}">
-              {{ item.label }}
-            </a>
-          </li>
-        {% empty %}
-          {# Placeholder de navegación si no hay contexto del CMS #}
-          <li><a href="#" class="block border-b-4 border-govco-cobalt px-4 py-3 text-sm font-semibold text-govco-cobalt">Inicio</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Nuestra entidad</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Talento humano</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Aplicativos</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Procesos</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Comunicaciones</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Atención al servidor</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
+    {# Menú de navegación (Kit UI general) — componente con mega menú y hamburguesa #}
+    {% include "components/nav.html" %}
   </header>
+
+  {# Miga de pan (Kit UI) — vacía en el Home; las páginas internas la definen #}
+  {% block breadcrumb %}{% endblock %}
 
   {# ===== Contenido principal ===== #}
   <main id="contenido-principal" tabindex="-1">
     {% block content %}{% endblock %}
   </main>
 
-  {# ===== Pie de página GOV.CO (Kit UI transversal) ===== #}
-  <footer class="mt-16 bg-govco-cobalt text-white">
-    <div class="mx-auto grid max-w-contenido gap-8 px-4 py-10 md:grid-cols-3">
-      <div>
-        <img src="{% static 'img/cgn-horizontal-blanco.png' %}" alt="Contaduría General de la Nación" class="mb-4 h-14 w-auto">
-        <p class="text-sm leading-relaxed text-blue-100">Cuentas Claras, Estado Transparente</p>
-      </div>
-      <div class="text-sm leading-relaxed">
-        <h2 class="mb-3 text-base font-bold">Sede principal</h2>
-        <p class="text-blue-100">Dirección: Carrera 6 No. 14-98, Bogotá D.C.<br>
-        Código postal: 111711<br>
-        Horario: Lunes a viernes 8:00 a.m. – 5:00 p.m.<br>
-        Conmutador: +57 (601) 492 64 00<br>
-        Correo: <a href="mailto:contactenos@contaduria.gov.co" class="underline">contactenos@contaduria.gov.co</a></p>
-      </div>
-      <div class="text-sm leading-relaxed">
-        <h2 class="mb-3 text-base font-bold">Enlaces</h2>
-        <ul class="space-y-2 text-blue-100">
-          <li><a href="#" class="underline">Políticas</a></li>
-          <li><a href="#" class="underline">Mapa del sitio</a></li>
-          <li><a href="#" class="underline">Términos y condiciones</a></li>
-          <li><a href="#" class="underline">Accesibilidad</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-blue-400/40">
-      <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-4">
-        <a href="https://www.gov.co/home/" aria-label="GOV.CO"><img src="{% static 'img/govco.png' %}" alt="GOV.CO" class="h-6 w-auto"></a>
-        <span class="text-xs text-blue-100">© Contaduría General de la Nación</span>
-      </div>
-    </div>
-  </footer>
+  {# ===== Pie de página GOV.CO (Kit UI transversal) — componente ===== #}
+  {% include "components/footer.html" %}
 
   {# Barra de accesibilidad + menú responsive (con persistencia y estados ARIA) #}
   <script>

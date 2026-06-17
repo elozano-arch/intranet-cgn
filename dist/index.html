@@ -133,28 +133,125 @@
     </div>
 
     
-    <nav aria-label="Menú principal" class="border-t border-gray-200 bg-white">
-      <div class="mx-auto max-w-contenido px-2">
-        <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
-                class="flex w-full items-center gap-2 px-2 py-3 text-sm font-bold text-cgn-negro lg:hidden">
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          Menú
-        </button>
+    
+<nav aria-label="Menú principal" class="border-t border-gray-200 bg-white" data-nav>
+  <div class="mx-auto max-w-contenido px-2">
+    <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+            class="flex w-full items-center gap-2 px-2 py-3 text-sm font-bold text-cgn-negro lg:hidden">
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Menú
+    </button>
+  </div>
+
+  <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-1 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:pb-0">
+    <li><a href="#" class="block border-b-4 border-govco-cobalt px-4 py-3 text-sm font-semibold text-govco-cobalt">Inicio</a></li>
+
+    
+    <li class="lg:relative" data-has-panel>
+      <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+              class="flex w-full items-center justify-between gap-1 px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto">
+        Nuestra entidad
+        <svg class="h-4 w-4 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-4 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:mt-0 lg:w-[640px] lg:max-w-[90vw] lg:border lg:border-gray-200 lg:bg-white lg:shadow-xl">
+        <div class="grid gap-6 sm:grid-cols-3">
+          <div>
+            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Quiénes somos</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Misión y visión</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Funciones</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Organigrama</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Planeación</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Plan estratégico</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Plan de acción</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Indicadores</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Normatividad</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Resoluciones</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Doctrina contable</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <ul id="navMenu" class="mx-auto hidden max-w-contenido flex-col gap-1 px-2 pb-2 lg:flex lg:flex-row lg:flex-wrap lg:pb-0">
-        
-          
-          <li><a href="#" class="block border-b-4 border-govco-cobalt px-4 py-3 text-sm font-semibold text-govco-cobalt">Inicio</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Nuestra entidad</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Talento humano</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Aplicativos</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Procesos</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Comunicaciones</a></li>
-          <li><a href="#" class="block px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt">Atención al servidor</a></li>
-        
-      </ul>
-    </nav>
+    </li>
+
+    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Talento humano</a></li>
+
+    
+    <li class="lg:relative" data-has-panel>
+      <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+              class="flex w-full items-center justify-between gap-1 px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto">
+        Aplicativos
+        <svg class="h-4 w-4 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-4 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:w-[520px] lg:max-w-[90vw] lg:border lg:border-gray-200 lg:bg-white lg:shadow-xl">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Sistemas</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">CHIP</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">BDME</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">SIGEP II</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-2 border-b border-cgn-verde pb-1 font-titulo text-sm font-bold text-cgn-negro">Servicios</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Correo institucional</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Mesa de ayuda TIC</a></li>
+              <li><a href="#" class="block text-cgn-grisos hover:text-govco-cobalt">Gestión documental</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Procesos</a></li>
+    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Comunicaciones</a></li>
+    <li><a href="#" class="block px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt">Atención al servidor</a></li>
+  </ul>
+</nav>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-nav]').forEach(function(nav){
+    if(nav.dataset.init) return; nav.dataset.init='1';
+    var items=nav.querySelectorAll('[data-has-panel]');
+    function closeAll(except){
+      items.forEach(function(li){
+        if(li===except) return;
+        var b=li.querySelector('[data-menu-button]'), p=li.querySelector('[data-panel]'), ch=li.querySelector('[data-chevron]');
+        p.classList.add('hidden'); b.setAttribute('aria-expanded','false'); if(ch) ch.style.transform='';
+      });
+    }
+    items.forEach(function(li){
+      var b=li.querySelector('[data-menu-button]'), p=li.querySelector('[data-panel]'), ch=li.querySelector('[data-chevron]');
+      b.addEventListener('click',function(e){
+        e.stopPropagation();
+        var open=p.classList.contains('hidden');
+        closeAll(li);
+        p.classList.toggle('hidden',!open);
+        b.setAttribute('aria-expanded',open);
+        if(ch) ch.style.transform=open?'rotate(180deg)':'';
+      });
+    });
+    document.addEventListener('click',function(e){ if(!nav.contains(e.target)) closeAll(null); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeAll(null); });
+  });
+})();
+</script>
+
   </header>
+
+  
+  
 
   
   <main id="contenido-principal" tabindex="-1">
@@ -649,37 +746,40 @@
   </main>
 
   
-  <footer class="mt-16 bg-govco-cobalt text-white">
-    <div class="mx-auto grid max-w-contenido gap-8 px-4 py-10 md:grid-cols-3">
-      <div>
-        <img src="/static/img/cgn-horizontal-blanco.png" alt="Contaduría General de la Nación" class="mb-4 h-14 w-auto">
-        <p class="text-sm leading-relaxed text-blue-100">Cuentas Claras, Estado Transparente</p>
-      </div>
-      <div class="text-sm leading-relaxed">
-        <h2 class="mb-3 text-base font-bold">Sede principal</h2>
-        <p class="text-blue-100">Dirección: Carrera 6 No. 14-98, Bogotá D.C.<br>
-        Código postal: 111711<br>
-        Horario: Lunes a viernes 8:00 a.m. – 5:00 p.m.<br>
-        Conmutador: +57 (601) 492 64 00<br>
-        Correo: <a href="mailto:contactenos@contaduria.gov.co" class="underline">contactenos@contaduria.gov.co</a></p>
-      </div>
-      <div class="text-sm leading-relaxed">
-        <h2 class="mb-3 text-base font-bold">Enlaces</h2>
-        <ul class="space-y-2 text-blue-100">
-          <li><a href="#" class="underline">Políticas</a></li>
-          <li><a href="#" class="underline">Mapa del sitio</a></li>
-          <li><a href="#" class="underline">Términos y condiciones</a></li>
-          <li><a href="#" class="underline">Accesibilidad</a></li>
-        </ul>
-      </div>
+  
+
+<footer class="mt-16 bg-govco-cobalt text-white">
+  <div class="mx-auto grid max-w-contenido gap-8 px-4 py-10 md:grid-cols-3">
+    <div>
+      <img src="/static/img/cgn-horizontal-blanco.png" alt="Contaduría General de la Nación" class="mb-4 h-14 w-auto">
+      <p class="text-sm leading-relaxed text-blue-100">Cuentas Claras, Estado Transparente</p>
     </div>
-    <div class="border-t border-blue-400/40">
-      <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-4">
-        <a href="https://www.gov.co/home/" aria-label="GOV.CO"><img src="/static/img/govco.png" alt="GOV.CO" class="h-6 w-auto"></a>
-        <span class="text-xs text-blue-100">© Contaduría General de la Nación</span>
-      </div>
+    <div class="text-sm leading-relaxed">
+      <h2 class="mb-3 text-base font-bold">Sede principal</h2>
+      <p class="text-blue-100">Dirección: Carrera 6 No. 14-98, Bogotá D.C.<br>
+      Código postal: 111711<br>
+      Horario: Lunes a viernes 8:00 a.m. – 5:00 p.m.<br>
+      Conmutador: +57 (601) 492 64 00<br>
+      Correo: <a href="mailto:contactenos@contaduria.gov.co" class="underline">contactenos@contaduria.gov.co</a></p>
     </div>
-  </footer>
+    <div class="text-sm leading-relaxed">
+      <h2 class="mb-3 text-base font-bold">Enlaces</h2>
+      <ul class="space-y-2 text-blue-100">
+        <li><a href="#" class="underline">Políticas</a></li>
+        <li><a href="#" class="underline">Mapa del sitio</a></li>
+        <li><a href="#" class="underline">Términos y condiciones</a></li>
+        <li><a href="#" class="underline">Accesibilidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-blue-400/40">
+    <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-4">
+      <a href="https://www.gov.co/home/" aria-label="GOV.CO"><img src="/static/img/govco.png" alt="GOV.CO" class="h-6 w-auto"></a>
+      <span class="text-xs text-blue-100">© Contaduría General de la Nación</span>
+    </div>
+  </div>
+</footer>
+
 
   
   <script>

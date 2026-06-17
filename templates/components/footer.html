@@ -1,0 +1,38 @@
+{% load static %}
+{% comment %}
+  Componente: Pie de página  → Kit UI 9.2 (transversal, "Pie de página").
+  Incluye datos de la entidad, logo CGN, logo GOV.CO y enlaces obligatorios.
+  Parámetros (opcionales; si no llegan, usa valores institucionales por defecto):
+    sede, enlaces (lista {label,url})
+{% endcomment %}
+<footer class="mt-16 bg-govco-cobalt text-white">
+  <div class="mx-auto grid max-w-contenido gap-8 px-4 py-10 md:grid-cols-3">
+    <div>
+      <img src="{% static 'img/cgn-horizontal-blanco.png' %}" alt="Contaduría General de la Nación" class="mb-4 h-14 w-auto">
+      <p class="text-sm leading-relaxed text-blue-100">Cuentas Claras, Estado Transparente</p>
+    </div>
+    <div class="text-sm leading-relaxed">
+      <h2 class="mb-3 text-base font-bold">Sede principal</h2>
+      <p class="text-blue-100">Dirección: Carrera 6 No. 14-98, Bogotá D.C.<br>
+      Código postal: 111711<br>
+      Horario: Lunes a viernes 8:00 a.m. – 5:00 p.m.<br>
+      Conmutador: +57 (601) 492 64 00<br>
+      Correo: <a href="mailto:contactenos@contaduria.gov.co" class="underline">contactenos@contaduria.gov.co</a></p>
+    </div>
+    <div class="text-sm leading-relaxed">
+      <h2 class="mb-3 text-base font-bold">Enlaces</h2>
+      <ul class="space-y-2 text-blue-100">
+        <li><a href="#" class="underline">Políticas</a></li>
+        <li><a href="#" class="underline">Mapa del sitio</a></li>
+        <li><a href="#" class="underline">Términos y condiciones</a></li>
+        <li><a href="#" class="underline">Accesibilidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-blue-400/40">
+    <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-4">
+      <a href="https://www.gov.co/home/" aria-label="GOV.CO"><img src="{% static 'img/govco.png' %}" alt="GOV.CO" class="h-6 w-auto"></a>
+      <span class="text-xs text-blue-100">© Contaduría General de la Nación</span>
+    </div>
+  </div>
+</footer>
