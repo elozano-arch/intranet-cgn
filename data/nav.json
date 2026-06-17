@@ -8,11 +8,19 @@
     { "label": "Evaluación de desempeño", "url": "#" },
     { "label": "Nombramientos", "url": "#" }
   ]},
-  { "label": "Normativa", "children": [
+  { "label": "Normativa", "wide": true, "children": [
     { "label": "Normograma 2026", "url": "#" },
     { "label": "Normograma 2025", "url": "#" },
     { "label": "Normograma 2024", "url": "#" },
     { "label": "Normograma 2023", "url": "#" },
+    { "label": "Normograma 2022", "url": "#" },
+    { "label": "Normograma 2021", "url": "#" },
+    { "label": "Normograma 2020", "url": "#" },
+    { "label": "Normograma 2019", "url": "#" },
+    { "label": "Normograma 2018", "url": "#" },
+    { "label": "Normograma 2017", "url": "#" },
+    { "label": "Normograma 2016", "url": "#" },
+    { "label": "Normograma 2015", "url": "#" },
     { "label": "Años anteriores", "url": "#" }
   ]},
   { "label": "Plantillas", "url": "#" },
@@ -67,8 +75,13 @@
     { "label": "Presentaciones del Contador General", "url": "#" },
     { "label": "Condecoraciones CGN", "url": "#" }
   ]},
-  { "label": "Calendario de Eventos", "url": "#" },
+  { "label": "Búsqueda", "url": "#" },
   { "label": "Clasificados", "url": "#" },
+  { "label": "Calendario de Eventos", "url": "#" },
+  { "label": "Matriz de Publicaciones", "url": "#" },
+  { "label": "Pruebas", "children": [
+    { "label": "Mapa de sitio", "url": "#" }
+  ]},
   { "label": "SINTRA-CGN", "url": "#" },
   { "label": "Doctrina al Día", "url": "#" }
 ]
