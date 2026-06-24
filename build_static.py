@@ -34,9 +34,10 @@ django.setup()
 from django.template.loader import render_to_string
 
 # Páginas a generar: (plantilla, archivo de salida)
+# (plantilla, archivo de salida, sección activa en el menú)
 PAGES = [
-    ("pages/home.html", "index.html"),
-    ("pages/en-casa.html", "en-casa.html"),
+    ("pages/home.html", "index.html", "Inicio"),
+    ("pages/en-casa.html", "en-casa.html", "En Casa"),
 ]
 
 # Limpiar y recrear dist/
@@ -48,8 +49,8 @@ os.makedirs(DIST)
 shutil.copytree(os.path.join(BASE, "static"), os.path.join(DIST, "static"))
 
 # Renderizar páginas
-for template, out in PAGES:
-    html = render_to_string(template, CONTEXT)
+for template, out, active in PAGES:
+    html = render_to_string(template, {**CONTEXT, "active_nav": active})
     with open(os.path.join(DIST, out), "w", encoding="utf-8") as f:
         f.write(html)
     print("✓", out)

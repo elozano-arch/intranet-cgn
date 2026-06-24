@@ -21,7 +21,7 @@
       {% if item.children %}
         <li class="lg:relative" data-has-panel>
           <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
-                  class="flex w-full items-center justify-between gap-1 rounded-md px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:py-4">
+                  class="flex w-full items-center justify-between gap-1 rounded-md px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:rounded-none lg:border-b-2 lg:py-4 lg:hover:border-gray-300 lg:hover:bg-transparent {% if item.label == active_nav %}bg-govco-solitude text-govco-cobalt lg:bg-transparent lg:border-govco-cobalt{% else %}text-cgn-negro lg:border-transparent{% endif %}">
             {{ item.label }}
             <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
@@ -35,7 +35,7 @@
       {% else %}
         <li>
           <a href="{{ item.url|default:'#' }}"
-             class="block rounded-md px-4 py-3 text-sm font-semibold text-cgn-negro hover:bg-govco-solitude hover:text-govco-cobalt lg:py-4 {% if item.url == '/' %}border-b-2 border-govco-cobalt text-govco-cobalt{% endif %}">
+             class="block rounded-md px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt lg:rounded-none lg:border-b-2 lg:py-4 lg:hover:border-gray-300 lg:hover:bg-transparent {% if item.label == active_nav %}bg-govco-solitude text-govco-cobalt lg:bg-transparent lg:border-govco-cobalt{% else %}text-cgn-negro lg:border-transparent{% endif %}">
             {{ item.label }}
           </a>
         </li>
