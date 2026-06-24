@@ -21,35 +21,31 @@
     </div>
     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {% include "components/card.html" with title="En Casa" text="PIC, manuales institucionales, comisión de personal y nombramientos." url="en-casa.html" color="cobalt" icon="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" %}
-      {% include "components/card.html" with title="Normativa" text="Normogramas 2015 a 2026 y años anteriores." url="#" color="verde" icon="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" %}
-      {% include "components/card.html" with title="SIGI" text="Calidad, ambiental, seguridad y salud, y seguridad de la información." url="#" color="naranja" icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" %}
-      {% include "components/card.html" with title="Procesos" text="Estratégicos, misionales, de apoyo y de evaluación." url="#" color="cobalt" icon="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" %}
-      {% include "components/card.html" with title="Comités" text="Convivencia laboral y COPASST." url="#" color="verde" icon="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" %}
-      {% include "components/card.html" with title="Doctrina al Día" text="Doctrina contable pública al día." url="#" color="naranja" icon="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" %}
+      {% include "components/card.html" with title="Normativa" text="Normogramas 2015 a 2026 y años anteriores." url="normativa.html" color="verde" icon="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" %}
+      {% include "components/card.html" with title="SIGI" text="Calidad, ambiental, seguridad y salud, y seguridad de la información." url="sigi.html" color="naranja" icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" %}
+      {% include "components/card.html" with title="Procesos" text="Estratégicos, misionales, de apoyo y de evaluación." url="procesos.html" color="cobalt" icon="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" %}
+      {% include "components/card.html" with title="Comités" text="Convivencia laboral y COPASST." url="comites.html" color="verde" icon="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" %}
+      {% include "components/card.html" with title="Publicaciones" text="Revistas, Doctrina al Día y Matriz de Publicaciones." url="publicaciones.html" color="naranja" icon="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" %}
     </div>
   </section>
 
   {# ===== 3. REVISTAS Y PUBLICACIONES (subsecciones reales de "Revistas") ===== #}
   <section id="revistas" class="bg-govco-smoke py-12" aria-label="Revistas y publicaciones">
     <div class="mx-auto max-w-contenido px-4">
-      <div class="mb-8 border-b-2 border-cgn-verde pb-3">
-        <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Revistas y publicaciones</h2>
-        <p class="mt-1 text-sm text-cgn-grisos">Publicaciones institucionales de la CGN.</p>
-      </div>
-      {# Diagramación editorial: 1 publicación destacada + 2 al lado #}
-      <div class="grid gap-6 lg:grid-cols-2">
-        {% include "components/news_card.html" with featured=True title="Le Cuento Que" categoria="Revista" url="#" %}
-        <div class="grid gap-6 sm:grid-cols-2">
-          {% include "components/news_card.html" with title="SIINERGIA Contable" categoria="Revista" url="#" %}
-          {% include "components/news_card.html" with title="Codex" categoria="Revista" url="#" %}
+      <div class="mb-8 flex items-end justify-between border-b-2 border-cgn-verde pb-3">
+        <div>
+          <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Revistas y publicaciones</h2>
+          <p class="mt-1 text-sm text-cgn-grisos">Portadas de las publicaciones institucionales de la CGN.</p>
         </div>
+        <a href="publicaciones.html" class="hidden text-sm font-bold text-govco-cobalt hover:underline sm:block">Ver todas →</a>
       </div>
-      {# Resto de publicaciones en una fila compacta #}
-      <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {% include "components/card.html" with title="Coworking" url="#" color="cobalt" icon="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" %}
-        {% include "components/card.html" with title="Videos CGN" url="#" color="verde" icon="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" %}
-        {% include "components/card.html" with title="Presentaciones del Contador General" url="#" color="naranja" icon="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" %}
-        {% include "components/card.html" with title="Condecoraciones CGN" url="#" color="cobalt" icon="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" %}
+      {# Galería de portadas (visual) — listas para reemplazar por las imágenes reales #}
+      <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+        {% include "components/cover.html" with title="Le Cuento Que" url="publicaciones.html" color="verde" tag="Revista" %}
+        {% include "components/cover.html" with title="SIINERGIA Contable" url="publicaciones.html" color="cobalt" tag="Revista" %}
+        {% include "components/cover.html" with title="Codex" url="publicaciones.html" color="naranja" tag="Revista" %}
+        {% include "components/cover.html" with title="Coworking" url="publicaciones.html" color="gris" tag="Revista" %}
+        {% include "components/cover.html" with title="Videos CGN" url="publicaciones.html" color="verde" tag="Multimedia" %}
       </div>
     </div>
   </section>

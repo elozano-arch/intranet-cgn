@@ -1,0 +1,28 @@
+{% comment %}
+  Componente: Portada de revista/boletín (visual).
+  Muestra la portada cuando hay imagen real (image); si no, dibuja una portada
+  con la identidad CGN (degradado + título), lista para reemplazar por la imagen.
+  Parámetros: title (obligatorio), url, image (url opcional), color, tag (ej. "Revista"/"Boletín")
+{% endcomment %}
+<a href="{{ url|default:'#' }}" class="group block focus:outline-none">
+  <div class="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md ring-1 ring-black/5 transition duration-200 group-hover:-translate-y-1 group-hover:shadow-xl group-focus-visible:ring-4 group-focus-visible:ring-govco-cobalt">
+    {% if image %}
+      <img src="{{ image }}" alt="Portada: {{ title }}" class="h-full w-full object-cover">
+    {% else %}
+      {# Portada generada (placeholder con identidad CGN) — reemplazar por la imagen real #}
+      <div class="flex h-full w-full flex-col justify-between p-4
+        {% if color == 'naranja' %}bg-gradient-to-br from-cgn-naranja to-cgn-naranjaos
+        {% elif color == 'cobalt' %}bg-gradient-to-br from-govco-cobalt to-[#062a73]
+        {% elif color == 'gris' %}bg-gradient-to-br from-cgn-grisos to-cgn-negro
+        {% else %}bg-gradient-to-br from-[#125847] to-cgn-verdeos{% endif %}">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-white/90">{{ tag|default:'Revista' }}</span>
+          <span class="h-3 w-3 rotate-45 bg-cgn-naranja" aria-hidden="true"></span>
+        </div>
+        <h3 class="font-titulo text-xl font-bold leading-tight text-white">{{ title }}</h3>
+        <div class="text-[10px] font-semibold uppercase tracking-wider text-white/70">Contaduría General de la Nación</div>
+      </div>
+    {% endif %}
+  </div>
+  <p class="mt-2 text-center text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</p>
+</a>

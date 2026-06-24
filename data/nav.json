@@ -66,7 +66,7 @@
     { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "url": "#" }
   ]},
   { "label": "Publicaciones", "wide": true, "children": [
-    { "label": "Revistas", "children": [
+    { "label": "Revistas", "visual": "portada", "children": [
       { "label": "Le Cuento Que", "url": "#" },
       { "label": "SIINERGIA Contable", "url": "#" },
       { "label": "Codex", "url": "#" },
