@@ -67,13 +67,13 @@
   ]},
   { "label": "Publicaciones", "wide": true, "children": [
     { "label": "Revistas", "visual": "portada", "children": [
-      { "label": "Le Cuento Que", "url": "#" },
-      { "label": "SIINERGIA Contable", "url": "#" },
-      { "label": "Codex", "url": "#" },
-      { "label": "Coworking", "url": "#" },
-      { "label": "Videos CGN", "url": "#" },
-      { "label": "Presentaciones del Contador General", "url": "#" },
-      { "label": "Condecoraciones CGN", "url": "#" }
+      { "label": "Le Cuento Que", "tag": "Revista", "url": "#" },
+      { "label": "SIINERGIA Contable", "tag": "Boletín", "url": "#" },
+      { "label": "Codex", "tag": "Revista", "url": "#" },
+      { "label": "Coworking", "tag": "Boletín", "url": "#" },
+      { "label": "Videos CGN", "tag": "Videos", "url": "#" },
+      { "label": "Presentaciones del Contador General", "tag": "Presentación", "url": "#" },
+      { "label": "Condecoraciones CGN", "tag": "Galería", "url": "#" }
     ]},
     { "label": "Doctrina al Día", "url": "#" },
     { "label": "Matriz de Publicaciones", "url": "#" }
