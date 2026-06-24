@@ -36,6 +36,7 @@ from django.template.loader import render_to_string
 # Páginas a generar: (plantilla, archivo de salida)
 PAGES = [
     ("pages/home.html", "index.html"),
+    ("pages/en-casa.html", "en-casa.html"),
 ]
 
 # Limpiar y recrear dist/

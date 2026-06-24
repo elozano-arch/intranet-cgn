@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% comment %}
+  Página interna de ejemplo: sección "En Casa" (real, del mapa del sitio).
+  Demuestra la miga de pan (ruta de navegación) y reutiliza los elementos comunes
+  (barra superior, accesibilidad, encabezado, menú, pie de página).
+{% endcomment %}
+
+{% block title %}En Casa · Intranet Contaduría General de la Nación{% endblock %}
+
+{# Miga de pan: Inicio › En Casa (no aparece en el Home, sí en páginas internas) #}
+{% block breadcrumb %}{% include "components/breadcrumb.html" with current="En Casa" %}{% endblock %}
+
+{% block content %}
+
+  {# Encabezado de la página interna (compacto, no es el banner de 600px) #}
+  <header class="relative overflow-hidden bg-gradient-to-r from-[#125847] to-cgn-verdeos">
+    <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rotate-45 rounded-3xl bg-white/10" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-white/20">
+        <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>Intranet
+      </span>
+      <h1 class="font-titulo text-3xl font-bold text-white md:text-4xl">En Casa</h1>
+      <p class="mt-2 max-w-2xl text-white/90">Capacitación, manuales institucionales y gestión del talento humano de la CGN.</p>
+    </div>
+    <div class="h-1.5 w-full bg-hacienda"></div>
+  </header>
+
+  {# Subsecciones reales de "En Casa" (mapa del sitio) #}
+  <section class="mx-auto max-w-contenido px-4 py-12" aria-label="Contenido de En Casa">
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {% include "components/card.html" with title="PIC · Plan Institucional de Capacitación" url="#" color="cobalt" icon="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.42A12 12 0 0112 21a12 12 0 01-6.16-10.42L12 14z" %}
+      {% include "components/card.html" with title="Manual de Identidad Visual Corporativa" url="#" color="verde" icon="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" %}
+      {% include "components/card.html" with title="Manual de Políticas Contables" url="#" color="naranja" icon="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" %}
+      {% include "components/card.html" with title="Comisión de personal" url="#" color="cobalt" icon="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" %}
+      {% include "components/card.html" with title="Evaluación de desempeño" url="#" color="verde" icon="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" %}
+      {% include "components/card.html" with title="Nombramientos" url="#" color="naranja" icon="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" %}
+    </div>
+  </section>
+
+{% endblock %}

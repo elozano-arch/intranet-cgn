@@ -4,27 +4,35 @@
   Accesibilidad: <nav aria-label>, lista ordenada, último ítem = página actual
   (aria-current="page"), separadores decorativos (aria-hidden).
   Parámetros:
-    crumbs = lista de {label, url}. El ÚLTIMO se toma como sección actual (sin enlace).
+    current = nombre de la sección actual (atajo para "Inicio › Sección"), o
+    crumbs  = lista de {label, url} para rutas de 3+ niveles (el último = actual).
     invertido = bool (para fondos oscuros)
 {% endcomment %}
 <nav aria-label="Ruta de navegación (miga de pan)"
-     class="{% if invertido %}bg-govco-cobalt text-white{% else %}bg-white{% endif %}">
+     class="{% if invertido %}bg-govco-cobalt text-white{% else %}border-b border-gray-200 bg-white{% endif %}">
   <ol class="mx-auto flex max-w-contenido flex-wrap items-center gap-1 px-4 py-3 text-sm">
     <li class="flex items-center gap-1">
       <a href="{% if crumbs %}{{ crumbs.0.url|default:'/' }}{% else %}/{% endif %}"
          class="font-semibold {% if invertido %}text-white hover:underline{% else %}text-govco-cobalt hover:underline{% endif %}">Inicio</a>
     </li>
-    {% for c in crumbs %}
-      {% if not forloop.first %}
-        <li class="flex items-center gap-1">
-          <span aria-hidden="true" class="{% if invertido %}text-white/60{% else %}text-cgn-gris{% endif %}">›</span>
-          {% if forloop.last %}
-            <span aria-current="page" class="{% if invertido %}text-white{% else %}text-cgn-grisos{% endif %}">{{ c.label }}</span>
-          {% else %}
-            <a href="{{ c.url|default:'#' }}" class="{% if invertido %}text-white hover:underline{% else %}text-govco-cobalt hover:underline{% endif %}">{{ c.label }}</a>
-          {% endif %}
-        </li>
-      {% endif %}
-    {% endfor %}
+    {% if current %}
+      <li class="flex items-center gap-1">
+        <span aria-hidden="true" class="{% if invertido %}text-white/60{% else %}text-cgn-gris{% endif %}">›</span>
+        <span aria-current="page" class="{% if invertido %}text-white{% else %}text-cgn-grisos{% endif %}">{{ current }}</span>
+      </li>
+    {% else %}
+      {% for c in crumbs %}
+        {% if not forloop.first %}
+          <li class="flex items-center gap-1">
+            <span aria-hidden="true" class="{% if invertido %}text-white/60{% else %}text-cgn-gris{% endif %}">›</span>
+            {% if forloop.last %}
+              <span aria-current="page" class="{% if invertido %}text-white{% else %}text-cgn-grisos{% endif %}">{{ c.label }}</span>
+            {% else %}
+              <a href="{{ c.url|default:'#' }}" class="{% if invertido %}text-white hover:underline{% else %}text-govco-cobalt hover:underline{% endif %}">{{ c.label }}</a>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </ol>
 </nav>
