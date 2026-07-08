@@ -23,7 +23,9 @@
     Saltar al contenido principal
   </a>
 
-  {# ===== Barra superior GOV.CO (Top bar — Kit UI transversal) ===== #}
+  {# ===== Cabecera del sitio (landmark banner): top bar + accesibilidad + cabezote + menú ===== #}
+  <header class="border-b-4 border-hacienda bg-white">
+  {# Barra superior GOV.CO (Top bar — Kit UI transversal) #}
   <div class="bg-govco-cobalt">
     <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-2">
       <a href="https://www.gov.co/home/" aria-label="Ir a GOV.CO" class="inline-flex items-center">
@@ -42,8 +44,7 @@
     </div>
   </div>
 
-  {# ===== Cabecera CGN (cabezote: logo horizontal con eslogan a la izquierda + buscador + menú) ===== #}
-  <header class="border-b-4 border-hacienda bg-white">
+  {# Cabezote CGN: logo horizontal con eslogan + buscador #}
     <div class="mx-auto flex max-w-contenido flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
       <a href="{% block home_url %}/{% endblock %}" class="inline-flex items-center" aria-label="Inicio — Intranet Contaduría General de la Nación">
         <img src="{% static 'img/cgn-horizontal-color.png' %}" alt="Contaduría General de la Nación — Cuentas Claras, Estado Transparente" class="h-16 w-auto">

@@ -24,6 +24,8 @@
   </a>
 
   
+  <header class="border-b-4 border-hacienda bg-white">
+  
   <div class="bg-govco-cobalt">
     <div class="mx-auto flex max-w-contenido items-center justify-between px-4 py-2">
       <a href="https://www.gov.co/home/" aria-label="Ir a GOV.CO" class="inline-flex items-center">
@@ -43,7 +45,6 @@
   </div>
 
   
-  <header class="border-b-4 border-hacienda bg-white">
     <div class="mx-auto flex max-w-contenido flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
       <a href="/" class="inline-flex items-center" aria-label="Inicio — Intranet Contaduría General de la Nación">
         <img src="/static/img/cgn-horizontal-color.png" alt="Contaduría General de la Nación — Cuentas Claras, Estado Transparente" class="h-16 w-auto">
@@ -669,6 +670,8 @@
   <main id="contenido-principal" tabindex="-1">
     
 
+  <h1 class="sr-only">Intranet de la Contaduría General de la Nación</h1>
+
   
   
 <section class="relative overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
@@ -680,7 +683,7 @@
         
         
 <div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
-  <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-cgn-verdehondo via-cgn-verdeos to-cgn-negro"></div>
   
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -right-24 -top-24 h-96 w-96 rotate-45 rounded-3xl
@@ -719,7 +722,7 @@
 
         
 <div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="2 de 3">
-  <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-cgn-verdehondo via-cgn-verdeos to-cgn-negro"></div>
   
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -right-24 -top-24 h-96 w-96 rotate-45 rounded-3xl
@@ -758,7 +761,7 @@
 
         
 <div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="3 de 3">
-  <div class="absolute inset-0 bg-gradient-to-br from-[#125847] via-cgn-verdeos to-cgn-negro"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-cgn-verdehondo via-cgn-verdeos to-cgn-negro"></div>
   
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -right-24 -top-24 h-96 w-96 rotate-45 rounded-3xl
@@ -851,7 +854,7 @@
         d.classList.toggle('bg-white',k===i); d.classList.toggle('bg-white/50',k!==i);
         d.setAttribute('aria-selected',k===i);
       });
-      slides.forEach(function(s,k){s.setAttribute('aria-hidden',k!==i);});
+      slides.forEach(function(s,k){ var off=k!==i; s.setAttribute('aria-hidden',off); s.inert=off; });
       if(live) live.textContent='Banner '+(i+1)+' de '+n;
     }
     function go(k){i=(k+n)%n;render();}
@@ -1049,7 +1052,7 @@
     
       
       <div class="flex h-full w-full flex-col justify-between p-4
-        bg-gradient-to-br from-[#125847] to-cgn-verdeos">
+        bg-gradient-to-br from-cgn-verdehondo to-cgn-verdeos">
         <div class="flex items-center justify-between">
           <span class="text-xs font-bold tracking-wide text-white/90">Revista</span>
           <span class="h-3 w-3 rotate-45 bg-cgn-naranja" aria-hidden="true"></span>
@@ -1068,7 +1071,7 @@
     
       
       <div class="flex h-full w-full flex-col justify-between p-4
-        bg-gradient-to-br from-govco-cobalt to-[#062a73]
+        bg-gradient-to-br from-govco-cobalt to-govco-cobaltos
         ">
         <div class="flex items-center justify-between">
           <span class="text-xs font-bold tracking-wide text-white/90">Boletín</span>
@@ -1128,7 +1131,7 @@
     
       
       <div class="flex h-full w-full flex-col justify-between p-4
-        bg-gradient-to-br from-[#125847] to-cgn-verdeos">
+        bg-gradient-to-br from-cgn-verdehondo to-cgn-verdeos">
         <div class="flex items-center justify-between">
           <span class="text-xs font-bold tracking-wide text-white/90">Videos</span>
           <span class="h-3 w-3 rotate-45 bg-cgn-naranja" aria-hidden="true"></span>

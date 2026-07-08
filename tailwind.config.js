@@ -9,6 +9,7 @@ module.exports = {
         cgn: {
           verde: "#29977C",
           verdeos: "#176551", // verde oscuro: texto sobre claro (≥4.5:1) y fondos
+          verdehondo: "#125847", // verde profundo: base de banners/degradados
           gris: "#9B9A98",
           naranja: "#DA9440",
           naranjaos: "#9A5E15", // naranja oscuro: texto/insignias sobre claro (≥4.5:1)
@@ -19,6 +20,7 @@ module.exports = {
         // Paleta GOV.CO (Kit UI 9.2)
         govco: {
           cobalt: "#0943B5",
+          cobaltos: "#062a73", // cobalt oscuro: fin de degradados
           havelock: "#3366CC",
           solitude: "#E6EFFA",
           corn: "#FFF8E1",
@@ -28,6 +30,7 @@ module.exports = {
         estado: {
           error: "#A80521",
           alerta: "#F3B228",
+          alertatext: "#8a6100", // texto ámbar legible (≥4.5:1) para "pendiente"
           exito: "#069169",
         },
       },

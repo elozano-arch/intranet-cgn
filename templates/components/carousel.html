@@ -76,7 +76,7 @@
         d.classList.toggle('bg-white',k===i); d.classList.toggle('bg-white/50',k!==i);
         d.setAttribute('aria-selected',k===i);
       });
-      slides.forEach(function(s,k){s.setAttribute('aria-hidden',k!==i);});
+      slides.forEach(function(s,k){ var off=k!==i; s.setAttribute('aria-hidden',off); s.inert=off; });
       if(live) live.textContent='Banner '+(i+1)+' de '+n;
     }
     function go(k){i=(k+n)%n;render();}
