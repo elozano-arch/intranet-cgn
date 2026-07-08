@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% comment %}
+  Página guía de componentes (biblioteca UI). Muestra los componentes del Kit UI
+  construidos, para revisión. No es una sección pública del mapa del sitio.
+{% endcomment %}
+{% block title %}Guía de componentes · Intranet CGN{% endblock %}
+{% block breadcrumb %}{% include "components/breadcrumb.html" with current="Guía de componentes" %}{% endblock %}
+
+{% block content %}
+  <header class="relative overflow-hidden bg-gradient-to-r from-[#125847] to-cgn-verdeos">
+    <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-wide text-white ring-1 ring-white/20">
+        <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>Biblioteca UI
+      </span>
+      <h1 class="font-titulo text-3xl font-bold text-white md:text-4xl">Guía de componentes</h1>
+      <p class="mt-2 max-w-2xl text-white/90">Componentes del Kit UI GOV.CO adaptados a la identidad de la CGN.</p>
+    </div>
+    <div class="h-1.5 w-full bg-hacienda"></div>
+  </header>
+
+  <div class="mx-auto max-w-contenido space-y-14 px-4 py-12">
+
+    {# Etiquetas #}
+    <section aria-label="Etiquetas">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Etiquetas</h2>
+      <div class="flex flex-wrap items-center gap-3">
+        {% include "components/tag.html" with label="Informativa" variant="info" %}
+        {% include "components/tag.html" with label="Completado" variant="exito" %}
+        {% include "components/tag.html" with label="Pendiente" variant="pendiente" %}
+        {% include "components/tag.html" with label="Urgencia" variant="error" %}
+        {% include "components/tag.html" with label="Filtro aplicado" variant="filtro" %}
+      </div>
+    </section>
+
+    {# Galería de aplicaciones + Mensajes de ayuda #}
+    <section aria-label="Galería y ayuda">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Galería de aplicaciones y mensajes de ayuda</h2>
+      <div class="flex flex-wrap items-center gap-6">
+        {% include "components/app_gallery.html" with apps=apps %}
+        <span class="flex items-center gap-2 text-sm text-cgn-negro">Campo con ayuda
+          {% include "components/tooltip.html" with text="Este es un mensaje de ayuda emergente. Aparece al pasar el cursor o con el teclado." %}
+        </span>
+      </div>
+    </section>
+
+    {# Avisos y notificaciones #}
+    <section aria-label="Avisos y notificaciones">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Avisos y notificaciones</h2>
+      <div class="grid max-w-xl gap-3">
+        {% include "components/notification.html" with variant="info" title="Notificación informativa" message="Mensaje corto y contextual para el usuario." time="Hace 2 min" %}
+        {% include "components/notification.html" with variant="exito" title="Acción realizada con éxito" message="El registro se guardó correctamente." %}
+        {% include "components/notification.html" with variant="error" title="Ocurrió un error" message="No fue posible completar la acción. Intenta de nuevo." %}
+      </div>
+    </section>
+
+    {# Ventanas emergentes #}
+    <section aria-label="Ventanas emergentes">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Ventanas emergentes</h2>
+      <div class="flex flex-wrap gap-3">
+        {% include "components/modal.html" with id="m-conf" trigger_label="Confirmación" variant="confirmacion" title="¿Deseas continuar?" message="Confirma para procesar la solicitud." confirm_label="Sí, continuar" cancel_label="Cancelar" %}
+        {% include "components/modal.html" with id="m-exito" trigger_label="Éxito" variant="exito" title="¡Listo!" message="La acción se realizó con éxito." confirm_label="Aceptar" %}
+        {% include "components/modal.html" with id="m-error" trigger_label="Error" variant="error" title="No se pudo completar" message="Revisa la información e inténtalo nuevamente." confirm_label="Entendido" %}
+        {% include "components/modal.html" with id="m-adv" trigger_label="Advertencia" variant="advertencia" title="Ten en cuenta" message="Esta acción no se puede deshacer." confirm_label="Continuar" cancel_label="Volver" %}
+      </div>
+    </section>
+
+    {# Acordeón #}
+    <section aria-label="Secciones plegables">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Secciones plegables (acordeón)</h2>
+      {% include "components/accordion.html" with id="acc" items=acordeon_items numbered=True %}
+    </section>
+
+    {# Pestañas #}
+    <section aria-label="Pestañas">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Pestañas</h2>
+      <div class="rounded-xl border border-gray-200">
+        {% include "components/tabs.html" with id="tb" tabs=tabs_items %}
+      </div>
+    </section>
+
+    {# Tablas #}
+    <section aria-label="Tablas">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Tablas de datos</h2>
+      {% include "components/table.html" with columns=tabla_columns rows=tabla_rows caption="Ejemplo de tabla de datos" zebra=True %}
+    </section>
+
+    {# Paginación + Indicador de carga #}
+    <section aria-label="Paginación e indicador de carga">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Paginación e indicador de carga</h2>
+      {% include "components/pagination.html" with pages=paginas current=2 %}
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        <div class="flex items-center rounded-xl border border-gray-200 bg-white p-6">{% include "components/spinner.html" with label="Cargando…" size="md" %}</div>
+        {% include "components/spinner.html" with modal=True label="Procesando…" %}
+      </div>
+    </section>
+
+  </div>
+{% endblock %}

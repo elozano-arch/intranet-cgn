@@ -1,0 +1,29 @@
+{% comment %}
+  Componente: Aviso / Notificación (toast)  → Kit UI 9.2 (Alertas y notificaciones).
+  Colores: informativa (azul), positiva (verde), negativa (roja).
+  Accesibilidad: role=status (aria-live) para lectores de pantalla; botón de cierre.
+  Parámetros: variant (info|exito|error), title, message, time (opcional)
+{% endcomment %}
+<div role="status" data-toast
+  class="flex items-start gap-3 rounded-lg border-l-4 bg-white p-4 shadow-sm ring-1 ring-black/5
+  {% if variant == 'exito' %}border-estado-exito{% elif variant == 'error' %}border-estado-error{% else %}border-govco-cobalt{% endif %}">
+  <span class="mt-0.5 shrink-0 {% if variant == 'exito' %}text-estado-exito{% elif variant == 'error' %}text-estado-error{% else %}text-govco-cobalt{% endif %}">
+    {% if variant == 'exito' %}
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    {% elif variant == 'error' %}
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    {% else %}
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    {% endif %}
+  </span>
+  <div class="min-w-0 flex-1">
+    <div class="flex items-center justify-between gap-2">
+      <p class="font-titulo text-sm font-bold text-cgn-negro">{{ title }}</p>
+      {% if time %}<span class="shrink-0 text-xs text-cgn-grisos">{{ time }}</span>{% endif %}
+    </div>
+    {% if message %}<p class="mt-0.5 text-sm text-cgn-grisos">{{ message }}</p>{% endif %}
+  </div>
+  <button type="button" aria-label="Cerrar aviso" onclick="this.closest('[data-toast]').remove()" class="shrink-0 text-cgn-gris hover:text-cgn-negro focus:outline-none">
+    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+</div>

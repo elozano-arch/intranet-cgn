@@ -1,0 +1,51 @@
+{% comment %}
+  Componente: Pestañas  → Kit UI 9.2 (Pestañas).
+  Accesibilidad: role=tablist/tab/tabpanel, aria-selected, navegable por teclado.
+  Recomendación: máx. ~23 caracteres por pestaña; sin menús desplegables dentro.
+  Parámetros: tabs (lista de {label, body}), id (prefijo único)
+{% endcomment %}
+<div data-tabs>
+  <div role="tablist" aria-label="Pestañas" class="flex flex-wrap gap-1 border-b border-gray-200">
+    {% for t in tabs %}
+      <button type="button" role="tab" id="{{ id }}-tab-{{ forloop.counter }}"
+              aria-controls="{{ id }}-panel-{{ forloop.counter }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              class="-mb-px border-b-2 px-4 py-2.5 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt
+              {% if forloop.first %}border-govco-cobalt text-govco-cobalt{% else %}border-transparent text-cgn-negro hover:border-gray-300 hover:text-govco-cobalt{% endif %}">
+        {{ t.label }}
+      </button>
+    {% endfor %}
+  </div>
+  {% for t in tabs %}
+    <div role="tabpanel" id="{{ id }}-panel-{{ forloop.counter }}" aria-labelledby="{{ id }}-tab-{{ forloop.counter }}"
+         class="p-5 text-sm leading-relaxed text-cgn-negro {% if not forloop.first %}hidden{% endif %}">
+      {{ t.body }}
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+(function(){
+  if (window.__tabsInit) return; window.__tabsInit = true;
+  document.querySelectorAll('[data-tabs]').forEach(function(root){
+    var tabs = root.querySelectorAll('[role="tab"]');
+    function select(tab){
+      tabs.forEach(function(t){
+        var sel = t === tab;
+        t.setAttribute('aria-selected', sel);
+        t.classList.toggle('border-govco-cobalt', sel);
+        t.classList.toggle('text-govco-cobalt', sel);
+        t.classList.toggle('border-transparent', !sel);
+        t.classList.toggle('text-cgn-negro', !sel);
+        document.getElementById(t.getAttribute('aria-controls')).classList.toggle('hidden', !sel);
+      });
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener('click', function(){ select(t); });
+      t.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowRight') { (tabs[i+1]||tabs[0]).focus(); select(tabs[i+1]||tabs[0]); }
+        if (e.key === 'ArrowLeft')  { (tabs[i-1]||tabs[tabs.length-1]).focus(); select(tabs[i-1]||tabs[tabs.length-1]); }
+      });
+    });
+  });
+})();
+</script>

@@ -66,6 +66,33 @@ shutil.copytree(os.path.join(BASE, "static"), os.path.join(DIST, "static"))
 # Home
 write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio"}))
 
+# Guía de componentes (biblioteca UI) con datos de ejemplo
+COMPONENTES_CTX = {
+    "apps": [
+        {"label": "CHIP", "url": "#"}, {"label": "Correo", "url": "#"}, {"label": "SIGI", "url": "#"},
+        {"label": "Plantillas", "url": "#"}, {"label": "Calendario", "url": "#"}, {"label": "Directorio", "url": "#"},
+    ],
+    "acordeon_items": [
+        {"title": "¿Cómo accedo a los aplicativos de la CGN?", "body": "Desde el menú principal, en las secciones correspondientes, o desde los accesos rápidos de la página de inicio."},
+        {"title": "¿Dónde consulto la normativa vigente?", "body": "En la sección Normativa encontrarás los normogramas por año, desde 2015 hasta 2026 y años anteriores."},
+        {"title": "¿Cómo reporto una novedad?", "body": "Utiliza los canales de contacto disponibles en el pie de página del sitio."},
+    ],
+    "tabs_items": [
+        {"label": "Descripción", "body": "Contenido de la primera pestaña. Las pestañas organizan información relacionada sin recargar la página."},
+        {"label": "Requisitos", "body": "Contenido de la segunda pestaña con los requisitos del trámite o servicio."},
+        {"label": "Contacto", "body": "Contenido de la tercera pestaña con los datos de contacto de la dependencia."},
+    ],
+    "tabla_columns": ["Nombre", "Dependencia", "Estado"],
+    "tabla_rows": [
+        ["Solicitud 0123", "Gestión Humana", "Aprobada"],
+        ["Solicitud 0124", "Gestión Administrativa", "En trámite"],
+        ["Solicitud 0125", "Gestión Jurídica", "Pendiente"],
+        ["Solicitud 0126", "Gestión TICs", "Aprobada"],
+    ],
+    "paginas": [1, 2, 3, 4, "…", 20],
+}
+write("componentes.html", render_to_string("pages/componentes.html", {**CONTEXT, "active_nav": "", **COMPONENTES_CTX}))
+
 # Páginas de sección (plantilla genérica, datos reales del mapa del sitio)
 for label, out in SECTIONS:
     node = find_section(label) or {"label": label, "children": []}

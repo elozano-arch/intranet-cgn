@@ -1,0 +1,16 @@
+{% comment %}
+  Componente: Mensaje de ayuda emergente (Descripción emergente / tooltip)
+  → Kit UI 9.2. Aparece con hover y foco (teclado). role=tooltip.
+  Parámetros: label (texto/elemento visible), text (mensaje de ayuda), pos (top|bottom)
+{% endcomment %}
+<span class="group relative inline-flex items-center">
+  <button type="button" aria-describedby="tt-{{ text|slugify }}"
+          class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-govco-cobalt text-xs font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt focus-visible:ring-offset-2">
+    {{ label|default:'?' }}
+  </button>
+  <span role="tooltip" id="tt-{{ text|slugify }}"
+        class="pointer-events-none absolute left-1/2 z-20 w-max max-w-[220px] -translate-x-1/2 rounded-md bg-cgn-negro px-3 py-1.5 text-xs text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100
+        {% if pos == 'bottom' %}top-full mt-2{% else %}bottom-full mb-2{% endif %}">
+    {{ text }}
+  </span>
+</span>

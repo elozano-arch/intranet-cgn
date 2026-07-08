@@ -1,0 +1,24 @@
+{% comment %}
+  Componente: Tabla de datos  → Kit UI 9.2 (Tablas).
+  Encabezado con <th scope>, filas acentuadas (zebra) opcionales, leyenda opcional.
+  Responsive: la tabla se desplaza dentro de su contenedor (overflow-x) sin romper
+  el layout de la página. Números alineados a la derecha si numeric_cols lo indica.
+  Parámetros: columns (lista), rows (lista de listas), caption, zebra (bool)
+{% endcomment %}
+<div class="overflow-x-auto rounded-xl border border-gray-200">
+  <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+    {% if caption %}<caption class="border-b border-gray-200 bg-white px-4 py-3 text-left font-titulo text-sm font-bold text-cgn-negro">{{ caption }}</caption>{% endif %}
+    <thead>
+      <tr class="bg-govco-cobalt text-white">
+        {% for c in columns %}<th scope="col" class="px-4 py-3 font-bold">{{ c }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr class="border-b border-gray-100 {% if zebra and forloop.counter|divisibleby:2 %}bg-govco-smoke{% else %}bg-white{% endif %} hover:bg-govco-solitude">
+          {% for cell in row %}<td class="px-4 py-3 text-cgn-negro">{{ cell }}</td>{% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

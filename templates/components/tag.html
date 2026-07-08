@@ -1,0 +1,18 @@
+{% comment %}
+  Componente: Etiqueta  → Kit UI 9.2 (Etiquetas).
+  Informativa, de estado (éxito/pendiente/error) o de filtro (con opción de quitar).
+  Uso adecuado del color: verde=completado, amarillo=pendiente, rojo=error/urgencia.
+  Parámetros: label, variant (info|exito|pendiente|error|filtro)
+{% endcomment %}
+<span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold
+  {% if variant == 'exito' %}bg-estado-exito/12 text-estado-exito
+  {% elif variant == 'pendiente' %}bg-estado-alerta/20 text-[#8a6100]
+  {% elif variant == 'error' %}bg-estado-error/10 text-estado-error
+  {% else %}bg-govco-solitude text-govco-cobalt{% endif %}">
+  {{ label }}
+  {% if variant == 'filtro' %}
+    <button type="button" aria-label="Quitar filtro: {{ label }}" class="rounded-full text-govco-cobalt/70 hover:text-govco-cobalt focus:outline-none">
+      <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  {% endif %}
+</span>

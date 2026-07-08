@@ -1,0 +1,38 @@
+{% comment %}
+  Componente: Galería de aplicaciones  → Kit UI 9.2 (Galería de aplicaciones).
+  Botón que despliega un panel con accesos a aplicativos/servicios.
+  Accesibilidad: aria-expanded, abre con clic, cierra con Esc y clic fuera.
+  Parámetros: apps (lista de {label, url, desc})
+{% endcomment %}
+<div class="relative inline-block" data-appgallery>
+  <button type="button" data-appgallery-btn aria-expanded="false" aria-haspopup="true"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-govco-cobalt text-white hover:bg-blue-800 focus:outline-none" aria-label="Aplicaciones y servicios">
+    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z"/></svg>
+  </button>
+  <div data-appgallery-panel class="absolute right-0 z-30 mt-2 hidden w-80 max-w-[90vw] rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
+    <p class="mb-3 font-titulo text-sm font-bold text-cgn-negro">Aplicaciones y servicios</p>
+    <div class="grid grid-cols-3 gap-2">
+      {% for app in apps %}
+        <a href="{{ app.url|default:'#' }}" class="flex flex-col items-center gap-1 rounded-lg p-2 text-center hover:bg-govco-solitude focus:outline-none">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </span>
+          <span class="text-xs font-semibold text-cgn-negro">{{ app.label }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if (window.__appGalleryInit) return; window.__appGalleryInit = true;
+  document.querySelectorAll('[data-appgallery]').forEach(function(g){
+    var b = g.querySelector('[data-appgallery-btn]'), p = g.querySelector('[data-appgallery-panel]');
+    b.addEventListener('click', function(e){ e.stopPropagation();
+      var open = p.classList.toggle('hidden') === false; b.setAttribute('aria-expanded', open); });
+    document.addEventListener('click', function(e){ if(!g.contains(e.target)){ p.classList.add('hidden'); b.setAttribute('aria-expanded','false'); } });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ p.classList.add('hidden'); b.setAttribute('aria-expanded','false'); } });
+  });
+})();
+</script>

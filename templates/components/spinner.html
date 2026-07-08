@@ -1,0 +1,21 @@
+{% comment %}
+  Componente: Indicador de carga (spinner)  → Kit UI 9.2 (Indicador de carga).
+  Sin modal: sobre fondo blanco. Con modal: overlay negro con 20% de opacidad.
+  Accesibilidad: role=status + texto para lectores; si tarda >10 s, informar.
+  Parámetros: label (texto accesible), modal (bool), size ('sm'|'md'|'lg')
+{% endcomment %}
+{% if modal %}
+  <div class="relative flex h-48 items-center justify-center rounded-xl bg-white">
+    <div class="absolute inset-0 rounded-xl bg-black/20"></div>
+    <div role="status" class="relative flex flex-col items-center gap-3 rounded-lg bg-white px-8 py-6 shadow-lg">
+      <span class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-govco-solitude border-t-govco-cobalt"></span>
+      <span class="text-sm font-semibold text-cgn-negro">{{ label|default:'Cargando…' }}</span>
+    </div>
+  </div>
+{% else %}
+  <div role="status" class="inline-flex items-center gap-3">
+    <span class="inline-block animate-spin rounded-full border-govco-solitude border-t-govco-cobalt
+      {% if size == 'lg' %}h-10 w-10 border-4{% elif size == 'sm' %}h-5 w-5 border-2{% else %}h-8 w-8 border-4{% endif %}"></span>
+    <span class="text-sm text-cgn-grisos">{{ label|default:'Cargando…' }}</span>
+  </div>
+{% endif %}
