@@ -68,9 +68,13 @@
   { "label": "Publicaciones", "wide": true, "children": [
     { "label": "Revistas", "visual": "portada", "children": [
       { "label": "Le Cuento Que", "tag": "Revista", "url": "#" },
+      { "label": "Codex", "tag": "Revista", "url": "#" }
+    ]},
+    { "label": "Boletines", "visual": "portada", "children": [
       { "label": "SIINERGIA Contable", "tag": "Boletín", "url": "#" },
-      { "label": "Codex", "tag": "Revista", "url": "#" },
-      { "label": "Coworking", "tag": "Boletín", "url": "#" },
+      { "label": "Coworking", "tag": "Boletín", "url": "#" }
+    ]},
+    { "label": "Otras publicaciones", "visual": "portada", "children": [
       { "label": "Videos CGN", "tag": "Videos", "url": "#" },
       { "label": "Presentaciones del Contador General", "tag": "Presentación", "url": "#" },
       { "label": "Condecoraciones CGN", "tag": "Galería", "url": "#" }
