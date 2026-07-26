@@ -45,15 +45,29 @@
         </div>
 
         {% if grupo.visual == 'portada' %}
-          {% comment %} Galería de portadas: tamaño consistente y alineación pareja
-            (bookshelf), sin columnas vacías reservadas. De 2 (móvil) a 4 (desktop). {% endcomment %}
+          {% comment %} Portadas a la izquierda (tamaño consistente) + panel de la
+            categoría que llena el espacio sobrante a la derecha. En móvil el panel
+            pasa debajo. Pensado para pocas piezas que no crecerán. {% endcomment %}
           <div class="flex flex-wrap gap-6">
             {% for it in grupo.children %}
               {% cycle 'verde' 'cobalt' 'naranja' 'gris' as cc silent %}
-              <div class="w-[calc(50%-0.75rem)] sm:w-56 lg:w-64">
+              <div class="w-[calc(50%-0.75rem)] shrink-0 sm:w-52 lg:w-60">
                 {% include "components/cover.html" with title=it.label url=it.url|default:'#' color=cc tag=it.tag|default:'Publicación' icon=it.icon %}
               </div>
             {% endfor %}
+            {% if grupo.desc %}
+              <div class="flex min-w-full flex-1 flex-col justify-center rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-8 sm:min-w-[16rem]">
+                <span class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white text-govco-cobalt shadow-sm">
+                  {% include "components/icon.html" with name=grupo.icon|default:'doctrina' class="h-6 w-6" %}
+                </span>
+                <h3 class="font-titulo text-xl font-bold text-cgn-negro">{{ grupo.label }}</h3>
+                <p class="mt-2 max-w-md text-sm leading-relaxed text-cgn-grisos">{{ grupo.desc }}</p>
+                <a href="{{ grupo.url|default:'#' }}" class="mt-5 inline-flex w-fit items-center gap-1 text-sm font-bold text-govco-cobalt hover:gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-govco-cobalt">
+                  Ver todas
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+              </div>
+            {% endif %}
           </div>
         {% else %}
           {# Tarjetas; si el ítem tiene hijos (p. ej. GIT), se listan dentro #}
