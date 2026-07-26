@@ -3,7 +3,9 @@
   Kit UI 9.2 — Tarjeta de información / Galería de aplicaciones.
   Restricciones (doc): título máx. 2 líneas, texto 2–3 líneas, UNA acción por card.
   Toda la tarjeta es el enlace (CTA). Ícono dentro de un rombo (motivo CGN).
-  Parámetros: title, text, url, icon (svg path d), color ('verde'|'naranja'|'cobalt')
+  Parámetros: title, text, url, color ('verde'|'naranja'|'cobalt'),
+    icon_name (nombre del set components/icon.html — preferido) o
+    icon (svg path d, alternativa heredada).
 {% endcomment %}
 <a href="{{ url|default:'#' }}"
    class="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl focus:outline-none">
@@ -16,9 +18,10 @@
     {% if color == 'naranja' %}bg-cgn-naranja/12 text-cgn-naranja group-hover:bg-cgn-naranja group-hover:text-white
     {% elif color == 'cobalt' %}bg-govco-solitude text-govco-cobalt group-hover:bg-govco-cobalt group-hover:text-white
     {% else %}bg-cgn-verde/12 text-cgn-verde group-hover:bg-cgn-verde group-hover:text-white{% endif %}">
-    <svg class="h-6 w-6 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    {% if icon_name %}{% include "components/icon.html" with name=icon_name class="h-6 w-6 -rotate-45" %}
+    {% else %}<svg class="h-6 w-6 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ icon|default:'M13 10V3L4 14h7v7l9-11h-7z' }}"/>
-    </svg>
+    </svg>{% endif %}
   </span>
 
   <h3 class="font-titulo text-lg font-bold leading-snug text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</h3>

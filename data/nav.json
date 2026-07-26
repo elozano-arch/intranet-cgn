@@ -1,30 +1,30 @@
 [
   { "label": "Inicio", "url": "/" },
-  { "label": "En Casa", "children": [
-    { "label": "PIC · Plan Institucional de Capacitación", "url": "#" },
-    { "label": "Manual de Identidad Visual Corporativa", "url": "#" },
-    { "label": "Manual de Políticas Contables", "url": "#" },
-    { "label": "Manual de Estilo de la CGN", "url": "manual-estilo.html" },
-    { "label": "Comisión de personal", "url": "#" },
-    { "label": "Evaluación de desempeño", "url": "#" },
-    { "label": "Nombramientos", "url": "#" }
+  { "label": "En Casa", "icon": "casa", "children": [
+    { "label": "PIC · Plan Institucional de Capacitación", "icon": "capacitacion", "url": "#" },
+    { "label": "Manual de Identidad Visual Corporativa", "icon": "identidad", "url": "#" },
+    { "label": "Manual de Políticas Contables", "icon": "documento", "url": "#" },
+    { "label": "Manual de Estilo de la CGN", "icon": "estilo", "url": "manual-estilo.html" },
+    { "label": "Comisión de personal", "icon": "personas", "url": "#" },
+    { "label": "Evaluación de desempeño", "icon": "evaluacion", "url": "#" },
+    { "label": "Nombramientos", "icon": "nombramiento", "url": "#" }
   ]},
-  { "label": "Normativa", "wide": true, "children": [
-    { "label": "Normograma 2026", "url": "#" },
-    { "label": "Normograma 2025", "url": "#" },
-    { "label": "Normograma 2024", "url": "#" },
-    { "label": "Normograma 2023", "url": "#" },
-    { "label": "Normograma 2022", "url": "#" },
-    { "label": "Normograma 2021", "url": "#" },
-    { "label": "Normograma 2020", "url": "#" },
-    { "label": "Normograma 2019", "url": "#" },
-    { "label": "Normograma 2018", "url": "#" },
-    { "label": "Normograma 2017", "url": "#" },
-    { "label": "Normograma 2016", "url": "#" },
-    { "label": "Normograma 2015", "url": "#" },
-    { "label": "Años anteriores", "url": "#" }
+  { "label": "Normativa", "icon": "normativa", "wide": true, "children": [
+    { "label": "Normograma 2026", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2025", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2024", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2023", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2022", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2021", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2020", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2019", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2018", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2017", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2016", "icon": "normativa", "url": "#" },
+    { "label": "Normograma 2015", "icon": "normativa", "url": "#" },
+    { "label": "Años anteriores", "icon": "documento", "url": "#" }
   ]},
-  { "label": "Procesos", "wide": true, "children": [
+  { "label": "Procesos", "icon": "plantillas", "wide": true, "children": [
     { "label": "Procesos estratégicos", "children": [
       { "label": "Planeación", "url": "#" },
       { "label": "Comunicación Pública", "url": "#" }
@@ -56,38 +56,38 @@
       { "label": "Control y Evaluación", "url": "#" }
     ]}
   ]},
-  { "label": "SIGI", "children": [
-    { "label": "Sistema de Gestión de Calidad (SGC)", "url": "#" },
-    { "label": "Sistema de Gestión Ambiental (SGA)", "url": "#" },
-    { "label": "Seguridad y Salud en el Trabajo (SG-SST)", "url": "#" },
-    { "label": "Seguridad de la Información (SGSI)", "url": "#" }
+  { "label": "SIGI", "icon": "calidad", "children": [
+    { "label": "Sistema de Gestión de Calidad (SGC)", "icon": "calidad", "url": "#" },
+    { "label": "Sistema de Gestión Ambiental (SGA)", "icon": "ambiental", "url": "#" },
+    { "label": "Seguridad y Salud en el Trabajo (SG-SST)", "icon": "sst", "url": "#" },
+    { "label": "Seguridad de la Información (SGSI)", "icon": "seguridad", "url": "#" }
   ]},
-  { "label": "Comités", "children": [
-    { "label": "Comité de Convivencia Laboral", "url": "#" },
-    { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "url": "#" }
+  { "label": "Comités", "icon": "personas", "children": [
+    { "label": "Comité de Convivencia Laboral", "icon": "personas", "url": "#" },
+    { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "icon": "sst", "url": "#" }
   ]},
-  { "label": "Publicaciones", "wide": true, "children": [
+  { "label": "Publicaciones", "icon": "doctrina", "wide": true, "children": [
     { "label": "Revistas", "visual": "portada", "children": [
-      { "label": "Le Cuento Que", "tag": "Revista", "url": "#" },
-      { "label": "Codex", "tag": "Revista", "url": "#" }
+      { "label": "Le Cuento Que", "tag": "Revista", "icon": "revista", "url": "#" },
+      { "label": "Codex", "tag": "Revista", "icon": "revista", "url": "#" }
     ]},
     { "label": "Boletines", "visual": "portada", "children": [
-      { "label": "SIINERGIA Contable", "tag": "Boletín", "url": "#" },
-      { "label": "Coworking", "tag": "Boletín", "url": "#" }
+      { "label": "SIINERGIA Contable", "tag": "Boletín", "icon": "boletin", "url": "#" },
+      { "label": "Coworking", "tag": "Boletín", "icon": "boletin", "url": "#" }
     ]},
     { "label": "Otras publicaciones", "visual": "portada", "children": [
-      { "label": "Videos CGN", "tag": "Videos", "url": "#" },
-      { "label": "Presentaciones del Contador General", "tag": "Presentación", "url": "#" },
-      { "label": "Condecoraciones CGN", "tag": "Galería", "url": "#" }
+      { "label": "Videos CGN", "tag": "Videos", "icon": "video", "url": "#" },
+      { "label": "Presentaciones del Contador General", "tag": "Presentación", "icon": "presentacion", "url": "#" },
+      { "label": "Condecoraciones CGN", "tag": "Galería", "icon": "premio", "url": "#" }
     ]},
-    { "label": "Doctrina al Día", "url": "#" },
-    { "label": "Matriz de Publicaciones", "url": "#" }
+    { "label": "Doctrina al Día", "icon": "doctrina", "url": "#" },
+    { "label": "Matriz de Publicaciones", "icon": "matriz", "url": "#" }
   ]},
-  { "label": "Recursos", "children": [
-    { "label": "Plantillas", "url": "#" },
-    { "label": "Calendario de Eventos", "url": "#" },
-    { "label": "Clasificados", "url": "#" },
-    { "label": "SINTRA-CGN", "url": "#" },
-    { "label": "Mapa de sitio", "url": "#" }
+  { "label": "Recursos", "icon": "plantillas", "children": [
+    { "label": "Plantillas", "icon": "plantillas", "url": "#" },
+    { "label": "Calendario de Eventos", "icon": "calendario", "url": "#" },
+    { "label": "Clasificados", "icon": "clasificados", "url": "#" },
+    { "label": "SINTRA-CGN", "icon": "personas", "url": "#" },
+    { "label": "Mapa de sitio", "icon": "mapa", "url": "#" }
   ]}
 ]

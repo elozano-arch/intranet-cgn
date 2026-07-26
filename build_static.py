@@ -114,10 +114,10 @@ for label, out in SECTIONS:
 
 # Página "Manual de Estilo de la CGN" (nuevo espacio de la intranet)
 _manual_estilo = {"label": "Manual de Estilo de la CGN", "children": [
-    {"label": "Presentación", "url": "#"},
-    {"label": "Principios de escritura", "url": "#"},
-    {"label": "Tono y voz institucional", "url": "#"},
-    {"label": "Capacitaciones", "url": "#"},
+    {"label": "Presentación", "icon": "doctrina", "url": "#"},
+    {"label": "Principios de escritura", "icon": "estilo", "url": "#"},
+    {"label": "Tono y voz institucional", "icon": "identidad", "url": "#"},
+    {"label": "Capacitaciones", "icon": "capacitacion", "url": "#"},
 ]}
 write("manual-estilo.html", render_to_string("pages/seccion.html", {
     **CONTEXT, "active_nav": "En Casa", "seccion": _manual_estilo,
