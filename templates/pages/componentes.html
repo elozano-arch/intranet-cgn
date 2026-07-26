@@ -94,5 +94,50 @@
       </div>
     </section>
 
+    {# Indicador de pasos #}
+    <section aria-label="Indicador de pasos">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Indicador de pasos</h2>
+      {% include "components/stepper.html" with steps=pasos current=2 %}
+    </section>
+
+    {# Campos de texto y estados #}
+    <section aria-label="Campos de texto">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Campos de texto</h2>
+      <div class="grid gap-5 sm:grid-cols-3">
+        {% include "components/input.html" with id="d-1" label="Campo básico" placeholder="Escribe aquí" help="Texto de ayuda." %}
+        {% include "components/input.html" with id="d-2" label="Correo válido" type="email" value="correo@contaduria.gov.co" state="valid" valid_msg="Correo válido." %}
+        {% include "components/input.html" with id="d-3" label="Con error" value="texto" state="invalid" error="Este campo es obligatorio." required=True %}
+      </div>
+    </section>
+
+    {# Opciones de selección, listas y archivos #}
+    <section aria-label="Formularios">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Opciones de selección, listas y archivos</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="space-y-3">
+          {% include "components/choice.html" with type="checkbox" id="c-1" name="c1" label="Casilla de verificación" checked=True %}
+          {% include "components/choice.html" with type="radio" id="r-1" name="r" label="Botón de opción" checked=True %}
+          {% include "components/choice.html" with type="switch" id="s-1" name="s1" label="Interruptor" checked=True %}
+        </div>
+        <div class="space-y-5">
+          {% include "components/select.html" with id="sel-1" label="Lista desplegable" options=opciones_demo placeholder="Escoger…" %}
+          {% include "components/input.html" with id="cal-1" label="Calendario (fecha)" type="date" %}
+          {% include "components/file_upload.html" with id="fu-1" label="Subir archivo" %}
+        </div>
+      </div>
+    </section>
+
+    {# Área de ayuda del trámite #}
+    <section aria-label="Área de ayuda">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Área de ayuda del trámite</h2>
+      {% include "components/service_area.html" %}
+    </section>
+
+    {# Inicio de sesión #}
+    <section aria-label="Inicio de sesión">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Inicio de sesión</h2>
+      {% include "components/login.html" %}
+    </section>
+
   </div>
 {% endblock %}

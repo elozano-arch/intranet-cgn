@@ -1355,6 +1355,314 @@
       </div>
     </section>
 
+    
+    <section aria-label="Indicador de pasos">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Indicador de pasos</h2>
+      
+<ol class="flex items-center gap-2">
+  
+    <li class="flex flex-1 items-center gap-2 after:h-0.5 after:flex-1 after:rounded after:bg-estado-exito"
+        >
+      <span class="flex items-center gap-2">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold
+          bg-estado-exito text-white">
+          <span aria-hidden="true">✓</span><span class="sr-only">Completado:</span>
+        </span>
+        <span class="hidden text-sm md:inline text-cgn-grisos">Inicio</span>
+      </span>
+    </li>
+  
+    <li class="flex flex-1 items-center gap-2 after:h-0.5 after:flex-1 after:rounded after:bg-gray-200"
+        aria-current="step">
+      <span class="flex items-center gap-2">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold
+          bg-govco-cobalt text-white">
+          2
+        </span>
+        <span class="hidden text-sm md:inline font-bold text-cgn-negro">Confirmar identidad</span>
+      </span>
+    </li>
+  
+    <li class="flex flex-1 items-center gap-2 after:h-0.5 after:flex-1 after:rounded after:bg-gray-200"
+        >
+      <span class="flex items-center gap-2">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold
+          bg-gray-200 text-cgn-grisos">
+          3
+        </span>
+        <span class="hidden text-sm md:inline text-cgn-grisos">Generar solicitud</span>
+      </span>
+    </li>
+  
+    <li class="flex flex-1 items-center gap-2 "
+        >
+      <span class="flex items-center gap-2">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold
+          bg-gray-200 text-cgn-grisos">
+          4
+        </span>
+        <span class="hidden text-sm md:inline text-cgn-grisos">Datos adicionales</span>
+      </span>
+    </li>
+  
+</ol>
+
+    </section>
+
+    
+    <section aria-label="Campos de texto">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Campos de texto</h2>
+      <div class="grid gap-5 sm:grid-cols-3">
+        
+<div>
+  <label for="d-1" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Campo básico
+  </label>
+  <input type="text" id="d-1" name="d-1"
+         value="" placeholder="Escribe aquí"
+         
+         
+         aria-describedby="d-1-msg"
+         
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         border-gray-300 focus:border-govco-cobalt focus:ring-govco-cobalt/40">
+  
+    <p id="d-1-msg" class="mt-1 text-xs text-cgn-grisos">Texto de ayuda.</p>
+  
+</div>
+
+        
+<div>
+  <label for="d-2" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Correo válido
+  </label>
+  <input type="email" id="d-2" name="d-2"
+         value="correo@contaduria.gov.co" placeholder=""
+         
+         
+         aria-describedby="d-2-msg"
+         
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         border-estado-exito focus:ring-estado-exito/40
+         ">
+  
+    <p id="d-2-msg" class="mt-1 text-xs text-cgn-verdeos">Correo válido.</p>
+  
+</div>
+
+        
+<div>
+  <label for="d-3" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Con error <span class="text-estado-error" aria-hidden="true">*</span>
+  </label>
+  <input type="text" id="d-3" name="d-3"
+         value="texto" placeholder=""
+         required aria-required="true"
+         
+         aria-describedby="d-3-msg"
+         aria-invalid="true"
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         border-estado-error focus:ring-estado-error/40
+         ">
+  
+    <p id="d-3-msg" class="mt-1 text-xs text-estado-error">Este campo es obligatorio.</p>
+  
+</div>
+
+      </div>
+    </section>
+
+    
+    <section aria-label="Formularios">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Opciones de selección, listas y archivos</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="space-y-3">
+          
+
+  <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-cgn-negro ">
+    <input type="checkbox" name="c1" id="c-1" checked 
+           class="h-4 w-4 border-gray-300 accent-govco-cobalt focus-visible:ring-2 focus-visible:ring-govco-cobalt rounded">
+    Casilla de verificación
+  </label>
+
+
+          
+
+  <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-cgn-negro ">
+    <input type="radio" name="r" id="r-1" checked 
+           class="h-4 w-4 border-gray-300 accent-govco-cobalt focus-visible:ring-2 focus-visible:ring-govco-cobalt rounded-full">
+    Botón de opción
+  </label>
+
+
+          
+
+  <label class="inline-flex cursor-pointer items-center gap-3 ">
+    <input type="checkbox" role="switch" class="peer sr-only" name="s1" id="s-1" checked >
+    <span class="relative h-6 w-11 rounded-full bg-gray-300 transition after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition peer-checked:bg-govco-cobalt peer-checked:after:translate-x-5 peer-focus-visible:ring-2 peer-focus-visible:ring-govco-cobalt peer-focus-visible:ring-offset-2"></span>
+    <span class="text-sm text-cgn-negro">Interruptor</span>
+  </label>
+
+
+        </div>
+        <div class="space-y-5">
+          
+<div>
+  <label for="sel-1" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Lista desplegable
+  </label>
+  <select id="sel-1" name="sel-1"  
+          class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-sm text-cgn-negro focus:border-govco-cobalt focus:outline-none focus:ring-2 focus:ring-govco-cobalt/40">
+    <option value="">Escoger…</option>
+    <option>Opción 1</option><option>Opción 2</option><option>Opción 3</option>
+  </select>
+  
+</div>
+
+          
+<div>
+  <label for="cal-1" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Calendario (fecha)
+  </label>
+  <input type="date" id="cal-1" name="cal-1"
+         value="" placeholder=""
+         
+         
+         
+         
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         border-gray-300 focus:border-govco-cobalt focus:ring-govco-cobalt/40">
+  
+</div>
+
+          
+<div data-fileupload>
+  <span class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Subir archivo
+  </span>
+  <div class="flex flex-wrap items-center gap-3 rounded-md border border-dashed border-gray-300 p-3">
+    <label class="cursor-pointer rounded-md bg-govco-cobalt px-4 py-2 text-sm font-bold text-white hover:bg-blue-800 focus-within:ring-2 focus-within:ring-govco-cobalt focus-within:ring-offset-2">
+      Seleccionar archivo
+      <input type="file" id="fu-1" class="sr-only" data-file-input   aria-describedby="fu-1-help">
+    </label>
+    <span class="text-sm text-cgn-grisos" data-file-name aria-live="polite">Sin archivo seleccionado</span>
+  </div>
+  <p id="fu-1-help" class="mt-1 text-xs text-cgn-grisos">Cualquier tipo de archivo. Peso máximo: 2 MB.</p>
+</div>
+
+<script>
+(function(){
+  if (window.__fileUploadInit) return; window.__fileUploadInit = true;
+  document.addEventListener('change', function(e){
+    var input = e.target.closest('[data-file-input]'); if(!input) return;
+    var box = input.closest('[data-fileupload]');
+    var name = box.querySelector('[data-file-name]');
+    name.textContent = input.files && input.files.length ? input.files[0].name : 'Sin archivo seleccionado';
+  });
+})();
+</script>
+
+        </div>
+      </div>
+    </section>
+
+    
+    <section aria-label="Área de ayuda">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Área de ayuda del trámite</h2>
+      
+<div class="grid gap-5 md:grid-cols-2">
+  
+  <div class="rounded-xl border border-gray-200 bg-white p-5">
+    <h3 class="font-titulo text-base font-bold text-cgn-negro">¿Cómo fue tu experiencia durante el proceso?</h3>
+    <div class="mt-4 flex gap-3">
+      <button type="button" class="inline-flex items-center gap-2 rounded-md border-2 border-estado-exito px-4 py-2 text-sm font-bold text-cgn-verdeos hover:bg-estado-exito/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-estado-exito">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        Fácil
+      </button>
+      <button type="button" class="inline-flex items-center gap-2 rounded-md border-2 border-estado-error px-4 py-2 text-sm font-bold text-estado-error hover:bg-estado-error/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-estado-error">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zm7-13h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+        Difícil
+      </button>
+    </div>
+  </div>
+  
+  <div class="rounded-xl border border-gray-200 bg-white p-5">
+    <h3 class="font-titulo text-base font-bold text-cgn-negro">¿Tienes dudas sobre este trámite?</h3>
+    <ul class="mt-4 space-y-2 text-sm">
+      <li class="flex items-center gap-2 text-cgn-grisos"><svg class="h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11 11 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>(601) 492 64 00</li>
+      <li><a href="mailto:contactenos@contaduria.gov.co" class="flex items-center gap-2 font-semibold text-govco-cobalt hover:underline"><svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Enviar correo electrónico</a></li>
+      <li><a href="#" class="flex items-center gap-2 font-semibold text-govco-cobalt hover:underline"><svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>Te explicamos con tutoriales</a></li>
+    </ul>
+  </div>
+</div>
+
+    </section>
+
+    
+    <section aria-label="Inicio de sesión">
+      <h2 class="mb-4 border-b-2 border-cgn-verde pb-2 font-titulo text-xl font-bold text-cgn-negro">Inicio de sesión</h2>
+      
+<div class="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm" data-login>
+  <h2 class="font-titulo text-xl font-bold text-cgn-negro">Inicio de sesión</h2>
+
+  <div class="mt-4 grid grid-cols-2 gap-1 rounded-lg bg-govco-smoke p-1" role="tablist" aria-label="Tipo de persona">
+    <button type="button" role="tab" aria-selected="true" data-login-tab
+            class="rounded-md px-3 py-2 text-sm font-bold text-govco-cobalt aria-selected:bg-white aria-selected:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt">Persona natural</button>
+    <button type="button" role="tab" aria-selected="false" data-login-tab
+            class="rounded-md px-3 py-2 text-sm font-bold text-cgn-grisos aria-selected:bg-white aria-selected:text-govco-cobalt aria-selected:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt">Persona jurídica</button>
+  </div>
+
+  <p class="mt-3 text-xs text-cgn-grisos">Los campos marcados con <span class="text-estado-error" aria-hidden="true">*</span> son obligatorios</p>
+
+  <form class="mt-3 space-y-4" action="#" method="post">
+    <div>
+      <label for="login-tipo" class="mb-1 block text-sm font-semibold text-cgn-negro">Tipo de acceso <span class="text-estado-error" aria-hidden="true">*</span></label>
+      <select id="login-tipo" name="tipo" required class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-sm text-cgn-negro focus:border-govco-cobalt focus:outline-none focus:ring-2 focus:ring-govco-cobalt/40">
+        <option value="">Escoger…</option>
+        <option>Cédula de ciudadanía</option>
+        <option>Cédula de extranjería</option>
+        <option>Correo electrónico</option>
+      </select>
+    </div>
+    
+<div>
+  <label for="login-num" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    Número de identificación <span class="text-estado-error" aria-hidden="true">*</span>
+  </label>
+  <input type="text" id="login-num" name="login-num"
+         value="" placeholder="Ingresa tu número"
+         required aria-required="true"
+         
+         
+         
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         border-gray-300 focus:border-govco-cobalt focus:ring-govco-cobalt/40">
+  
+</div>
+
+    <button type="submit" class="w-full rounded-md bg-govco-cobalt px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt focus-visible:ring-offset-2">Iniciar sesión</button>
+  </form>
+
+  <div class="mt-4 flex flex-col gap-1 text-sm">
+    <a href="#" class="text-govco-cobalt hover:underline">Olvidé mi contraseña</a>
+    <span class="text-cgn-grisos">¿No tienes cuenta? <a href="#" class="font-semibold text-govco-cobalt hover:underline">Regístrate aquí</a></span>
+  </div>
+</div>
+
+<script>
+(function(){
+  if (window.__loginInit) return; window.__loginInit = true;
+  document.querySelectorAll('[data-login]').forEach(function(box){
+    var tabs = box.querySelectorAll('[data-login-tab]');
+    tabs.forEach(function(t){ t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected', x===t); });
+    });});
+  });
+})();
+</script>
+
+    </section>
+
   </div>
 
   </main>

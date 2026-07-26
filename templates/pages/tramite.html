@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% comment %}
+  Página de trámite (ejemplo). Integra el indicador de pasos, los formularios
+  (campos, selección, listas, subir archivos) y el área de ayuda del trámite.
+{% endcomment %}
+{% block title %}Trámite · Intranet Contaduría General de la Nación{% endblock %}
+{% block breadcrumb %}{% include "components/breadcrumb.html" with current="Trámite de ejemplo" %}{% endblock %}
+
+{% block content %}
+  <header class="relative overflow-hidden bg-gradient-to-r from-cgn-verdehondo to-cgn-verdeos">
+    <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-wide text-white ring-1 ring-white/20">
+        <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>Trámite
+      </span>
+      <h1 class="font-titulo text-3xl font-bold text-white md:text-4xl">Radicar una solicitud</h1>
+    </div>
+    <div class="h-1.5 w-full bg-hacienda"></div>
+  </header>
+
+  <div class="mx-auto max-w-3xl space-y-10 px-4 py-12">
+
+    {# Indicador de pasos #}
+    {% include "components/stepper.html" with steps=pasos current=2 %}
+
+    {# Formulario #}
+    <form action="#" method="post" class="space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div>
+        <h2 class="font-titulo text-lg font-bold text-cgn-negro">Información de contacto</h2>
+        <p class="mt-1 text-xs text-cgn-grisos">Los campos marcados con <span class="text-estado-error" aria-hidden="true">*</span> son obligatorios.</p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "components/select.html" with id="t-tipo" label="Tipo de documento" options=tipos_doc placeholder="Escoger…" required=True %}
+        {% include "components/input.html" with id="t-num" label="Número de documento" type="text" placeholder="Ingresa tu número" required=True %}
+        {% include "components/input.html" with id="t-nom" label="Nombres" type="text" placeholder="Ejemplo: María" required=True %}
+        {% include "components/input.html" with id="t-ape" label="Apellidos" type="text" placeholder="Ejemplo: Rodríguez" required=True %}
+        {% include "components/input.html" with id="t-cor" label="Correo electrónico" type="email" placeholder="correo@contaduria.gov.co" help="Te notificaremos el avance a este correo." required=True %}
+        {% include "components/input.html" with id="t-fecha" label="Fecha de la solicitud" type="date" %}
+      </div>
+
+      <fieldset>
+        <legend class="mb-2 text-sm font-semibold text-cgn-negro">¿Tienes algún tipo de discapacidad?</legend>
+        <div class="flex flex-wrap gap-6">
+          {% include "components/choice.html" with type="radio" name="discapacidad" id="disc-si" label="Sí" %}
+          {% include "components/choice.html" with type="radio" name="discapacidad" id="disc-no" label="No" checked=True %}
+        </div>
+      </fieldset>
+
+      {% include "components/file_upload.html" with id="t-doc" label="Documento de soporte" help="PDF o imagen. Peso máximo: 2 MB." %}
+
+      <div class="space-y-3 border-t border-gray-100 pt-4">
+        {% include "components/choice.html" with type="checkbox" name="terminos" id="t-ter" label="Acepto los términos y el tratamiento de datos personales." %}
+        {% include "components/choice.html" with type="switch" name="notif" id="t-notif" label="Deseo recibir notificaciones por correo." checked=True %}
+      </div>
+
+      <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+        <a href="#" class="rounded-md border-2 border-govco-cobalt px-6 py-2.5 text-center text-sm font-bold text-govco-cobalt hover:bg-govco-solitude">Volver</a>
+        <button type="submit" class="rounded-md bg-govco-cobalt px-6 py-2.5 text-sm font-bold text-white hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt focus-visible:ring-offset-2">Continuar</button>
+      </div>
+    </form>
+
+    {# Área de ayuda del trámite #}
+    <section aria-label="Ayuda del trámite">
+      <h2 class="mb-4 font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
+      {% include "components/service_area.html" %}
+    </section>
+
+  </div>
+{% endblock %}

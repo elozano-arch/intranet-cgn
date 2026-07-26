@@ -1,0 +1,30 @@
+{% comment %}
+  Componente: Campo de texto (Entradas de texto)  → Kit UI 9.2.
+  Tipos: text, email, tel, password, number, date. Estados: default, valid, invalid.
+  Accesibilidad: <label for>, aria-invalid y aria-describedby para ayuda/errores;
+  indica campos obligatorios con * y explica el asterisco cerca del formulario.
+  Parámetros: id, label, type, name, placeholder, value, help, error, valid_msg,
+              state (valid|invalid), required, maxlength
+{% endcomment %}
+<div>
+  <label for="{{ id }}" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    {{ label }}{% if required %} <span class="text-estado-error" aria-hidden="true">*</span>{% endif %}
+  </label>
+  <input type="{{ type|default:'text' }}" id="{{ id }}" name="{{ name|default:id }}"
+         value="{{ value|default:'' }}" placeholder="{{ placeholder }}"
+         {% if required %}required aria-required="true"{% endif %}
+         {% if maxlength %}maxlength="{{ maxlength }}"{% endif %}
+         {% if help or error or valid_msg %}aria-describedby="{{ id }}-msg"{% endif %}
+         {% if state == 'invalid' %}aria-invalid="true"{% endif %}
+         class="w-full rounded-md border px-4 py-2.5 text-sm text-cgn-negro placeholder:text-cgn-gris focus:outline-none focus:ring-2
+         {% if state == 'invalid' %}border-estado-error focus:ring-estado-error/40
+         {% elif state == 'valid' %}border-estado-exito focus:ring-estado-exito/40
+         {% else %}border-gray-300 focus:border-govco-cobalt focus:ring-govco-cobalt/40{% endif %}">
+  {% if state == 'invalid' and error %}
+    <p id="{{ id }}-msg" class="mt-1 text-xs text-estado-error">{{ error }}</p>
+  {% elif state == 'valid' and valid_msg %}
+    <p id="{{ id }}-msg" class="mt-1 text-xs text-cgn-verdeos">{{ valid_msg }}</p>
+  {% elif help %}
+    <p id="{{ id }}-msg" class="mt-1 text-xs text-cgn-grisos">{{ help }}</p>
+  {% endif %}
+</div>

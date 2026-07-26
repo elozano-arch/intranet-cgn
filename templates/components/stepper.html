@@ -1,0 +1,20 @@
+{% comment %}
+  Componente: Indicador de pasos (Línea de avance)  → Kit UI 9.2.
+  Muestra en qué paso del trámite va el usuario. Accesibilidad: <ol>, aria-current
+  en el paso actual; el número/estado no se transmite solo por color (usa ✓ y texto).
+  Parámetros: steps (lista de nombres), current (número de paso, 1-based)
+{% endcomment %}
+<ol class="flex items-center gap-2">
+  {% for s in steps %}
+    <li class="flex flex-1 items-center gap-2 {% if not forloop.last %}after:h-0.5 after:flex-1 after:rounded {% if forloop.counter < current %}after:bg-estado-exito{% else %}after:bg-gray-200{% endif %}{% endif %}"
+        {% if forloop.counter == current %}aria-current="step"{% endif %}>
+      <span class="flex items-center gap-2">
+        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold
+          {% if forloop.counter < current %}bg-estado-exito text-white{% elif forloop.counter == current %}bg-govco-cobalt text-white{% else %}bg-gray-200 text-cgn-grisos{% endif %}">
+          {% if forloop.counter < current %}<span aria-hidden="true">✓</span><span class="sr-only">Completado:</span>{% else %}{{ forloop.counter }}{% endif %}
+        </span>
+        <span class="hidden text-sm md:inline {% if forloop.counter == current %}font-bold text-cgn-negro{% else %}text-cgn-grisos{% endif %}">{{ s }}</span>
+      </span>
+    </li>
+  {% endfor %}
+</ol>

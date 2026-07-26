@@ -1,0 +1,31 @@
+{% comment %}
+  Componente: Carga de archivos  → Kit UI 9.2 (Carga de archivos).
+  Indica tipos aceptados y peso máximo; informa el archivo seleccionado.
+  Accesibilidad: input de archivo con etiqueta asociada; instrucciones claras.
+  Parámetros: id, label, help, required, accept
+{% endcomment %}
+<div data-fileupload>
+  <span class="mb-1 block text-sm font-semibold text-cgn-negro">
+    {{ label|default:'Adjuntar archivo' }}{% if required %} <span class="text-estado-error" aria-hidden="true">*</span>{% endif %}
+  </span>
+  <div class="flex flex-wrap items-center gap-3 rounded-md border border-dashed border-gray-300 p-3">
+    <label class="cursor-pointer rounded-md bg-govco-cobalt px-4 py-2 text-sm font-bold text-white hover:bg-blue-800 focus-within:ring-2 focus-within:ring-govco-cobalt focus-within:ring-offset-2">
+      Seleccionar archivo
+      <input type="file" id="{{ id|default:'archivo' }}" class="sr-only" data-file-input {% if accept %}accept="{{ accept }}"{% endif %} {% if required %}required{% endif %} aria-describedby="{{ id|default:'archivo' }}-help">
+    </label>
+    <span class="text-sm text-cgn-grisos" data-file-name aria-live="polite">Sin archivo seleccionado</span>
+  </div>
+  <p id="{{ id|default:'archivo' }}-help" class="mt-1 text-xs text-cgn-grisos">{{ help|default:'Cualquier tipo de archivo. Peso máximo: 2 MB.' }}</p>
+</div>
+
+<script>
+(function(){
+  if (window.__fileUploadInit) return; window.__fileUploadInit = true;
+  document.addEventListener('change', function(e){
+    var input = e.target.closest('[data-file-input]'); if(!input) return;
+    var box = input.closest('[data-fileupload]');
+    var name = box.querySelector('[data-file-name]');
+    name.textContent = input.files && input.files.length ? input.files[0].name : 'Sin archivo seleccionado';
+  });
+})();
+</script>

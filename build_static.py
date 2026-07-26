@@ -90,8 +90,17 @@ COMPONENTES_CTX = {
         ["Solicitud 0126", "Gestión TICs", "Aprobada"],
     ],
     "paginas": [1, 2, 3, 4, "…", 20],
+    "pasos": ["Inicio", "Confirmar identidad", "Generar solicitud", "Datos adicionales"],
+    "opciones_demo": ["Opción 1", "Opción 2", "Opción 3"],
 }
 write("componentes.html", render_to_string("pages/componentes.html", {**CONTEXT, "active_nav": "", **COMPONENTES_CTX}))
+
+# Página de trámite (ejemplo) — integra pasos + formularios + área de ayuda
+write("tramite.html", render_to_string("pages/tramite.html", {
+    **CONTEXT, "active_nav": "",
+    "pasos": ["Inicio", "Confirmar identidad", "Generar solicitud", "Datos adicionales"],
+    "tipos_doc": ["Cédula de ciudadanía", "Cédula de extranjería", "Tarjeta de identidad", "Pasaporte"],
+}))
 
 # Páginas de sección (plantilla genérica, datos reales del mapa del sitio)
 for label, out in SECTIONS:

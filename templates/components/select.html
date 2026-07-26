@@ -1,0 +1,17 @@
+{% comment %}
+  Componente: Lista desplegable (Desplegables)  → Kit UI 9.2.
+  Para calendario usar el campo de texto (input.html) con type="date".
+  Accesibilidad: <label for>, ayuda con aria-describedby.
+  Parámetros: id, label, name, options (lista), placeholder, help, required
+{% endcomment %}
+<div>
+  <label for="{{ id }}" class="mb-1 block text-sm font-semibold text-cgn-negro">
+    {{ label }}{% if required %} <span class="text-estado-error" aria-hidden="true">*</span>{% endif %}
+  </label>
+  <select id="{{ id }}" name="{{ name|default:id }}" {% if required %}required{% endif %} {% if help %}aria-describedby="{{ id }}-msg"{% endif %}
+          class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-sm text-cgn-negro focus:border-govco-cobalt focus:outline-none focus:ring-2 focus:ring-govco-cobalt/40">
+    {% if placeholder %}<option value="">{{ placeholder }}</option>{% endif %}
+    {% for o in options %}<option>{{ o }}</option>{% endfor %}
+  </select>
+  {% if help %}<p id="{{ id }}-msg" class="mt-1 text-xs text-cgn-grisos">{{ help }}</p>{% endif %}
+</div>
