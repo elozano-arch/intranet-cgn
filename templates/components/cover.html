@@ -26,5 +26,7 @@
       </div>
     {% endif %}
   </div>
-  <p class="mt-2 text-center text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</p>
+  {% comment %} Con imagen real, el título va como pie (la imagen no lo trae);
+    en la portada generada el título ya es la portada, no se repite. {% endcomment %}
+  {% if image %}<p class="mt-2 text-center text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</p>{% endif %}
 </a>

@@ -45,11 +45,14 @@
         </div>
 
         {% if grupo.visual == 'portada' %}
-          {# Galería de portadas (revistas / boletines) #}
-          <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+          {% comment %} Galería de portadas: tamaño consistente y alineación pareja
+            (bookshelf), sin columnas vacías reservadas. De 2 (móvil) a 4 (desktop). {% endcomment %}
+          <div class="flex flex-wrap gap-6">
             {% for it in grupo.children %}
               {% cycle 'verde' 'cobalt' 'naranja' 'gris' as cc silent %}
-              {% include "components/cover.html" with title=it.label url=it.url|default:'#' color=cc tag=it.tag|default:'Publicación' icon=it.icon %}
+              <div class="w-[calc(50%-0.75rem)] sm:w-56 lg:w-64">
+                {% include "components/cover.html" with title=it.label url=it.url|default:'#' color=cc tag=it.tag|default:'Publicación' icon=it.icon %}
+              </div>
             {% endfor %}
           </div>
         {% else %}
