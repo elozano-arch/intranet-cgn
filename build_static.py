@@ -7,7 +7,7 @@ para desplegar en Vercel como sitio estático (sin servidor).
 Uso:  python build_static.py
 Requisitos:  pip install Django
 """
-import os, shutil, json, django
+import os, shutil, json, re, unicodedata, django
 from django.conf import settings
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -62,6 +62,49 @@ os.makedirs(DIST)
 
 # Copiar estáticos -> dist/static
 shutil.copytree(os.path.join(BASE, "static"), os.path.join(DIST, "static"))
+
+# --- Generar una página de detalle por CADA enlace del mapa del sitio ---
+# Asigna una URL real a cada hoja que apuntaba a "#", para poder previsualizar el
+# diseño de las páginas internas. El contenido es de ejemplo (lo conecta el CMS).
+DETALLES = []
+_slugs = set()
+
+def slugify(text):
+    t = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    t = re.sub(r"[^a-zA-Z0-9]+", "-", t).strip("-").lower()
+    return t or "pagina"
+
+def _nueva_url(label):
+    base = slugify(label); s, i = base, 2
+    while s in _slugs:
+        s, i = f"{base}-{i}", i + 1
+    _slugs.add(s)
+    return s + ".html"
+
+def _detalle(child, crumbs, hojas, active_nav, volver_url):
+    out = _nueva_url(child["label"])
+    child["url"] = out
+    DETALLES.append({
+        "out": out, "titulo": child["label"], "eyebrow": crumbs[-1]["label"],
+        "crumbs": [{"label": "Inicio", "url": "/"}] + crumbs + [{"label": child["label"], "url": out}],
+        "siblings": hojas, "active_nav": active_nav, "volver_url": volver_url,
+    })
+
+def _collect(section):
+    top_label, top_url = section["label"], section.get("url", "#")
+    def rec(parent, crumbs):
+        kids = parent.get("children", [])
+        hojas = [c for c in kids if not c.get("children")]
+        for child in kids:
+            if child.get("children"):
+                rec(child, crumbs + [{"label": child["label"], "url": top_url}])
+            elif child.get("url", "#") == "#":
+                _detalle(child, crumbs, hojas, top_label, top_url)
+    rec(section, [{"label": top_label, "url": top_url}])
+
+for _sec in NAV:
+    if _sec.get("label") != "Inicio" and _sec.get("children"):
+        _collect(_sec)
 
 # Home
 write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio"}))
@@ -120,9 +163,24 @@ _manual_estilo = {"label": "Manual de Estilo de la CGN",
     {"label": "Tono y voz institucional", "icon": "identidad", "url": "#"},
     {"label": "Capacitaciones", "icon": "capacitacion", "url": "#"},
 ]}
+# Detalle para las subsecciones del Manual de Estilo
+_me_crumbs = [{"label": "En Casa", "url": "en-casa.html"},
+              {"label": "Manual de Estilo de la CGN", "url": "manual-estilo.html"}]
+for _ch in _manual_estilo["children"]:
+    if _ch.get("url", "#") == "#":
+        _detalle(_ch, _me_crumbs, _manual_estilo["children"], "En Casa", "manual-estilo.html")
 write("manual-estilo.html", render_to_string("pages/seccion.html", {
     **CONTEXT, "active_nav": "En Casa", "seccion": _manual_estilo,
     "grupos": [], "hojas": _manual_estilo["children"],
 }))
+
+# Páginas de detalle (una por enlace) — contenido de ejemplo para ver el diseño
+for d in DETALLES:
+    write(d["out"], render_to_string("pages/detalle.html", {
+        **CONTEXT, "active_nav": d["active_nav"], "titulo": d["titulo"],
+        "eyebrow": d["eyebrow"], "crumbs": d["crumbs"],
+        "siblings": d["siblings"], "volver_url": d["volver_url"],
+    }))
+print(f"Páginas de detalle generadas: {len(DETALLES)}")
 
 print("Build listo en:", DIST)
