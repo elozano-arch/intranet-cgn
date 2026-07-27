@@ -795,7 +795,6 @@
   <main id="contenido-principal" tabindex="-1">
     
 
-  
   <header class="relative overflow-hidden bg-gradient-to-r from-cgn-verdehondo to-cgn-verdeos">
     <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rotate-45 rounded-3xl bg-white/10" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
@@ -805,91 +804,110 @@
     <div class="h-1.5 w-full bg-hacienda"></div>
   </header>
 
-  <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+  
+    <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div class="min-w-0">
 
-    
-    <div class="min-w-0">
-      <div class="flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
-        <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño; el texto real se administra desde el gestor de contenidos.</p>
-      </div>
+        <div class="mb-8 flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño de este tipo de página; el texto real se administra desde el gestor de contenidos.</p>
+        </div>
 
-      <div class="mt-8 max-w-[70ch] space-y-5 leading-relaxed text-cgn-negro">
-        <p class="text-lg">Este es un párrafo introductorio de ejemplo que describe el propósito de la página <strong>Capacitaciones</strong>. La longitud y el estilo muestran cómo se ve un bloque de texto dentro de la intranet.</p>
-        <h2 class="font-titulo text-2xl font-bold text-cgn-negro">Subtítulo de ejemplo</h2>
-        <p>Contenido de ejemplo con líneas de 45 a 75 caracteres para una lectura cómoda, tal como lo indica el sistema de diseño. Aquí iría la información institucional correspondiente.</p>
-        <ul class="list-disc space-y-1.5 pl-6 marker:text-cgn-verde">
-          <li>Elemento de lista de ejemplo.</li>
-          <li>Segundo elemento de ejemplo para mostrar el formato.</li>
-          <li>Tercer elemento de ejemplo.</li>
-        </ul>
-        <p>Cierre del contenido de ejemplo. Debajo, un botón de descarga (bloque de documento) y enlaces relacionados.</p>
-      </div>
-
-      <div class="mt-8 flex flex-wrap gap-3">
         
+          
+          <div class="max-w-[70ch] space-y-4 leading-relaxed text-cgn-negro">
+            <p class="text-lg">Descripción de ejemplo del documento <strong>Capacitaciones</strong>: propósito, alcance y a quién está dirigido.</p>
+          </div>
+          <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">Ficha del documento</h2>
+            <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+              
+                <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                  <dt class="text-sm text-cgn-grisos">Fecha de publicación</dt>
+                  <dd class="text-sm font-semibold text-cgn-negro">(ejemplo)</dd>
+                </div>
+              
+                <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                  <dt class="text-sm text-cgn-grisos">Versión</dt>
+                  <dd class="text-sm font-semibold text-cgn-negro">1.0 (ejemplo)</dd>
+                </div>
+              
+                <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                  <dt class="text-sm text-cgn-grisos">Responsable</dt>
+                  <dd class="text-sm font-semibold text-cgn-negro">Dependencia responsable</dd>
+                </div>
+              
+                <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                  <dt class="text-sm text-cgn-grisos">Formato</dt>
+                  <dd class="text-sm font-semibold text-cgn-negro">PDF · 2.4 MB (ejemplo)</dd>
+                </div>
+              
+            </dl>
+            <div class="mt-6">
 <a href="#"
    class="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-bold transition focus:outline-none
    bg-govco-cobalt text-white hover:bg-blue-800">
   Descargar documento (PDF)
 </a>
+</div>
+          </div>
 
         
+
+        <div class="mt-8">
 <a href="manual-estilo.html"
    class="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-bold transition focus:outline-none
    border-2 border-govco-cobalt text-govco-cobalt hover:bg-govco-solitude
    ">
   Volver
 </a>
-
+</div>
       </div>
+
+      <aside class="space-y-6">
+        
+          <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
+            <ul class="mt-3 space-y-1">
+              
+                <li>
+                  <a href="presentacion.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Presentación
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="principios-de-escritura.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Principios de escritura
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="tono-y-voz-institucional.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Tono y voz institucional
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="capacitaciones.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt bg-govco-solitude font-bold text-govco-cobalt">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-govco-cobalt"></span>
+                    Capacitaciones
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        
+        <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
+          <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
+        </div>
+      </aside>
     </div>
-
-    
-    <aside class="space-y-6">
-      
-        <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
-          <ul class="mt-3 space-y-1">
-            
-              <li>
-                <a href="presentacion.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Presentación
-                </a>
-              </li>
-            
-              <li>
-                <a href="principios-de-escritura.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Principios de escritura
-                </a>
-              </li>
-            
-              <li>
-                <a href="tono-y-voz-institucional.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Tono y voz institucional
-                </a>
-              </li>
-            
-              <li>
-                <a href="capacitaciones.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt bg-govco-solitude font-bold text-govco-cobalt">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-govco-cobalt"></span>
-                  Capacitaciones
-                </a>
-              </li>
-            
-          </ul>
-        </nav>
-      
-      <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
-        <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
-        <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
-      </div>
-    </aside>
-
-  </div>
+  
 
   </main>
 

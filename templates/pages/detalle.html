@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% comment %}
-  Plantilla genérica de página de detalle (contenido interno).
-  Se genera una por cada enlace del mapa del sitio para poder previsualizar el
-  diseño. El contenido es de EJEMPLO, claramente marcado; el equipo de contenido
-  lo conecta desde el CMS (Wagtail: RichTextBlock, DocumentBlock, etc.).
-  Contexto: titulo, eyebrow, crumbs, siblings (hermanos), active_nav.
+  Plantilla de página interna con diseño SEGÚN EL TIPO DE CONTENIDO (tipo).
+  Cada tipo mapea a un page type / conjunto de bloques de Wagtail:
+    documento · tabla · publicacion · galeria_video · galeria_foto · galeria_doc
+    noticias · area · calendario · clasificados · mapa
+  El contenido es de EJEMPLO (marcado como demostración); el CMS lo conecta.
+  Contexto: titulo, eyebrow, crumbs, siblings, active_nav, volver_url, tipo, demo, nav.
 {% endcomment %}
 
 {% block title %}{{ titulo }} · Intranet Contaduría General de la Nación{% endblock %}
@@ -12,7 +13,6 @@
 
 {% block content %}
 
-  {# Encabezado de la página #}
   <header class="relative overflow-hidden bg-gradient-to-r from-cgn-verdehondo to-cgn-verdeos">
     <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rotate-45 rounded-3xl bg-white/10" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
@@ -22,55 +22,264 @@
     <div class="h-1.5 w-full bg-hacienda"></div>
   </header>
 
-  <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
-
-    {# Columna principal: diseño de contenido (RichTextBlock) con texto de ejemplo #}
-    <div class="min-w-0">
-      <div class="flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
-        <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño; el texto real se administra desde el gestor de contenidos.</p>
-      </div>
-
-      <div class="mt-8 max-w-[70ch] space-y-5 leading-relaxed text-cgn-negro">
-        <p class="text-lg">Este es un párrafo introductorio de ejemplo que describe el propósito de la página <strong>{{ titulo }}</strong>. La longitud y el estilo muestran cómo se ve un bloque de texto dentro de la intranet.</p>
-        <h2 class="font-titulo text-2xl font-bold text-cgn-negro">Subtítulo de ejemplo</h2>
-        <p>Contenido de ejemplo con líneas de 45 a 75 caracteres para una lectura cómoda, tal como lo indica el sistema de diseño. Aquí iría la información institucional correspondiente.</p>
-        <ul class="list-disc space-y-1.5 pl-6 marker:text-cgn-verde">
-          <li>Elemento de lista de ejemplo.</li>
-          <li>Segundo elemento de ejemplo para mostrar el formato.</li>
-          <li>Tercer elemento de ejemplo.</li>
-        </ul>
-        <p>Cierre del contenido de ejemplo. Debajo, un botón de descarga (bloque de documento) y enlaces relacionados.</p>
-      </div>
-
-      <div class="mt-8 flex flex-wrap gap-3">
-        {% include "components/button.html" with label="Descargar documento (PDF)" url="#" variant="primario" %}
-        {% include "components/button.html" with label="Volver" url=volver_url|default:'/' variant="contorno" %}
+  {% if tipo == 'mapa' %}
+    {% comment %} Mapa del sitio: árbol real de la navegación {% endcomment %}
+    <div class="mx-auto max-w-contenido px-4 py-12">
+      <p class="mb-8 max-w-[70ch] text-cgn-grisos">Estructura completa de la intranet. Cada enlace lleva a su página.</p>
+      <div class="columns-1 gap-8 md:columns-2 lg:columns-3">
+        {% for sec in nav %}
+          {% if sec.children %}
+            <div class="mb-8 break-inside-avoid">
+              <a href="{{ sec.url|default:'#' }}" class="font-titulo text-lg font-bold text-cgn-negro hover:text-govco-cobalt">{{ sec.label }}</a>
+              <ul class="mt-2 space-y-1 border-l-2 border-govco-solitude pl-3">
+                {% for c in sec.children %}
+                  <li>
+                    <a href="{{ c.url|default:'#' }}" class="text-sm {% if c.children %}font-semibold text-cgn-negro{% else %}text-cgn-grisos hover:text-govco-cobalt{% endif %}">{{ c.label }}</a>
+                    {% if c.children %}
+                      <ul class="mt-1 space-y-0.5 pl-3">
+                        {% for g in c.children %}<li><a href="{{ g.url|default:'#' }}" class="text-sm text-cgn-grisos hover:text-govco-cobalt">{{ g.label }}</a></li>{% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
-    {# Aside: navegación entre páginas hermanas + ayuda #}
-    <aside class="space-y-6">
-      {% if siblings %}
-        <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
-          <ul class="mt-3 space-y-1">
-            {% for s in siblings %}
+  {% else %}
+    <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div class="min-w-0">
+
+        <div class="mb-8 flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño de este tipo de página; el texto real se administra desde el gestor de contenidos.</p>
+        </div>
+
+        {% if tipo == 'documento' %}
+          {% comment %} Documento / manual: descripción + ficha + descarga {% endcomment %}
+          <div class="max-w-[70ch] space-y-4 leading-relaxed text-cgn-negro">
+            <p class="text-lg">Descripción de ejemplo del documento <strong>{{ titulo }}</strong>: propósito, alcance y a quién está dirigido.</p>
+          </div>
+          <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">Ficha del documento</h2>
+            <dl class="mt-4 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+              {% for campo, valor in demo.ficha %}
+                <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                  <dt class="text-sm text-cgn-grisos">{{ campo }}</dt>
+                  <dd class="text-sm font-semibold text-cgn-negro">{{ valor }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+            <div class="mt-6">{% include "components/button.html" with label="Descargar documento (PDF)" url="#" variant="primario" %}</div>
+          </div>
+
+        {% elif tipo == 'tabla' %}
+          {% comment %} Tabla de documentos/registros con buscador y paginación {% endcomment %}
+          <p class="mb-5 max-w-[70ch] text-cgn-grisos">Listado de documentos de <strong>{{ titulo }}</strong>. Usa el buscador para filtrar.</p>
+          <label class="relative mb-4 block max-w-md">
+            <span class="sr-only">Buscar en {{ titulo }}</span>
+            <input type="search" placeholder="Buscar…" class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 text-sm focus:border-govco-cobalt focus:outline-none focus:ring-2 focus:ring-govco-cobalt/30">
+            <svg class="pointer-events-none absolute left-3 top-2.5 h-5 w-5 text-cgn-gris" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+          </label>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+              <thead class="bg-govco-smoke text-left">
+                <tr>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Documento</th>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Referencia</th>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Estado</th>
+                  <th scope="col" class="px-4 py-3 text-right font-titulo font-bold text-cgn-negro">Acción</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                {% for row in demo.tabla %}
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">{{ row.0 }}</td>
+                    <td class="px-4 py-3 text-cgn-grisos">{{ row.1 }}</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">{{ row.2 }}</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <nav aria-label="Paginación" class="mt-5 flex items-center justify-center gap-1">
+            <span class="rounded-md px-3 py-1.5 text-sm text-cgn-gris">‹</span>
+            <a href="#" aria-current="page" class="rounded-md bg-govco-cobalt px-3 py-1.5 text-sm font-bold text-white">1</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">2</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">3</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">›</a>
+          </nav>
+
+        {% elif tipo == 'publicacion' %}
+          {% comment %} Publicación seriada: galería de ediciones (portadas) {% endcomment %}
+          <h2 class="sr-only">Ediciones de {{ titulo }}</h2>
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Ediciones de <strong>{{ titulo }}</strong>. Selecciona una portada para leerla.</p>
+          <div class="flex flex-wrap gap-6">
+            {% for n in demo.ediciones %}
+              {% cycle 'verde' 'cobalt' 'naranja' 'gris' as pc silent %}
+              <div class="w-[calc(50%-0.75rem)] sm:w-44">
+                {% include "components/cover.html" with title="Edición N.º "|add:n url="#" color=pc tag=titulo %}
+              </div>
+            {% endfor %}
+          </div>
+
+        {% elif tipo == 'galeria_video' %}
+          {% comment %} Galería de videos {% endcomment %}
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Videos de <strong>{{ titulo }}</strong>.</p>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {% for v in demo.galeria %}
+              <a href="#" class="group block">
+                <div class="relative flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-cgn-verdehondo to-cgn-verdeos">
+                  <span class="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg transition group-hover:scale-110">
+                    <svg class="ml-1 h-6 w-6 text-govco-cobalt" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                </div>
+                <p class="mt-2 text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">Video de ejemplo {{ v }}</p>
+              </a>
+            {% endfor %}
+          </div>
+
+        {% elif tipo == 'galeria_foto' %}
+          {% comment %} Galería de fotos {% endcomment %}
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Galería de <strong>{{ titulo }}</strong>.</p>
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {% for f in demo.galeria %}
+              {% cycle 'from-cgn-verde to-cgn-verdeos' 'from-govco-cobalt to-govco-cobaltos' 'from-cgn-naranja to-cgn-naranjaos' as gf silent %}
+              <a href="#" class="group relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br {{ gf }} focus:outline-none focus-visible:ring-4 focus-visible:ring-govco-cobalt">
+                <svg class="h-8 w-8 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="sr-only">Foto de ejemplo {{ f }}</span>
+              </a>
+            {% endfor %}
+          </div>
+
+        {% elif tipo == 'galeria_doc' %}
+          {% comment %} Lista de documentos descargables (presentaciones, plantillas) {% endcomment %}
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Archivos de <strong>{{ titulo }}</strong> disponibles para descarga.</p>
+          <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {% for d in demo.galeria %}
               <li>
-                <a href="{{ s.url|default:'#' }}" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt {% if s.label == titulo %}bg-govco-solitude font-bold text-govco-cobalt{% else %}text-cgn-grisos{% endif %}">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 {% if s.label == titulo %}bg-govco-cobalt{% else %}bg-cgn-gris{% endif %}"></span>
-                  {{ s.label }}
+                <a href="#" class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                  <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt">{% include "components/icon.html" with name="documento" class="h-6 w-6" %}</span>
+                  <span class="min-w-0">
+                    <span class="block truncate font-semibold text-cgn-negro">Archivo de ejemplo {{ d }}</span>
+                    <span class="text-xs text-cgn-grisos">PDF · descargar</span>
+                  </span>
                 </a>
               </li>
             {% endfor %}
           </ul>
-        </nav>
-      {% endif %}
-      <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
-        <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
-        <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
-      </div>
-    </aside>
 
-  </div>
+        {% elif tipo == 'noticias' %}
+          {% comment %} Lista de artículos/entradas {% endcomment %}
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Entradas de <strong>{{ titulo }}</strong>.</p>
+          <ul class="space-y-5">
+            {% for a in demo.noticias %}
+              <li>
+                <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-cgn-naranjaos">Publicación · fecha (ejemplo)</p>
+                  <h2 class="mt-1 font-titulo text-xl font-bold text-cgn-negro"><a href="#" class="hover:text-govco-cobalt">Entrada de ejemplo {{ a }}</a></h2>
+                  <p class="mt-2 line-clamp-2 text-sm text-cgn-grisos">Resumen de ejemplo de la entrada. Aquí iría el extracto del artículo o de la doctrina publicada.</p>
+                  <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-govco-cobalt hover:gap-2">Leer más →</a>
+                </article>
+              </li>
+            {% endfor %}
+          </ul>
+
+        {% elif tipo == 'area' %}
+          {% comment %} Área / dependencia / comité {% endcomment %}
+          <div class="max-w-[70ch] space-y-4 leading-relaxed text-cgn-negro">
+            <p class="text-lg">Descripción de ejemplo de <strong>{{ titulo }}</strong>: su rol dentro de la CGN y los servicios que presta.</p>
+            <h2 class="font-titulo text-2xl font-bold text-cgn-negro">Funciones</h2>
+            <ul class="list-disc space-y-1.5 pl-6 marker:text-cgn-verde">
+              {% for fn in demo.funciones %}<li>Función de ejemplo {{ fn }}.</li>{% endfor %}
+            </ul>
+          </div>
+          <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">Responsable</h2>
+            <p class="mt-2 text-sm text-cgn-grisos">Nombre del responsable (ejemplo) · Cargo (ejemplo)</p>
+            <p class="mt-1 text-sm text-cgn-grisos">Extensión (ejemplo) · <a href="mailto:contactenos@contaduria.gov.co" class="font-semibold text-govco-cobalt underline">contactenos@contaduria.gov.co</a></p>
+          </div>
+
+        {% elif tipo == 'calendario' %}
+          {% comment %} Calendario de eventos: mini calendario + lista {% endcomment %}
+          <p class="mb-6 max-w-[70ch] text-cgn-grisos">Eventos y actividades institucionales.</p>
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+              <p class="mb-3 text-center font-titulo font-bold text-cgn-negro">Mes en curso (ejemplo)</p>
+              <div class="grid grid-cols-7 gap-1 text-center text-xs">
+                {% for d in "LMXJVSD" %}<span class="py-1 font-bold text-cgn-gris">{{ d }}</span>{% endfor %}
+                {% for n in demo.dias %}
+                  <span class="rounded py-2 {% if n == 12 or n == 18 or n == 25 %}bg-govco-cobalt font-bold text-white{% elif n %}text-cgn-negro hover:bg-govco-solitude{% endif %}">{{ n|default:'' }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div>
+              <h2 class="mb-3 font-titulo text-lg font-bold text-cgn-negro">Próximos eventos</h2>
+              <ul class="space-y-3">
+                {% for ev in demo.eventos %}
+                  <li class="flex gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <span class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg bg-govco-solitude font-bold text-govco-cobalt">
+                      <span class="text-base leading-none">{{ ev.0 }}</span><span class="text-[10px] uppercase">mes</span>
+                    </span>
+                    <span><span class="block font-semibold text-cgn-negro">{{ ev.1 }}</span><span class="text-xs text-cgn-grisos">Hora y lugar (ejemplo)</span></span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+        {% elif tipo == 'clasificados' %}
+          {% comment %} Clasificados: avisos {% endcomment %}
+          <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <p class="max-w-[60ch] text-cgn-grisos">Avisos publicados por los servidores de la CGN.</p>
+            {% include "components/button.html" with label="Publicar aviso" url="#" variant="primario" %}
+          </div>
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {% for c in demo.clasificados %}
+              <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                <span class="mb-2 w-fit rounded-full bg-cgn-naranja/12 px-2.5 py-0.5 text-xs font-bold text-cgn-naranjaos">Categoría (ejemplo)</span>
+                <h2 class="font-titulo font-bold text-cgn-negro">Aviso de ejemplo {{ c }}</h2>
+                <p class="mt-1 line-clamp-2 text-sm text-cgn-grisos">Descripción breve del aviso publicado por un servidor.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-govco-cobalt hover:gap-2">Contactar →</a>
+              </article>
+            {% endfor %}
+          </div>
+
+        {% else %}
+          {% comment %} Genérico (respaldo) {% endcomment %}
+          <div class="max-w-[70ch] space-y-4 leading-relaxed text-cgn-negro">
+            <p class="text-lg">Contenido de ejemplo de <strong>{{ titulo }}</strong>.</p>
+          </div>
+        {% endif %}
+
+        <div class="mt-8">{% include "components/button.html" with label="Volver" url=volver_url|default:'/' variant="contorno" %}</div>
+      </div>
+
+      <aside class="space-y-6">
+        {% if siblings %}
+          <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
+            <ul class="mt-3 space-y-1">
+              {% for s in siblings %}
+                <li>
+                  <a href="{{ s.url|default:'#' }}" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt {% if s.label == titulo %}bg-govco-solitude font-bold text-govco-cobalt{% else %}text-cgn-grisos{% endif %}">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 {% if s.label == titulo %}bg-govco-cobalt{% else %}bg-cgn-gris{% endif %}"></span>
+                    {{ s.label }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+        <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
+          <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
+        </div>
+      </aside>
+    </div>
+  {% endif %}
 {% endblock %}

@@ -69,6 +69,45 @@ shutil.copytree(os.path.join(BASE, "static"), os.path.join(DIST, "static"))
 DETALLES = []
 _slugs = set()
 
+# Datos de EJEMPLO reutilizados por las páginas de detalle (los conecta el CMS).
+DEMO = {
+    "ficha": [["Fecha de publicación", "(ejemplo)"], ["Versión", "1.0 (ejemplo)"],
+              ["Responsable", "Dependencia responsable"], ["Formato", "PDF · 2.4 MB (ejemplo)"]],
+    "tabla": [[f"Documento de ejemplo {i:02d}", f"Ref-2026-{i:03d}", "Vigente"] for i in range(1, 7)],
+    "ediciones": [str(i) for i in range(1, 7)],
+    "galeria": list(range(1, 10)),
+    "noticias": list(range(1, 6)),
+    "funciones": list(range(1, 5)),
+    "eventos": [["12", "Reunión de ejemplo"], ["18", "Capacitación de ejemplo"], ["25", "Evento de ejemplo"]],
+    "dias": ["", ""] + list(range(1, 31)),
+}
+
+def tipo_de(label, top):
+    """Asigna el tipo de página según el contenido (mapea a page types de Wagtail)."""
+    if label.startswith("Normograma") or label in ("Años anteriores", "Matriz de Publicaciones"):
+        return "tabla"
+    if label in ("Le Cuento Que", "Codex", "SIINERGIA Contable", "Coworking"):
+        return "publicacion"
+    if label == "Videos CGN":
+        return "galeria_video"
+    if label == "Condecoraciones CGN":
+        return "galeria_foto"
+    if label in ("Presentaciones del Contador General", "Plantillas"):
+        return "galeria_doc"
+    if label == "Doctrina al Día":
+        return "noticias"
+    if label == "Calendario de Eventos":
+        return "calendario"
+    if label == "Clasificados":
+        return "clasificados"
+    if label == "Mapa de sitio":
+        return "mapa"
+    if (label.startswith("GIT") or label.startswith("Gestión") or label.startswith("Comité")
+            or label.startswith("Sistema de Gestión") or label.startswith("Seguridad")
+            or label in ("Planeación", "Comunicación Pública", "Control y Evaluación", "SINTRA-CGN")):
+        return "area"
+    return "documento"
+
 def slugify(text):
     t = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
     t = re.sub(r"[^a-zA-Z0-9]+", "-", t).strip("-").lower()
@@ -88,6 +127,7 @@ def _detalle(child, crumbs, hojas, active_nav, volver_url):
         "out": out, "titulo": child["label"], "eyebrow": crumbs[-1]["label"],
         "crumbs": [{"label": "Inicio", "url": "/"}] + crumbs + [{"label": child["label"], "url": out}],
         "siblings": hojas, "active_nav": active_nav, "volver_url": volver_url,
+        "tipo": tipo_de(child["label"], active_nav),
     })
 
 def _collect(section):
@@ -180,7 +220,11 @@ for d in DETALLES:
         **CONTEXT, "active_nav": d["active_nav"], "titulo": d["titulo"],
         "eyebrow": d["eyebrow"], "crumbs": d["crumbs"],
         "siblings": d["siblings"], "volver_url": d["volver_url"],
+        "tipo": d["tipo"], "demo": DEMO,
     }))
-print(f"Páginas de detalle generadas: {len(DETALLES)}")
+_tipos = {}
+for d in DETALLES:
+    _tipos[d["tipo"]] = _tipos.get(d["tipo"], 0) + 1
+print(f"Páginas de detalle generadas: {len(DETALLES)} · por tipo: {_tipos}")
 
 print("Build listo en:", DIST)

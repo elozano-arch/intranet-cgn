@@ -786,7 +786,6 @@
   <main id="contenido-principal" tabindex="-1">
     
 
-  
   <header class="relative overflow-hidden bg-gradient-to-r from-cgn-verdehondo to-cgn-verdeos">
     <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rotate-45 rounded-3xl bg-white/10" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-contenido px-4 py-10 md:py-12">
@@ -796,154 +795,207 @@
     <div class="h-1.5 w-full bg-hacienda"></div>
   </header>
 
-  <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+  
+    <div class="mx-auto grid max-w-contenido gap-10 px-4 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div class="min-w-0">
 
-    
-    <div class="min-w-0">
-      <div class="flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
-        <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño; el texto real se administra desde el gestor de contenidos.</p>
-      </div>
-
-      <div class="mt-8 max-w-[70ch] space-y-5 leading-relaxed text-cgn-negro">
-        <p class="text-lg">Este es un párrafo introductorio de ejemplo que describe el propósito de la página <strong>Normograma 2022</strong>. La longitud y el estilo muestran cómo se ve un bloque de texto dentro de la intranet.</p>
-        <h2 class="font-titulo text-2xl font-bold text-cgn-negro">Subtítulo de ejemplo</h2>
-        <p>Contenido de ejemplo con líneas de 45 a 75 caracteres para una lectura cómoda, tal como lo indica el sistema de diseño. Aquí iría la información institucional correspondiente.</p>
-        <ul class="list-disc space-y-1.5 pl-6 marker:text-cgn-verde">
-          <li>Elemento de lista de ejemplo.</li>
-          <li>Segundo elemento de ejemplo para mostrar el formato.</li>
-          <li>Tercer elemento de ejemplo.</li>
-        </ul>
-        <p>Cierre del contenido de ejemplo. Debajo, un botón de descarga (bloque de documento) y enlaces relacionados.</p>
-      </div>
-
-      <div class="mt-8 flex flex-wrap gap-3">
-        
-<a href="#"
-   class="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-bold transition focus:outline-none
-   bg-govco-cobalt text-white hover:bg-blue-800">
-  Descargar documento (PDF)
-</a>
+        <div class="mb-8 flex items-start gap-3 rounded-xl border-l-4 border-govco-cobalt bg-govco-solitude/50 p-4">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-govco-cobalt" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <p class="text-sm text-cgn-negro"><span class="font-bold">Página de demostración.</span> El contenido es de ejemplo para mostrar el diseño de este tipo de página; el texto real se administra desde el gestor de contenidos.</p>
+        </div>
 
         
+          
+          <p class="mb-5 max-w-[70ch] text-cgn-grisos">Listado de documentos de <strong>Normograma 2022</strong>. Usa el buscador para filtrar.</p>
+          <label class="relative mb-4 block max-w-md">
+            <span class="sr-only">Buscar en Normograma 2022</span>
+            <input type="search" placeholder="Buscar…" class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 text-sm focus:border-govco-cobalt focus:outline-none focus:ring-2 focus:ring-govco-cobalt/30">
+            <svg class="pointer-events-none absolute left-3 top-2.5 h-5 w-5 text-cgn-gris" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+          </label>
+          <div class="overflow-x-auto rounded-xl border border-gray-200">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+              <thead class="bg-govco-smoke text-left">
+                <tr>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Documento</th>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Referencia</th>
+                  <th scope="col" class="px-4 py-3 font-titulo font-bold text-cgn-negro">Estado</th>
+                  <th scope="col" class="px-4 py-3 text-right font-titulo font-bold text-cgn-negro">Acción</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 01</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-001</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 02</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-002</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 03</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-003</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 04</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-004</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 05</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-005</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+                  <tr class="hover:bg-govco-solitude/40">
+                    <td class="px-4 py-3 font-medium text-cgn-negro">Documento de ejemplo 06</td>
+                    <td class="px-4 py-3 text-cgn-grisos">Ref-2026-006</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-exito/10 px-2.5 py-0.5 text-xs font-bold text-exito">Vigente</span></td>
+                    <td class="px-4 py-3 text-right"><a href="#" class="font-bold text-govco-cobalt hover:underline">Descargar</a></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          <nav aria-label="Paginación" class="mt-5 flex items-center justify-center gap-1">
+            <span class="rounded-md px-3 py-1.5 text-sm text-cgn-gris">‹</span>
+            <a href="#" aria-current="page" class="rounded-md bg-govco-cobalt px-3 py-1.5 text-sm font-bold text-white">1</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">2</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">3</a>
+            <a href="#" class="rounded-md px-3 py-1.5 text-sm text-cgn-negro hover:bg-govco-solitude">›</a>
+          </nav>
+
+        
+
+        <div class="mt-8">
 <a href="normativa.html"
    class="inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-bold transition focus:outline-none
    border-2 border-govco-cobalt text-govco-cobalt hover:bg-govco-solitude
    ">
   Volver
 </a>
-
+</div>
       </div>
+
+      <aside class="space-y-6">
+        
+          <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
+            <ul class="mt-3 space-y-1">
+              
+                <li>
+                  <a href="normograma-2026.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2026
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2025.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2025
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2024.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2024
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2023.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2023
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2022.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt bg-govco-solitude font-bold text-govco-cobalt">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-govco-cobalt"></span>
+                    Normograma 2022
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2021.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2021
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2020.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2020
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2019.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2019
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2018.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2018
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2017.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2017
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2016.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2016
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="normograma-2015.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Normograma 2015
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="anos-anteriores.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
+                    <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
+                    Años anteriores
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        
+        <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
+          <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
+        </div>
+      </aside>
     </div>
-
-    
-    <aside class="space-y-6">
-      
-        <nav aria-label="Otras páginas de la sección" class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 class="font-titulo text-lg font-bold text-cgn-negro">En esta sección</h2>
-          <ul class="mt-3 space-y-1">
-            
-              <li>
-                <a href="normograma-2026.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2026
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2025.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2025
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2024.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2024
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2023.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2023
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2022.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt bg-govco-solitude font-bold text-govco-cobalt">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-govco-cobalt"></span>
-                  Normograma 2022
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2021.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2021
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2020.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2020
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2019.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2019
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2018.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2018
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2017.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2017
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2016.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2016
-                </a>
-              </li>
-            
-              <li>
-                <a href="normograma-2015.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Normograma 2015
-                </a>
-              </li>
-            
-              <li>
-                <a href="anos-anteriores.html" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-govco-solitude hover:text-govco-cobalt text-cgn-grisos">
-                  <span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-cgn-gris"></span>
-                  Años anteriores
-                </a>
-              </li>
-            
-          </ul>
-        </nav>
-      
-      <div class="rounded-2xl border border-govco-solitude bg-govco-solitude/40 p-6">
-        <h2 class="font-titulo text-lg font-bold text-cgn-negro">¿Necesitas ayuda?</h2>
-        <p class="mt-2 text-sm leading-relaxed text-cgn-grisos">Escríbenos a <a class="font-semibold text-govco-cobalt underline" href="mailto:contactenos@contaduria.gov.co">contactenos@contaduria.gov.co</a> o llama al +57 (601) 492 64 00.</p>
-      </div>
-    </aside>
-
-  </div>
+  
 
   </main>
 
