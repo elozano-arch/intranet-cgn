@@ -1,0 +1,58 @@
+{% comment %}
+  Componente: Launcher de aplicaciones (barra lateral colapsable).
+  Accesos rápidos a los sistemas externos de la CGN (Orfeo, CONTADOC, GLPI, etc.).
+  Datos en data/apps.json (aplicaciones). Los íconos son representativos; el logo
+  real de cada sistema puede reemplazarse por su imagen en static/img/apps/.
+  Accesibilidad: nav con aria-label, botón con aria-expanded/aria-controls, cierre
+  con Esc y clic fuera; enlaces externos abren en pestaña nueva (aviso a lector).
+{% endcomment %}
+<div data-apps class="fixed right-0 top-1/2 z-40 flex -translate-y-1/2 items-start print:hidden">
+
+  {# Panel de aplicaciones (colapsado por defecto) #}
+  <nav aria-label="Aplicaciones y sistemas" id="appsPanel" data-apps-panel
+       class="hidden max-h-[80vh] w-60 overflow-y-auto rounded-l-2xl border border-r-0 border-gray-200 bg-white shadow-2xl">
+    <div class="sticky top-0 flex items-center justify-between bg-govco-cobalt px-4 py-3">
+      <h2 class="font-titulo text-sm font-bold text-white">Aplicaciones</h2>
+      <button type="button" data-apps-close aria-label="Cerrar aplicaciones" class="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <ul class="p-2">
+      {% for a in aplicaciones %}
+        <li>
+          <a href="{{ a.url|default:'#' }}"{% if 'http' in a.url %} target="_blank" rel="noopener noreferrer"{% endif %}
+             class="group flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-govco-solitude focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt transition group-hover:bg-white">
+              {% include "components/icon.html" with name=a.icon|default:'apps' class="h-5 w-5" %}
+            </span>
+            <span class="text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">{{ a.label }}{% if 'http' in a.url %}<span class="sr-only"> (se abre en una pestaña nueva)</span>{% endif %}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  {# Pestaña/handle (siempre visible) — abre/cierra el panel #}
+  <button type="button" data-apps-toggle aria-expanded="false" aria-controls="appsPanel"
+          class="flex flex-col items-center gap-2 rounded-l-xl bg-govco-cobalt px-2.5 py-4 text-white shadow-lg transition hover:bg-cobaltos focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+    {% include "components/icon.html" with name="apps" class="h-5 w-5" %}
+    <span class="text-xs font-bold [writing-mode:vertical-rl] rotate-180">Aplicaciones</span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var wrap=document.querySelector('[data-apps]'); if(!wrap||wrap.dataset.init) return; wrap.dataset.init='1';
+  var toggle=wrap.querySelector('[data-apps-toggle]'),
+      panel=wrap.querySelector('[data-apps-panel]'),
+      close=wrap.querySelector('[data-apps-close]');
+  function set(open){
+    panel.classList.toggle('hidden',!open);
+    toggle.setAttribute('aria-expanded',open);
+  }
+  toggle.addEventListener('click',function(e){e.stopPropagation();set(panel.classList.contains('hidden'));});
+  if(close) close.addEventListener('click',function(){set(false);toggle.focus();});
+  document.addEventListener('click',function(e){ if(!wrap.contains(e.target)) set(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+})();
+</script>

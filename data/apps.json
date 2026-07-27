@@ -1,0 +1,13 @@
+[
+  { "label": "Página Web",           "icon": "web",          "url": "https://www.contaduria.gov.co/" },
+  { "label": "Aula Virtual",         "icon": "capacitacion", "url": "#" },
+  { "label": "CONTADOC",             "icon": "documento",    "url": "#" },
+  { "label": "Catálogo de Cuentas",  "icon": "matriz",       "url": "#" },
+  { "label": "Correo Institucional", "icon": "correo",       "url": "#" },
+  { "label": "ORFEO Consulta",       "icon": "busqueda",     "url": "#" },
+  { "label": "ORFEO V.5",            "icon": "documento",    "url": "#" },
+  { "label": "GLPI · Mesa de Servicio", "icon": "soporte",   "url": "#" },
+  { "label": "Nómina Web",           "icon": "nomina",       "url": "#" },
+  { "label": "Inventarios",          "icon": "inventario",   "url": "#" },
+  { "label": "Plantillas",           "icon": "plantillas",   "url": "plantillas.html" }
+]

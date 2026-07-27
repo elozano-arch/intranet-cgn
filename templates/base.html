@@ -74,6 +74,9 @@
     {% block content %}{% endblock %}
   </main>
 
+  {# ===== Launcher de aplicaciones (barra lateral colapsable) ===== #}
+  {% include "components/apps_sidebar.html" %}
+
   {# ===== Pie de página GOV.CO (Kit UI transversal) — componente ===== #}
   {% include "components/footer.html" %}
 

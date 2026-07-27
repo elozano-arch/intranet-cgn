@@ -16,7 +16,9 @@ DIST = os.path.join(BASE, "dist")
 # Navegación real de la intranet (data/nav.json) → contexto de las plantillas.
 with open(os.path.join(BASE, "data", "nav.json"), encoding="utf-8") as _f:
     NAV = json.load(_f)
-CONTEXT = {"nav": NAV}
+with open(os.path.join(BASE, "data", "apps.json"), encoding="utf-8") as _f:
+    APPS = json.load(_f)
+CONTEXT = {"nav": NAV, "aplicaciones": APPS}
 
 settings.configure(
     DEBUG=False,
