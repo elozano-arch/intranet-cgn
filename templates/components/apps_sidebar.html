@@ -22,8 +22,13 @@
         <li>
           <a href="{{ a.url|default:'#' }}"{% if 'http' in a.url %} target="_blank" rel="noopener noreferrer"{% endif %}
              class="group flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-govco-solitude focus:outline-none focus-visible:ring-2 focus-visible:ring-govco-cobalt">
-            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt transition group-hover:bg-white">
-              {% include "components/icon.html" with name=a.icon|default:'apps' class="h-5 w-5" %}
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white text-govco-cobalt ring-1 ring-gray-200">
+              {% if a.logo %}
+                <img src="{{ a.logo }}" alt="" loading="lazy" class="h-7 w-7 object-contain" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden');">
+                <span class="hidden">{% include "components/icon.html" with name=a.icon|default:'apps' class="h-5 w-5" %}</span>
+              {% else %}
+                {% include "components/icon.html" with name=a.icon|default:'apps' class="h-5 w-5" %}
+              {% endif %}
             </span>
             <span class="text-sm font-semibold text-cgn-negro group-hover:text-govco-cobalt">{{ a.label }}{% if 'http' in a.url %}<span class="sr-only"> (se abre en una pestaña nueva)</span>{% endif %}</span>
           </a>

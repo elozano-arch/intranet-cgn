@@ -1,13 +1,13 @@
 [
-  { "label": "Página Web",           "icon": "web",          "url": "https://www.contaduria.gov.co/" },
-  { "label": "Aula Virtual",         "icon": "capacitacion", "url": "#" },
-  { "label": "CONTADOC",             "icon": "documento",    "url": "#" },
-  { "label": "Catálogo de Cuentas",  "icon": "matriz",       "url": "#" },
-  { "label": "Correo Institucional", "icon": "correo",       "url": "#" },
-  { "label": "ORFEO Consulta",       "icon": "busqueda",     "url": "#" },
-  { "label": "ORFEO V.5",            "icon": "documento",    "url": "#" },
-  { "label": "GLPI · Mesa de Servicio", "icon": "soporte",   "url": "#" },
-  { "label": "Nómina Web",           "icon": "nomina",       "url": "#" },
-  { "label": "Inventarios",          "icon": "inventario",   "url": "#" },
-  { "label": "Plantillas",           "icon": "plantillas",   "url": "plantillas.html" }
+  { "label": "Página Web",           "icon": "web",          "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/logo-web-cgn-1.png", "url": "https://www.contaduria.gov.co/" },
+  { "label": "Aula Virtual",         "icon": "capacitacion", "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/aula-virtual-ico-1.png", "url": "#" },
+  { "label": "CONTADOC",             "icon": "documento",    "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/controldoc.png", "url": "#" },
+  { "label": "Catálogo de Cuentas",  "icon": "matriz",       "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/Catalago-cuentas.png", "url": "#" },
+  { "label": "Correo Institucional", "icon": "correo",       "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/correo175px-02.png", "url": "#" },
+  { "label": "ORFEO Consulta",       "icon": "busqueda",     "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/orfeo150px-02.png", "url": "#" },
+  { "label": "ORFEO V.5",            "icon": "documento",    "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/orfeov5-2.png", "url": "#" },
+  { "label": "GLPI · Mesa de Servicio", "icon": "soporte",   "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/glpi150px.png", "url": "#" },
+  { "label": "Nómina Web",           "icon": "nomina",       "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/nomina-ico.png", "url": "#" },
+  { "label": "Inventarios",          "icon": "inventario",   "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/inventarios150px-02.png", "url": "#" },
+  { "label": "Plantillas",           "icon": "plantillas",   "logo": "https://www.contaduria.gov.co/o/intra-cgn-theme/images/plantillas150px-02.png", "url": "plantillas.html" }
 ]
