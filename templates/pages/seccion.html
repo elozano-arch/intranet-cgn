@@ -20,6 +20,7 @@
         <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>Intranet
       </span>
       <h1 class="font-titulo text-3xl font-bold text-white md:text-4xl">{{ seccion.label }}</h1>
+      {% if seccion.desc %}<p class="mt-3 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg">{{ seccion.desc }}</p>{% endif %}
     </div>
     <div class="h-1.5 w-full bg-hacienda"></div>
   </header>

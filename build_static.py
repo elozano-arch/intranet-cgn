@@ -113,7 +113,8 @@ for label, out in SECTIONS:
     }))
 
 # Página "Manual de Estilo de la CGN" (nuevo espacio de la intranet)
-_manual_estilo = {"label": "Manual de Estilo de la CGN", "children": [
+_manual_estilo = {"label": "Manual de Estilo de la CGN",
+    "desc": "Guía de escritura, tono y voz institucional de la Contaduría General de la Nación.", "children": [
     {"label": "Presentación", "icon": "doctrina", "url": "#"},
     {"label": "Principios de escritura", "icon": "estilo", "url": "#"},
     {"label": "Tono y voz institucional", "icon": "identidad", "url": "#"},
