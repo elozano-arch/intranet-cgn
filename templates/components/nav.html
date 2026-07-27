@@ -20,12 +20,24 @@
     {% for item in nav %}
       {% if item.children %}
         <li class="lg:relative" data-has-panel>
-          <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
-                  class="flex w-full items-center justify-between gap-1 rounded-md px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt lg:w-auto lg:rounded-none lg:border-b-2 lg:py-4 lg:hover:border-gray-300 lg:hover:bg-transparent {% if item.label == active_nav %}bg-govco-solitude text-govco-cobalt lg:bg-transparent lg:border-govco-cobalt{% else %}text-cgn-negro lg:border-transparent{% endif %}">
-            {{ item.label }}
-            <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          {% comment %} El texto navega a la página de la sección; el chevron abre
+            el submenú (patrón accesible: enlace + botón de disclosure). {% endcomment %}
+          <div class="flex w-full items-stretch lg:w-auto">
+            <a href="{{ item.url|default:'#' }}"
+               class="flex flex-1 items-center gap-1 rounded-md px-4 py-3 text-sm font-semibold hover:bg-govco-solitude hover:text-govco-cobalt lg:flex-none lg:rounded-none lg:border-b-2 lg:py-4 lg:pr-1 lg:hover:border-gray-300 lg:hover:bg-transparent {% if item.label == active_nav %}bg-govco-solitude text-govco-cobalt lg:bg-transparent lg:border-govco-cobalt{% else %}text-cgn-negro lg:border-transparent{% endif %}">
+              {{ item.label }}
+            </a>
+            <button type="button" data-menu-button aria-expanded="false" aria-haspopup="true"
+                    aria-label="Mostrar el submenú de {{ item.label }}"
+                    class="flex items-center rounded-md px-3 py-3 hover:bg-govco-solitude hover:text-govco-cobalt lg:rounded-none lg:border-b-2 lg:px-2 lg:py-4 lg:hover:border-gray-300 lg:hover:bg-transparent {% if item.label == active_nav %}text-govco-cobalt lg:bg-transparent lg:border-govco-cobalt{% else %}text-cgn-negro lg:border-transparent{% endif %}">
+              <svg class="h-4 w-4 shrink-0 transition-transform" data-chevron fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
           <div data-panel class="hidden rounded-b-lg bg-govco-smoke p-3 lg:absolute lg:left-0 lg:top-full lg:z-30 lg:border lg:border-gray-200 lg:bg-white lg:p-5 lg:shadow-xl {% if item.wide %}lg:w-[640px] lg:max-w-[92vw]{% else %}lg:w-72{% endif %}">
+            <a href="{{ item.url|default:'#' }}" class="mb-3 hidden items-center gap-1 border-b border-gray-200 pb-2 text-sm font-bold text-govco-cobalt hover:underline lg:flex">
+              Ir a {{ item.label }}
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
             <div class="{% if item.wide %}lg:columns-2 lg:gap-8{% endif %}">
               {# 2 niveles máximo: categorías + procesos (sin GIT, que van en cada página) #}
               {% include "components/_nav_list.html" with items=item.children maxdepth=2 %}

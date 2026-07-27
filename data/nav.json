@@ -1,6 +1,6 @@
 [
   { "label": "Inicio", "url": "/" },
-  { "label": "En Casa", "icon": "casa",
+  { "label": "En Casa", "icon": "casa", "url": "en-casa.html",
     "desc": "Plan de capacitación, manuales institucionales y gestión del talento humano de la CGN.", "children": [
     { "label": "PIC · Plan Institucional de Capacitación", "icon": "capacitacion", "url": "#" },
     { "label": "Manual de Identidad Visual Corporativa", "icon": "identidad", "url": "#" },
@@ -10,7 +10,7 @@
     { "label": "Evaluación de desempeño", "icon": "evaluacion", "url": "#" },
     { "label": "Nombramientos", "icon": "nombramiento", "url": "#" }
   ]},
-  { "label": "Normativa", "icon": "normativa", "wide": true,
+  { "label": "Normativa", "icon": "normativa", "wide": true, "url": "normativa.html",
     "desc": "Normogramas de la CGN organizados por año, con la normativa vigente y los documentos de años anteriores.", "children": [
     { "label": "Normograma 2026", "icon": "normativa", "url": "#" },
     { "label": "Normograma 2025", "icon": "normativa", "url": "#" },
@@ -26,7 +26,7 @@
     { "label": "Normograma 2015", "icon": "normativa", "url": "#" },
     { "label": "Años anteriores", "icon": "documento", "url": "#" }
   ]},
-  { "label": "Procesos", "icon": "plantillas", "wide": true,
+  { "label": "Procesos", "icon": "plantillas", "wide": true, "url": "procesos.html",
     "desc": "Mapa de procesos de la entidad: estratégicos, misionales, de apoyo y de evaluación.", "children": [
     { "label": "Procesos estratégicos", "children": [
       { "label": "Planeación", "url": "#" },
@@ -59,19 +59,19 @@
       { "label": "Control y Evaluación", "url": "#" }
     ]}
   ]},
-  { "label": "SIGI", "icon": "calidad",
+  { "label": "SIGI", "icon": "calidad", "url": "sigi.html",
     "desc": "Sistema Integrado de Gestión Institucional: calidad, gestión ambiental, seguridad y salud en el trabajo y seguridad de la información.", "children": [
     { "label": "Sistema de Gestión de Calidad (SGC)", "icon": "calidad", "url": "#" },
     { "label": "Sistema de Gestión Ambiental (SGA)", "icon": "ambiental", "url": "#" },
     { "label": "Seguridad y Salud en el Trabajo (SG-SST)", "icon": "sst", "url": "#" },
     { "label": "Seguridad de la Información (SGSI)", "icon": "seguridad", "url": "#" }
   ]},
-  { "label": "Comités", "icon": "personas",
+  { "label": "Comités", "icon": "personas", "url": "comites.html",
     "desc": "Instancias de participación de la entidad: convivencia laboral y seguridad y salud en el trabajo.", "children": [
     { "label": "Comité de Convivencia Laboral", "icon": "personas", "url": "#" },
     { "label": "Comité Paritario de Seguridad y Salud en el Trabajo", "icon": "sst", "url": "#" }
   ]},
-  { "label": "Publicaciones", "icon": "doctrina", "wide": true,
+  { "label": "Publicaciones", "icon": "doctrina", "wide": true, "url": "publicaciones.html",
     "desc": "Publicaciones institucionales de la CGN: revistas, boletines, doctrina y matriz de publicaciones.", "children": [
     { "label": "Revistas", "visual": "portada", "icon": "revista",
       "desc": "Publicaciones periódicas institucionales con historias, cultura y conocimiento contable de la CGN.", "children": [
@@ -92,7 +92,7 @@
     { "label": "Doctrina al Día", "icon": "doctrina", "url": "#" },
     { "label": "Matriz de Publicaciones", "icon": "matriz", "url": "#" }
   ]},
-  { "label": "Recursos", "icon": "plantillas",
+  { "label": "Recursos", "icon": "plantillas", "url": "recursos.html",
     "desc": "Herramientas de apoyo para el día a día: plantillas, calendario de eventos, clasificados, SINTRA-CGN y mapa del sitio.", "children": [
     { "label": "Plantillas", "icon": "plantillas", "url": "#" },
     { "label": "Calendario de Eventos", "icon": "calendario", "url": "#" },
