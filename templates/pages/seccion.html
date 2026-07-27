@@ -29,12 +29,16 @@
     {# Enlaces directos de la sección (hojas) #}
     {% if hojas %}
       <h2 class="sr-only">Accesos de {{ seccion.label }}</h2>
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {% comment %} Columnas según la cantidad, para no dejar columnas vacías:
+        1–2 ítems → 2 col; 4/7/8 → 4 col; el resto → 3 col. {% endcomment %}
+      {% with n=hojas|length %}
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2{% if n == 4 or n == 7 or n == 8 %} lg:grid-cols-4{% elif n > 2 %} lg:grid-cols-3{% endif %}">
         {% for it in hojas %}
           {% cycle 'verde' 'cobalt' 'naranja' as hc silent %}
           {% include "components/card.html" with title=it.label url=it.url|default:'#' color=hc icon_name=it.icon|default:'documento' %}
         {% endfor %}
       </div>
+      {% endwith %}
     {% endif %}
 
     {# Subsecciones (grupos) #}
@@ -71,7 +75,8 @@
           </div>
         {% else %}
           {# Tarjetas; si el ítem tiene hijos (p. ej. GIT), se listan dentro #}
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {% with n=grupo.children|length %}
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2{% if n == 4 or n == 7 or n == 8 %} lg:grid-cols-4{% elif n > 2 %} lg:grid-cols-3{% endif %}">
             {% for it in grupo.children %}
               <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
                 <h3 class="font-titulo font-bold text-cgn-negro">{{ it.label }}</h3>
@@ -87,6 +92,7 @@
               </div>
             {% endfor %}
           </div>
+          {% endwith %}
         {% endif %}
       </section>
     {% endfor %}

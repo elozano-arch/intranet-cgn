@@ -26,7 +26,9 @@
 
   <h3 class="font-titulo text-lg font-bold leading-snug text-cgn-negro group-hover:text-govco-cobalt">{{ title }}</h3>
   {% if text %}<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-cgn-grisos">{{ text }}</p>{% endif %}
-  <span class="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-govco-cobalt">
+  {% comment %} Con descripción: "Ingresar" se ancla abajo (mt-auto). Sin ella, va
+    justo bajo el título para no dejar el hueco vacío que se veía en las tarjetas. {% endcomment %}
+  <span class="inline-flex items-center gap-1 text-sm font-bold text-govco-cobalt {% if text %}mt-auto pt-5{% else %}mt-4{% endif %}">
     Ingresar
     <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
   </span>
