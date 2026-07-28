@@ -18,6 +18,12 @@ with open(os.path.join(BASE, "data", "nav.json"), encoding="utf-8") as _f:
     NAV = json.load(_f)
 with open(os.path.join(BASE, "data", "apps.json"), encoding="utf-8") as _f:
     APPS = json.load(_f)
+# Usar el logo local si el archivo existe en static/img/apps/; si no, se usa el
+# ícono de respaldo (así nunca hay imágenes rotas ni cajas vacías).
+_APPS_DIR = os.path.join(BASE, "static", "img", "apps")
+for _a in APPS:
+    _img = _a.get("img")
+    _a["logo"] = f"/static/img/apps/{_img}" if _img and os.path.exists(os.path.join(_APPS_DIR, _img)) else None
 CONTEXT = {"nav": NAV, "aplicaciones": APPS}
 
 settings.configure(
