@@ -17,8 +17,8 @@
   1300 × 600 px, márgenes 80 px, botones 230 × 56 px (der→izq, sep. 225 px),
   recuadro fecha/proceso 240 px. Tipografía Nunito Sans.
 {% endcomment %}
-{# Lienzo del banner: proporción EXACTA 1300 × 600 px (Manual). Con imagen se
-   mantiene la relación (sin recorte ni deformación); el respaldo usa min-h 600. #}
+{% comment %} Lienzo del banner: proporción EXACTA 1300 × 600 px (Manual). Con
+   imagen se mantiene la relación (sin recorte ni deformación); el respaldo usa min-h 600. {% endcomment %}
 <div class="relative w-full shrink-0 {% if image %}aspect-[1300/600]{% endif %}" role="group" aria-roledescription="diapositiva" aria-label="{{ idx }} de {{ total }}">
 
   {% if image %}

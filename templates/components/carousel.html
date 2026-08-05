@@ -8,8 +8,9 @@
   Cada slide: {image, alt, eyebrow, title, text, accent, fecha, proceso,
   buttons:[{label,url,variant}] (máx. 3)}.
 {% endcomment %}
-{# Banner contenido a 1300 px (medida del Manual); centrado en pantallas grandes. #}
-<section class="relative mx-auto max-w-[1300px] overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
+{% comment %} Banner contenido a 1300 px (medida del Manual), centrado en pantallas
+   grandes; fondo blanco a los costados para que no se vea "cortado". {% endcomment %}
+<section class="relative mx-auto max-w-[1300px] overflow-hidden bg-white" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
   <div class="overflow-hidden">
     <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none" data-track>
       {% comment %} Respaldo: si el CMS no envía slides, un banner de bienvenida. {% endcomment %}
