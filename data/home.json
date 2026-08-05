@@ -1,0 +1,48 @@
+{
+  "blocks": [
+    {
+      "type": "novedad",
+      "tag": "Nuevo",
+      "icon": "estilo",
+      "title": "Manual de Estilo de la CGN",
+      "text": "Guía de escritura, tono y voz institucional. Ya disponible en la intranet.",
+      "url": "manual-estilo.html",
+      "label": "Ver el manual"
+    },
+    {
+      "type": "accesos",
+      "title": "Accesos rápidos",
+      "subtitle": "Las secciones más consultadas de la intranet.",
+      "items": [
+        { "title": "En Casa",       "text": "PIC, manuales institucionales, comisión de personal y nombramientos.", "url": "en-casa.html",       "color": "cobalt",  "icon": "casa" },
+        { "title": "Normativa",     "text": "Normogramas 2015 a 2026 y años anteriores.",                            "url": "normativa.html",     "color": "verde",   "icon": "normativa" },
+        { "title": "SIGI",          "text": "Calidad, ambiental, seguridad y salud, y seguridad de la información.", "url": "sigi.html",          "color": "naranja", "icon": "calidad" },
+        { "title": "Procesos",      "text": "Estratégicos, misionales, de apoyo y de evaluación.",                   "url": "procesos.html",      "color": "cobalt",  "icon": "plantillas" },
+        { "title": "Comités",       "text": "Convivencia laboral y COPASST.",                                        "url": "comites.html",       "color": "verde",   "icon": "personas" },
+        { "title": "Publicaciones", "text": "Revistas, Doctrina al Día y Matriz de Publicaciones.",                 "url": "publicaciones.html", "color": "naranja", "icon": "doctrina" }
+      ]
+    },
+    {
+      "type": "revistas",
+      "title": "Revistas y publicaciones",
+      "subtitle": "Portadas de las publicaciones institucionales de la CGN.",
+      "ver_todas_url": "publicaciones.html",
+      "items": [
+        { "title": "Le Cuento Que",      "tag": "Revista", "color": "verde",  "icon": "revista", "image": "", "url": "le-cuento-que.html" },
+        { "title": "SIINERGIA Contable", "tag": "Boletín", "color": "cobalt", "icon": "boletin", "image": "", "url": "siinergia-contable.html" },
+        { "title": "Codex",              "tag": "Revista", "color": "naranja","icon": "revista", "image": "", "url": "codex.html" },
+        { "title": "Coworking",          "tag": "Boletín", "color": "gris",   "icon": "boletin", "image": "", "url": "coworking.html" },
+        { "title": "Videos CGN",         "tag": "Videos",  "color": "verde",  "icon": "video",   "image": "", "url": "videos-cgn.html" }
+      ]
+    },
+    {
+      "type": "enlaces",
+      "items": [
+        { "label": "Búsqueda",             "icon": "busqueda",     "url": "#",                       "color": "cobalt" },
+        { "label": "Calendario de Eventos","icon": "calendario",   "url": "calendario-de-eventos.html","color": "naranja" },
+        { "label": "Clasificados",         "icon": "clasificados", "url": "clasificados.html",       "color": "verde" },
+        { "label": "Mapa de sitio",        "icon": "mapa",         "url": "mapa-de-sitio.html",      "color": "cobalt" }
+      ]
+    }
+  ]
+}

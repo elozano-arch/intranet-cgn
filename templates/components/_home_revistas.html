@@ -1,0 +1,18 @@
+{% comment %} Bloque Home: Galería de publicaciones → StructBlock {title, subtitle,
+   ver_todas_url, items:ListBlock(portada)}. Cada portada acepta image (subible). {% endcomment %}
+<section id="revistas" class="bg-govco-smoke py-12" aria-label="{{ block.title|default:'Revistas y publicaciones' }}">
+  <div class="mx-auto max-w-contenido px-4">
+    <div class="mb-8 flex items-end justify-between border-b-2 border-cgn-verde pb-3">
+      <div>
+        <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">{{ block.title|default:'Revistas y publicaciones' }}</h2>
+        {% if block.subtitle %}<p class="mt-1 text-sm text-cgn-grisos">{{ block.subtitle }}</p>{% endif %}
+      </div>
+      {% if block.ver_todas_url %}<a href="{{ block.ver_todas_url }}" class="hidden text-sm font-bold text-govco-cobalt hover:underline sm:block">Ver todas →</a>{% endif %}
+    </div>
+    <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+      {% for it in block.items %}
+        {% include "components/cover.html" with title=it.title url=it.url color=it.color tag=it.tag icon=it.icon image=it.image %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

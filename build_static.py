@@ -27,6 +27,9 @@ for _a in APPS:
 # Banners del carrusel (administrables) — el editor sube imagen y botones.
 with open(os.path.join(BASE, "data", "banners.json"), encoding="utf-8") as _f:
     BANNERS = json.load(_f)
+# Bloques del home (administrables, tipo StreamField).
+with open(os.path.join(BASE, "data", "home.json"), encoding="utf-8") as _f:
+    HOME = json.load(_f)
 CONTEXT = {"nav": NAV, "aplicaciones": APPS}
 
 settings.configure(
@@ -158,7 +161,7 @@ for _sec in NAV:
         _collect(_sec)
 
 # Home
-write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio", "slides": BANNERS}))
+write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio", "slides": BANNERS, "home_blocks": HOME.get("blocks", [])}))
 
 # Guía de componentes (biblioteca UI) con datos de ejemplo
 COMPONENTES_CTX = {

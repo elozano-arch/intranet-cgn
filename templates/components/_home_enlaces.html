@@ -1,0 +1,14 @@
+{% comment %} Bloque Home: Enlaces rápidos → StructBlock {items:ListBlock({label,icon,url,color})}. {% endcomment %}
+<section class="mx-auto max-w-contenido px-4 py-12" aria-label="Enlaces rápidos">
+  <div class="grid grid-cols-2 divide-x divide-gray-200 rounded-xl border border-gray-200 sm:grid-cols-4">
+    {% for it in block.items %}
+      <a href="{{ it.url|default:'#' }}" class="group flex flex-col items-center gap-2 px-2 py-6 text-center hover:text-govco-cobalt">
+        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg
+          {% if it.color == 'naranja' %}bg-cgn-naranja/12 text-cgn-naranja{% elif it.color == 'verde' %}bg-cgn-verde/12 text-cgn-verde{% else %}bg-govco-solitude text-govco-cobalt{% endif %}">
+          {% include "components/icon.html" with name=it.icon class="h-5 w-5 -rotate-45" %}
+        </span>
+        <span class="text-sm font-bold">{{ it.label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>

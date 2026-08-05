@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% comment %}
-  Página: Home de la Intranet CGN.
-  Diseño curado con contenido REAL del mapa del sitio (data/nav.json). Sin
-  contenido inventado: las tarjetas son secciones reales y las descripciones
-  resumen sus subsecciones reales. Revistas y enlaces rápidos también son reales.
+  Página: Home de la Intranet CGN — COMPOSICIÓN DE BLOQUES (administrable).
+  El banner sale de data/banners.json (CarouselBlock) y el resto del cuerpo de
+  data/home.json (StreamField): el editor agrega, quita y reordena bloques
+  (novedad, accesos, revistas, enlaces) sin tocar código. Cada bloque = un
+  componente reutilizable en templates/components/_home_*.html.
 {% endcomment %}
 
 {% block title %}Inicio · Intranet Contaduría General de la Nación{% endblock %}
@@ -12,83 +13,17 @@
 
   <h1 class="sr-only">Intranet de la Contaduría General de la Nación</h1>
 
-  {# ===== 1. BANNER PRINCIPAL → CarouselBlock (secciones reales) ===== #}
+  {# Banner principal → CarouselBlock (data/banners.json) #}
   {% include "components/carousel.html" %}
 
-  {# ===== Novedad destacada (espacio recién lanzado) ===== #}
-  <section class="mx-auto max-w-contenido px-4 pt-12" aria-label="Novedad">
-    <div class="flex flex-col gap-4 rounded-2xl border-l-4 border-cgn-naranja bg-govco-solitude p-6 md:flex-row md:items-center md:justify-between">
-      <div class="flex items-start gap-4">
-        <span class="flex h-12 w-12 shrink-0 rotate-45 items-center justify-center rounded-xl bg-white text-govco-cobalt shadow-sm">
-          {% include "components/icon.html" with name="estilo" class="h-6 w-6 -rotate-45" %}
-        </span>
-        <div>
-          <span class="mb-1 inline-block rounded-full bg-cgn-naranja px-3 py-0.5 text-xs font-bold text-cgn-negro">Nuevo</span>
-          <h2 class="font-titulo text-lg font-bold text-cgn-negro">Manual de Estilo de la CGN</h2>
-          <p class="mt-1 text-sm text-cgn-grisos">Guía de escritura, tono y voz institucional. Ya disponible en la intranet.</p>
-        </div>
-      </div>
-      {% include "components/button.html" with label="Ver el manual" url="manual-estilo.html" variant="primario" %}
-    </div>
-  </section>
-
-  {# ===== 2. ACCESOS RÁPIDOS (secciones reales, curadas) ===== #}
-  <section id="accesos" class="mx-auto max-w-contenido px-4 py-12" aria-label="Accesos rápidos">
-    <div class="mb-8">
-      <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Accesos rápidos</h2>
-      <p class="mt-1 text-sm text-cgn-grisos">Las secciones más consultadas de la intranet.</p>
-    </div>
-    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {% include "components/card.html" with title="En Casa" text="PIC, manuales institucionales, comisión de personal y nombramientos." url="en-casa.html" color="cobalt" icon_name="casa" %}
-      {% include "components/card.html" with title="Normativa" text="Normogramas 2015 a 2026 y años anteriores." url="normativa.html" color="verde" icon_name="normativa" %}
-      {% include "components/card.html" with title="SIGI" text="Calidad, ambiental, seguridad y salud, y seguridad de la información." url="sigi.html" color="naranja" icon_name="calidad" %}
-      {% include "components/card.html" with title="Procesos" text="Estratégicos, misionales, de apoyo y de evaluación." url="procesos.html" color="cobalt" icon_name="plantillas" %}
-      {% include "components/card.html" with title="Comités" text="Convivencia laboral y COPASST." url="comites.html" color="verde" icon_name="personas" %}
-      {% include "components/card.html" with title="Publicaciones" text="Revistas, Doctrina al Día y Matriz de Publicaciones." url="publicaciones.html" color="naranja" icon_name="doctrina" %}
-    </div>
-  </section>
-
-  {# ===== 3. REVISTAS Y PUBLICACIONES (subsecciones reales de "Revistas") ===== #}
-  <section id="revistas" class="bg-govco-smoke py-12" aria-label="Revistas y publicaciones">
-    <div class="mx-auto max-w-contenido px-4">
-      <div class="mb-8 flex items-end justify-between border-b-2 border-cgn-verde pb-3">
-        <div>
-          <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">Revistas y publicaciones</h2>
-          <p class="mt-1 text-sm text-cgn-grisos">Portadas de las publicaciones institucionales de la CGN.</p>
-        </div>
-        <a href="publicaciones.html" class="hidden text-sm font-bold text-govco-cobalt hover:underline sm:block">Ver todas →</a>
-      </div>
-      {# Galería de portadas (visual) — listas para reemplazar por las imágenes reales #}
-      <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
-        {% include "components/cover.html" with title="Le Cuento Que" url="le-cuento-que.html" color="verde" tag="Revista" icon="revista" %}
-        {% include "components/cover.html" with title="SIINERGIA Contable" url="siinergia-contable.html" color="cobalt" tag="Boletín" icon="boletin" %}
-        {% include "components/cover.html" with title="Codex" url="codex.html" color="naranja" tag="Revista" icon="revista" %}
-        {% include "components/cover.html" with title="Coworking" url="coworking.html" color="gris" tag="Boletín" icon="boletin" %}
-        {% include "components/cover.html" with title="Videos CGN" url="videos-cgn.html" color="verde" tag="Videos" icon="video" %}
-      </div>
-    </div>
-  </section>
-
-  {# ===== 4. ENLACES RÁPIDOS (secciones reales del mapa del sitio) ===== #}
-  <section class="mx-auto max-w-contenido px-4 py-12" aria-label="Enlaces rápidos">
-    <div class="grid grid-cols-2 divide-x divide-gray-200 rounded-xl border border-gray-200 sm:grid-cols-4">
-      <a href="#" class="group flex flex-col items-center gap-2 px-2 py-6 text-center hover:text-govco-cobalt">
-        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt">{% include "components/icon.html" with name="busqueda" class="h-5 w-5 -rotate-45" %}</span>
-        <span class="text-sm font-bold">Búsqueda</span>
-      </a>
-      <a href="calendario-de-eventos.html" class="group flex flex-col items-center gap-2 px-2 py-6 text-center hover:text-govco-cobalt">
-        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-cgn-naranja/12 text-cgn-naranja">{% include "components/icon.html" with name="calendario" class="h-5 w-5 -rotate-45" %}</span>
-        <span class="text-sm font-bold">Calendario de Eventos</span>
-      </a>
-      <a href="clasificados.html" class="group flex flex-col items-center gap-2 px-2 py-6 text-center hover:text-govco-cobalt">
-        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-cgn-verde/12 text-cgn-verde">{% include "components/icon.html" with name="clasificados" class="h-5 w-5 -rotate-45" %}</span>
-        <span class="text-sm font-bold">Clasificados</span>
-      </a>
-      <a href="mapa-de-sitio.html" class="group flex flex-col items-center gap-2 px-2 py-6 text-center hover:text-govco-cobalt">
-        <span class="flex h-11 w-11 rotate-45 items-center justify-center rounded-lg bg-govco-solitude text-govco-cobalt">{% include "components/icon.html" with name="mapa" class="h-5 w-5 -rotate-45" %}</span>
-        <span class="text-sm font-bold">Mapa de sitio</span>
-      </a>
-    </div>
-  </section>
+  {% comment %} Cuerpo → StreamField (data/home.json): se recorre y cada bloque se
+     renderiza según su tipo. Agregar un tipo nuevo = un componente + una rama aquí. {% endcomment %}
+  {% for block in home_blocks %}
+    {% if block.type == 'novedad' %}{% include "components/_home_novedad.html" %}
+    {% elif block.type == 'accesos' %}{% include "components/_home_accesos.html" %}
+    {% elif block.type == 'revistas' %}{% include "components/_home_revistas.html" %}
+    {% elif block.type == 'enlaces' %}{% include "components/_home_enlaces.html" %}
+    {% endif %}
+  {% endfor %}
 
 {% endblock %}

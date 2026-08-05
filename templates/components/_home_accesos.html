@@ -1,0 +1,12 @@
+{% comment %} Bloque Home: Accesos rápidos → StructBlock {title, subtitle, items:ListBlock(tarjeta)}. {% endcomment %}
+<section id="accesos" class="mx-auto max-w-contenido px-4 py-12" aria-label="{{ block.title|default:'Accesos rápidos' }}">
+  <div class="mb-8">
+    <h2 class="font-titulo text-2xl font-bold text-cgn-negro md:text-3xl">{{ block.title|default:'Accesos rápidos' }}</h2>
+    {% if block.subtitle %}<p class="mt-1 text-sm text-cgn-grisos">{{ block.subtitle }}</p>{% endif %}
+  </div>
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {% for it in block.items %}
+      {% include "components/card.html" with title=it.title text=it.text url=it.url color=it.color icon_name=it.icon %}
+    {% endfor %}
+  </div>
+</section>
