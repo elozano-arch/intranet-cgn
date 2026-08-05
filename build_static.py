@@ -24,6 +24,9 @@ _APPS_DIR = os.path.join(BASE, "static", "img", "apps")
 for _a in APPS:
     _img = _a.get("img")
     _a["logo"] = f"/static/img/apps/{_img}" if _img and os.path.exists(os.path.join(_APPS_DIR, _img)) else None
+# Banners del carrusel (administrables) — el editor sube imagen y botones.
+with open(os.path.join(BASE, "data", "banners.json"), encoding="utf-8") as _f:
+    BANNERS = json.load(_f)
 CONTEXT = {"nav": NAV, "aplicaciones": APPS}
 
 settings.configure(
@@ -155,7 +158,7 @@ for _sec in NAV:
         _collect(_sec)
 
 # Home
-write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio"}))
+write("index.html", render_to_string("pages/home.html", {**CONTEXT, "active_nav": "Inicio", "slides": BANNERS}))
 
 # Guía de componentes (biblioteca UI) con datos de ejemplo
 COMPONENTES_CTX = {

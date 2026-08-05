@@ -1,0 +1,55 @@
+[
+  {
+    "image": "",
+    "alt": "",
+    "eyebrow": "Intranet institucional",
+    "title": "Cuentas Claras, Estado Transparente",
+    "text": "Bienvenido a la intranet de la Contaduría General de la Nación.",
+    "accent": "naranja",
+    "fecha": "",
+    "proceso": "",
+    "buttons": [
+      { "label": "Explorar secciones", "url": "#accesos", "variant": "primario" }
+    ]
+  },
+  {
+    "image": "",
+    "alt": "",
+    "eyebrow": "Procesos",
+    "title": "Procesos de la CGN",
+    "text": "Estratégicos, misionales, de apoyo y de evaluación.",
+    "accent": "verde",
+    "fecha": "",
+    "proceso": "",
+    "buttons": [
+      { "label": "Ver procesos", "url": "procesos.html", "variant": "primario" }
+    ]
+  },
+  {
+    "image": "",
+    "alt": "",
+    "eyebrow": "Normativa",
+    "title": "Normograma 2026",
+    "text": "Consulta la normativa vigente de la Contaduría General de la Nación.",
+    "accent": "cobalt",
+    "fecha": "05 de agosto de 2026",
+    "proceso": "Gestión Normativa",
+    "buttons": [
+      { "label": "Ver normograma", "url": "normograma-2026.html", "variant": "primario" },
+      { "label": "Descargar", "url": "#", "variant": "contorno_inverso" }
+    ]
+  },
+  {
+    "image": "",
+    "alt": "",
+    "eyebrow": "Publicaciones",
+    "title": "Revistas y publicaciones",
+    "text": "Le Cuento Que, SIINERGIA Contable, Codex, Coworking y más.",
+    "accent": "naranja",
+    "fecha": "",
+    "proceso": "",
+    "buttons": [
+      { "label": "Ver publicaciones", "url": "publicaciones.html", "variant": "primario" }
+    ]
+  }
+]

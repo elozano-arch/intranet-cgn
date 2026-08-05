@@ -4,22 +4,19 @@
   reproducción (play/pausa) y flechas de navegación; navegable por teclado;
   contraste ≥ 4.5:1; responsive. Restricción (doc): máx. 5 slides (recom. 3).
   Accesibilidad: aria-roledescription, región en vivo, respeta prefers-reduced-motion.
-  Parámetros: slides = lista de {eyebrow,title,text,cta_label,cta_url,accent('verde'|'naranja'|'cobalt')}
+  Administrable: slides = lista de banners (data/banners.json → CarouselBlock).
+  Cada slide: {image, alt, eyebrow, title, text, accent, fecha, proceso,
+  buttons:[{label,url,variant}] (máx. 3)}.
 {% endcomment %}
 <section class="relative overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
   <div class="overflow-hidden">
     <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none" data-track>
-      {% comment %} Demo: si el CMS no envía slides, se muestran 3 de ejemplo {% endcomment %}
+      {% comment %} Respaldo: si el CMS no envía slides, un banner de bienvenida. {% endcomment %}
       {% if not slides %}
-        {% with demo="1" %}
-        {# Banners con secciones REALES del mapa del sitio (sin contenido inventado) #}
-        {% include "components/_carousel_slide.html" with idx=1 total=3 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Bienvenido a la intranet de la Contaduría General de la Nación." cta_label="Explorar secciones" cta_url="#accesos" cta_variant="primario" accent="naranja" %}
-        {% include "components/_carousel_slide.html" with idx=2 total=3 eyebrow="Procesos" title="Procesos de la CGN" text="Estratégicos, misionales, de apoyo y de evaluación." cta_label="Ver procesos" cta_url="#accesos" cta_variant="primario" accent="verde" %}
-        {% include "components/_carousel_slide.html" with idx=3 total=3 eyebrow="Publicaciones" title="Revistas y publicaciones" text="Le Cuento Que, SIINERGIA Contable, Codex, Coworking y más." cta_label="Ver revistas" cta_url="#revistas" cta_variant="primario" accent="cobalt" %}
-        {% endwith %}
+        {% include "components/_carousel_slide.html" with idx=1 total=1 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Bienvenido a la intranet de la Contaduría General de la Nación." cta_label="Explorar secciones" cta_url="#accesos" cta_variant="primario" accent="naranja" %}
       {% else %}
         {% for s in slides|slice:":5" %}
-          {% include "components/_carousel_slide.html" with idx=forloop.counter total=slides|length eyebrow=s.eyebrow title=s.title text=s.text cta_label=s.cta_label cta_url=s.cta_url accent=s.accent %}
+          {% include "components/_carousel_slide.html" with idx=forloop.counter total=slides|length image=s.image alt=s.alt eyebrow=s.eyebrow title=s.title text=s.text accent=s.accent fecha=s.fecha proceso=s.proceso buttons=s.buttons %}
         {% endfor %}
       {% endif %}
     </div>
