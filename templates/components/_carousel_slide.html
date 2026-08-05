@@ -17,12 +17,14 @@
   1300 × 600 px, márgenes 80 px, botones 230 × 56 px (der→izq, sep. 225 px),
   recuadro fecha/proceso 240 px. Tipografía Nunito Sans.
 {% endcomment %}
-<div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="{{ idx }} de {{ total }}">
+{# Lienzo del banner: proporción EXACTA 1300 × 600 px (Manual). Con imagen se
+   mantiene la relación (sin recorte ni deformación); el respaldo usa min-h 600. #}
+<div class="relative w-full shrink-0 {% if image %}aspect-[1300/600]{% endif %}" role="group" aria-roledescription="diapositiva" aria-label="{{ idx }} de {{ total }}">
 
   {% if image %}
-    {# Pieza gráfica del editor: se muestra sin superposiciones. #}
-    {% if link %}<a href="{{ link }}" class="block"{% if alt %} aria-label="{{ alt }}"{% endif %}>{% endif %}
-      <img src="{{ image }}" alt="{{ alt }}" class="block h-64 w-full object-cover sm:h-96 lg:h-[600px]"{% if not alt %} aria-hidden="true"{% endif %}>
+    {# Pieza gráfica del editor: se muestra sin superposiciones, a 1300 × 600. #}
+    {% if link %}<a href="{{ link }}" class="absolute inset-0 block"{% if alt %} aria-label="{{ alt }}"{% endif %}>{% endif %}
+      <img src="{{ image }}" alt="{{ alt }}" class="absolute inset-0 h-full w-full object-cover"{% if not alt %} aria-hidden="true"{% endif %}>
     {% if link %}</a>{% endif %}
     {% if title %}<h2 class="sr-only">{{ title }}</h2>{% endif %}
 

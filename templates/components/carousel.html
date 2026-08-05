@@ -8,7 +8,8 @@
   Cada slide: {image, alt, eyebrow, title, text, accent, fecha, proceso,
   buttons:[{label,url,variant}] (máx. 3)}.
 {% endcomment %}
-<section class="relative overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
+{# Banner contenido a 1300 px (medida del Manual); centrado en pantallas grandes. #}
+<section class="relative mx-auto max-w-[1300px] overflow-hidden bg-cgn-negro" aria-roledescription="carrusel" aria-label="Banners destacados" data-carousel>
   <div class="overflow-hidden">
     <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none" data-track>
       {% comment %} Respaldo: si el CMS no envía slides, un banner de bienvenida. {% endcomment %}
@@ -16,7 +17,7 @@
         {% include "components/_carousel_slide.html" with idx=1 total=1 eyebrow="Intranet institucional" title="Cuentas Claras, Estado Transparente" text="Bienvenido a la intranet de la Contaduría General de la Nación." cta_label="Explorar secciones" cta_url="#accesos" cta_variant="primario" accent="naranja" %}
       {% else %}
         {% for s in slides|slice:":5" %}
-          {% include "components/_carousel_slide.html" with idx=forloop.counter total=slides|length image=s.image alt=s.alt eyebrow=s.eyebrow title=s.title text=s.text accent=s.accent fecha=s.fecha proceso=s.proceso buttons=s.buttons %}
+          {% include "components/_carousel_slide.html" with idx=forloop.counter total=slides|length image=s.image alt=s.alt link=s.link eyebrow=s.eyebrow title=s.title text=s.text accent=s.accent fecha=s.fecha proceso=s.proceso buttons=s.buttons %}
         {% endfor %}
       {% endif %}
     </div>
