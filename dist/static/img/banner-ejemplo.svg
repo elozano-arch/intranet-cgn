@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 600" role="img" aria-label="Banner de ejemplo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#125847"/>
+      <stop offset="0.6" stop-color="#176551"/>
+      <stop offset="1" stop-color="#0943B5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1300" height="600" fill="url(#g)"/>
+  <rect x="1040" y="-120" width="360" height="360" rx="48" transform="rotate(45 1220 60)" fill="#ffffff" opacity="0.08"/>
+  <rect x="380" y="430" width="80" height="80" rx="12" transform="rotate(45 420 470)" fill="#DA9440" opacity="0.35"/>
+  <g fill="#ffffff" font-family="Nunito Sans, Verdana, sans-serif">
+    <rect x="80" y="150" width="220" height="34" rx="17" fill="#ffffff" opacity="0.15"/>
+    <text x="112" y="173" font-size="17" font-weight="700" opacity="0.95">PIEZA GRÁFICA (EJEMPLO)</text>
+    <text x="80" y="270" font-size="64" font-weight="800">Cuentas Claras,</text>
+    <text x="80" y="345" font-size="64" font-weight="800">Estado Transparente</text>
+    <text x="80" y="405" font-size="26" opacity="0.9" font-family="Verdana, sans-serif">Esta imagen la diseña y sube el editor · Lienzo 1300 × 600 px</text>
+  </g>
+</svg>

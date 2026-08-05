@@ -1,0 +1,20 @@
+{% comment %}
+  Acciones del banner (uso interno del slide): recuadro fecha/proceso + botones.
+  Manual CGN Fig. 36: botones 230×56, de derecha a izquierda (principal a la
+  derecha), separación 225 px @1300px; recuadro fecha/proceso (240 px) por encima
+  del botón derecho. Máximo 3 botones. Todo OPCIONAL (solo si el editor lo agrega).
+{% endcomment %}
+{% if fecha or proceso %}
+  <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
+    {% if fecha %}<p class="text-sm font-bold">{{ fecha }}</p>{% endif %}
+    {% if proceso %}<p class="text-xs text-cgn-grisos">{{ proceso }}</p>{% endif %}
+  </div>
+{% endif %}
+<div class="flex flex-wrap gap-3 sm:flex-row-reverse sm:justify-start sm:gap-6 min-[1300px]:flex-nowrap min-[1300px]:gap-[225px] sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">
+  {% for b in buttons|slice:":3" %}
+    {% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:"contorno_inverso" %}
+  {% endfor %}
+  {% if not buttons and cta_label %}
+    {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"primario" %}
+  {% endif %}
+</div>

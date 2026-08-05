@@ -1,16 +1,11 @@
 [
   {
-    "image": "",
-    "alt": "",
-    "eyebrow": "Intranet institucional",
+    "image": "/static/img/banner-ejemplo.svg",
+    "alt": "Cuentas Claras, Estado Transparente — banner institucional de la CGN (pieza de ejemplo).",
+    "link": "#accesos",
     "title": "Cuentas Claras, Estado Transparente",
-    "text": "Bienvenido a la intranet de la Contaduría General de la Nación.",
     "accent": "naranja",
-    "fecha": "",
-    "proceso": "",
-    "buttons": [
-      { "label": "Explorar secciones", "url": "#accesos", "variant": "primario" }
-    ]
+    "buttons": []
   },
   {
     "image": "",

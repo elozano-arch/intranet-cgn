@@ -1,66 +1,61 @@
 {% comment %}
   Slide del carrusel (banner de intranet) — ADMINISTRABLE.
   Mapea a Wagtail (StructBlock dentro del CarouselBlock/ListBlock):
-    image   → ImageChooserBlock  (el editor sube la imagen del banner)
+    image   → ImageChooserBlock  (la PIEZA GRÁFICA que sube y diseña el editor)
     alt     → CharBlock          (texto alternativo de la imagen)
-    eyebrow, title, text         → CharBlock / RichTextBlock
-    fecha, proceso               → CharBlock (recuadro inferior derecho)
-    buttons → ListBlock(ButtonBlock)  {label, url, variant} — MÁX. 3
-    accent  → ChoiceBlock (naranja|verde|cobalt) para decoración/placeholder
+    link    → URLBlock           (opcional: toda la pieza es un enlace)
+    buttons → ListBlock(ButtonBlock)  {label, url, variant} — OPCIONALES, máx. 3
+    fecha, proceso               → CharBlock (recuadro, OPCIONAL)
+    eyebrow, title, text, accent → solo se usan en el RESPALDO (cuando no hay imagen)
 
-  Medidas (Manual de Identidad Visual Corporativa CGN, §4.8, Figs. 33 y 36):
-    · Lienzo del banner de intranet: 1300 × 600 px (desktop: min-h 600, ancho 1300).
-    · Márgenes laterales: 80 px.  Tipografía: Nunito Sans.
-    · Botones: 230 × 56 px, anclados abajo, de derecha a izquierda (principal a la
-      derecha), separación 225 px en el lienzo de 1300 px. Máximo 3 por pieza.
-    · Recuadro fecha/proceso: 240 px de ancho, 47,5 px por encima del botón derecho.
-  Si no hay imagen, se muestra un degradado institucional como respaldo.
+  IMPORTANTE: si el editor sube su pieza gráfica, se muestra TAL CUAL, sin
+  superponerle título, descripción ni velo (para no interrumpir su diseño). Los
+  botones y el recuadro de fecha solo aparecen si el editor los agrega.
+  Sin imagen, se usa el diseño de respaldo (degradado + texto de la UI).
+
+  Medidas (Manual de Identidad Visual CGN, §4.8, Figs. 33 y 36): lienzo
+  1300 × 600 px, márgenes 80 px, botones 230 × 56 px (der→izq, sep. 225 px),
+  recuadro fecha/proceso 240 px. Tipografía Nunito Sans.
 {% endcomment %}
 <div class="relative w-full shrink-0" role="group" aria-roledescription="diapositiva" aria-label="{{ idx }} de {{ total }}">
 
   {% if image %}
-    {# Imagen subida por el editor (fondo) + velo para garantizar contraste ≥ 4.5:1 #}
-    <img src="{{ image }}" alt="{{ alt }}" class="absolute inset-0 h-full w-full object-cover"{% if not alt %} aria-hidden="true"{% endif %}>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/25" aria-hidden="true"></div>
+    {# Pieza gráfica del editor: se muestra sin superposiciones. #}
+    {% if link %}<a href="{{ link }}" class="block"{% if alt %} aria-label="{{ alt }}"{% endif %}>{% endif %}
+      <img src="{{ image }}" alt="{{ alt }}" class="block h-64 w-full object-cover sm:h-96 lg:h-[600px]"{% if not alt %} aria-hidden="true"{% endif %}>
+    {% if link %}</a>{% endif %}
+    {% if title %}<h2 class="sr-only">{{ title }}</h2>{% endif %}
+
+    {% if buttons or fecha or proceso %}
+      {# Acciones OPCIONALES superpuestas (ancladas abajo, según el Manual). #}
+      <div class="pointer-events-none absolute inset-0 flex">
+        <div class="pointer-events-auto relative mx-auto flex w-full max-w-contenido flex-col justify-end px-4 pb-8 lg:max-w-[1300px] lg:px-20 lg:pb-20">
+          {% include "components/_banner_acciones.html" %}
+        </div>
+      </div>
+    {% endif %}
+
   {% else %}
-    {# Respaldo sin imagen: degradado institucional + rombos (motivo CGN) #}
+    {# Respaldo sin imagen: degradado institucional + rombos + texto de la UI. #}
     <div class="absolute inset-0 bg-gradient-to-br from-cgn-verdehondo via-cgn-verdeos to-cgn-negro" aria-hidden="true"></div>
     <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       <div class="absolute -right-24 -top-24 h-96 w-96 rotate-45 rounded-3xl
         {% if accent == 'naranja' %}bg-cgn-naranja/20{% elif accent == 'cobalt' %}bg-govco-cobalt/25{% else %}bg-white/10{% endif %}"></div>
       <div class="absolute bottom-10 left-1/3 h-16 w-16 rotate-45 rounded-lg bg-cgn-naranja/30"></div>
     </div>
-  {% endif %}
-
-  {# Lienzo 1300 × 600 px en desktop, márgenes 80 px (px-20) — Manual CGN Fig. 36 #}
-  <div class="relative mx-auto flex max-w-contenido flex-col px-4 py-16 md:py-20 lg:min-h-[600px] lg:max-w-[1300px] lg:px-20 lg:py-20">
-    <div class="max-w-2xl">
-      <span class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-wide text-white ring-1 ring-white/20">
-        <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>{{ eyebrow|default:'Destacado' }}
-      </span>
-      <h2 class="font-titulo text-3xl font-bold leading-tight text-white drop-shadow md:text-5xl">{{ title }}</h2>
-      {% if text %}<p class="mt-5 max-w-xl text-base leading-relaxed text-white drop-shadow md:text-lg">{{ text }}</p>{% endif %}
-    </div>
-
-    {% if buttons or cta_label %}
-      {% comment %} Zona inferior: recuadro fecha/proceso (240 px) + botones 230×56,
-         de derecha a izquierda (principal a la derecha), separación 225 px @1300px. {% endcomment %}
-      <div class="mt-10 lg:mt-auto">
-        {% if fecha or proceso %}
-          <div class="mb-[47.5px] hidden w-60 rounded-lg border border-white/30 bg-white/95 px-4 py-2 text-right text-cgn-negro shadow-lg sm:ml-auto sm:block">
-            {% if fecha %}<p class="text-sm font-bold">{{ fecha }}</p>{% endif %}
-            {% if proceso %}<p class="text-xs text-cgn-grisos">{{ proceso }}</p>{% endif %}
-          </div>
-        {% endif %}
-        <div class="flex flex-wrap gap-3 sm:flex-row-reverse sm:justify-start sm:gap-6 min-[1300px]:flex-nowrap min-[1300px]:gap-[225px] sm:[&>a]:flex sm:[&>a]:h-14 sm:[&>a]:min-w-[230px] sm:[&>a]:items-center sm:[&>a]:justify-center">
-          {% for b in buttons|slice:":3" %}
-            {% include "components/button.html" with label=b.label url=b.url variant=b.variant|default:"contorno_inverso" %}
-          {% endfor %}
-          {% if not buttons and cta_label %}
-            {% include "components/button.html" with label=cta_label url=cta_url variant=cta_variant|default:"primario" %}
-          {% endif %}
-        </div>
+    <div class="relative mx-auto flex max-w-contenido flex-col px-4 py-16 md:py-20 lg:min-h-[600px] lg:max-w-[1300px] lg:px-20 lg:py-20">
+      <div class="max-w-2xl">
+        <span class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-wide text-white ring-1 ring-white/20">
+          <span class="h-2 w-2 rotate-45 bg-cgn-naranja"></span>{{ eyebrow|default:'Destacado' }}
+        </span>
+        <h2 class="font-titulo text-3xl font-bold leading-tight text-white drop-shadow md:text-5xl">{{ title }}</h2>
+        {% if text %}<p class="mt-5 max-w-xl text-base leading-relaxed text-white drop-shadow md:text-lg">{{ text }}</p>{% endif %}
       </div>
-    {% endif %}
-  </div>
+      {% if buttons or cta_label %}
+        <div class="mt-10 lg:mt-auto">
+          {% include "components/_banner_acciones.html" %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
