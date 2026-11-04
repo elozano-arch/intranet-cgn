@@ -44,16 +44,16 @@
     </div>
   </div>
 
-  {# Cabezote CGN: logo horizontal con eslogan + buscador #}
+  {# Cabezote CGN: logo conmemorativo 30 años (1996–2026) + logo horizontal con eslogan + buscador #}
     <div class="mx-auto flex max-w-contenido flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
       <a href="{% block home_url %}/{% endblock %}" class="inline-flex items-center" aria-label="Inicio — Intranet Contaduría General de la Nación">
-        <img src="{% static 'img/cgn-horizontal-color.png' %}" alt="Contaduría General de la Nación — Cuentas Claras, Estado Transparente" class="h-16 w-auto">
+        <img src="{% static 'img/cgn-30-color.svg' %}" alt="30 años Contaduría General de la Nación 1996–2026 — Cuentas Claras, Estado Transparente" width="535" height="113" class="h-14 w-auto sm:h-16 lg:h-[4.5rem]">
       </a>
 
       {# Buscador (Kit UI general) #}
       <form role="search" action="#" method="get" class="flex w-full max-w-md items-center">
         <label for="q" class="sr-only">Buscar en la intranet</label>
-        <input id="q" name="q" type="search" placeholder="Buscar en la intranet…"
+        <input id="q" name="q" type="search" placeholder="Buscar en la intranet"
                class="w-full rounded-l-md border border-gray-300 px-4 py-2 text-sm focus:border-govco-cobalt focus:outline-none">
         <button type="submit" aria-label="Buscar"
                 class="rounded-r-md bg-govco-cobalt px-4 py-2 text-white hover:bg-blue-800">
