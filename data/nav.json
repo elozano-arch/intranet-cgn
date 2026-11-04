@@ -29,8 +29,12 @@
   { "label": "Procesos", "icon": "plantillas", "wide": true, "url": "procesos.html",
     "desc": "Mapa de procesos de la entidad: estratégicos, misionales, de apoyo y de evaluación.", "children": [
     { "label": "Procesos estratégicos", "children": [
-      { "label": "Planeación", "url": "#" },
-      { "label": "Comunicación Pública", "url": "#" }
+      { "label": "Planeación Integral", "children": [
+        { "label": "GIT de Planeación", "url": "#" }
+      ]},
+      { "label": "Comunicación Pública", "children": [
+        { "label": "GIT Logístico de Capacitación y Prensa", "url": "#" }
+      ]}
     ]},
     { "label": "Procesos misionales", "children": [
       { "label": "Normalización y culturización contable", "children": [

@@ -118,7 +118,7 @@ def tipo_de(label, top):
         return "mapa"
     if (label.startswith("GIT") or label.startswith("Gestión") or label.startswith("Comité")
             or label.startswith("Sistema de Gestión") or label.startswith("Seguridad")
-            or label in ("Planeación", "Comunicación Pública", "Control y Evaluación", "SINTRA-CGN")):
+            or label in ("Planeación", "Planeación Integral", "Comunicación Pública", "Control y Evaluación", "SINTRA-CGN")):
         return "area"
     return "documento"
 
